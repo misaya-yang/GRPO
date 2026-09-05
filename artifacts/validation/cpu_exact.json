@@ -1,0 +1,90 @@
+{
+  "evidence_tier": "cpu_exact_enumeration",
+  "provenance": {
+    "created_at_utc": "2026-09-05T03:33:28.588117+00:00",
+    "python": "3.11.15",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "packages": {
+      "numpy": "2.4.6"
+    },
+    "git_head": null,
+    "source_sha256": {
+      "src/dependent_rollouts/__init__.py": "5f4a6f1fe0db1fdfb43b9c451df9c2c0131def6c6ba2a19a2d2c427fdca8fa98",
+      "src/dependent_rollouts/artifacts.py": "aa22f1129fcf2e48940b8019bf99e27c8ab53cc15431b0950d02636e19a433f4",
+      "src/dependent_rollouts/cli.py": "f5fadcd561d6dd9d24a781187203b27718535c27de0c1cf28e754693b092011d",
+      "src/dependent_rollouts/estimators.py": "def3a1879a9ba52965050af0e9e3d9947234970fafddd11a620e2b384f85144d",
+      "src/dependent_rollouts/interventions.py": "6ea5dce38a8b7b06d934a99a377a8289f7d09eae2ba55791f342e7fe2c5b2934",
+      "src/dependent_rollouts/llm.py": "ce8bdcdcbb980f911b2f005ba43fd4c58f1193d45645227400c7600cd56cb886",
+      "src/dependent_rollouts/prediction.py": "50e668835303714a5df4eed830e03e180b924c98923d32979e24639b8d283b51",
+      "src/dependent_rollouts/sampling.py": "783e2b33106b1de4b416cf74c7762e0fea1485a79b593081db940bd66a7ed0ad",
+      "src/dependent_rollouts/statistics.py": "5bdec57927577318df6ea1d07f8f1fe382ef270f661559f3bf593dcf033704bc",
+      "src/dependent_rollouts/tasks.py": "1787ea66f043f24a77b55e541f789a81f38657804bf25b7ced1a63a0f48defb8",
+      "src/dependent_rollouts/theory.py": "073f14e9db76632578f1105e1d130a01b880fe7fbea1db247c22b8bc546a207c",
+      "src/dependent_rollouts/toy.py": "3411c9dc45760856d918468185f828910b6688237ba6c1848f14eb1c509a60e8",
+      "src/dependent_rollouts/training.py": "b4694fd127fbfb0581ea2a8e6ffdd02cf2a44c7de83144e82c9ae534e49e2262"
+    },
+    "config": null
+  },
+  "count_example": {
+    "true": [
+      -0.5
+    ],
+    "A": [
+      0.125
+    ],
+    "B": [
+      -1.375
+    ],
+    "count_profile": [
+      0.125,
+      0.75,
+      0.125
+    ]
+  },
+  "stratified_example": {
+    "g": [
+      0.25
+    ],
+    "gq": [
+      -0.125
+    ],
+    "fisher": [
+      [
+        6.5
+      ]
+    ],
+    "projection": [
+      [
+        0.038461538461538464,
+        -0.15384615384615385,
+        0.11538461538461539,
+        0.0
+      ],
+      [
+        -0.15384615384615385,
+        0.6153846153846154,
+        -0.46153846153846156,
+        0.0
+      ],
+      [
+        0.11538461538461539,
+        -0.46153846153846156,
+        0.34615384615384615,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "slope": -0.004807692307692308,
+    "positive": 0.012943786982248523,
+    "interference": 0.01775147928994083,
+    "eta": 0.05128205128205129
+  },
+  "normalized_forecast_max_error": 3.3306690738754696e-16,
+  "stratified_bound": -0.7079402165819615,
+  "pretrained_model_experiment": "not_run"
+}

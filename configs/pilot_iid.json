@@ -1,0 +1,13 @@
+{
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "PIN_WITH_scripts/pin_model.py",
+  "device": "cuda",
+  "dtype": "float32",
+  "attention": "eager",
+  "sampler": "iid",
+  "k": 4,
+  "groups_per_prompt": 16,
+  "max_new_tokens": 160,
+  "seed": 202701,
+  "max_wall_seconds": 7200
+}

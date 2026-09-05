@@ -1,0 +1,56 @@
+\section{Count-preserving identification and independent prediction}
+For binary rewards let $N=\sum_i r_i$, and let $\bar s_+,\bar s_-$ denote the two
+within-group score means. Define the product below as zero for $N\in\{0,K\}$.
+Collecting terms in Eq.~\ref{eq:rloo} gives
+\begin{equation}
+\widehat g_Q=a_K(N)(\bar s_+-\bar s_-),\qquad
+a_K(n)=\frac{n(K-n)}{K(K-1)}.\label{eq:count}
+\end{equation}
+For population-standardized binary advantages,
+$d_n=\sqrt{(n/K)(1-n/K)}+\epsilon$ with $\epsilon>0$, replace $a_K(n)$ by
+$n(K-n)/(K^2d_n)$. This extension is exact at the score point.
+
+Writing $p_+=\Pr(r=1)$, $\Delta=\E[s\mid r=1]-\E[s\mid r=0]$ and
+$\Delta_n=\E[\bar s_+-\bar s_-\mid N=n]$, we obtain
+\begin{equation}
+g_Q=c_Qg+\zeta_Q,\quad
+c_Q=\frac{\E[a_K(N)]}{p_+(1-p_+)},\quad
+\zeta_Q=\E[a_K(N)(\Delta_N-\Delta)].\label{eq:identity}
+\end{equation}
+The decomposition applies when $0<p_+<1$; otherwise binary contrast is zero.
+Counts determine within-prompt scale, continuing the count-dependent scaling analyses
+of finite-group objectives \citep{rl2ml2026,softmaxgrpo2026}. They do not determine
+score identities, which is the gap the rewiring intervention targets.
+
+\paragraph{Analytic rewiring.}
+Store $B$ independent original groups at one prompt/checkpoint. Keep binary reward
+slots fixed and independently permute identities within each reward class. With
+$\bar a=B^{-1}\sum_b a_K(N_b)$, the exact conditional mean over rewiring is
+\begin{equation}
+C=\bar a(\bar s_{+,\rm pool}-\bar s_{-,\rm pool}).\label{eq:rewire}
+\end{equation}
+One weighted backward pass computes it using advantage $\bar a/\widehat p_+$ for
+success and $-\bar a/(1-\widehat p_+)$ for failure. A single-class pool returns zero.
+W uses original within-group weights; X uses a baseline from other independent
+groups. W--C isolates identity assignment on the fixed pool; C--X additionally
+reflects count/prompt weighting. C is a finite-pool conditional expectation, not
+an exactly unbiased population ratio. Cross baselines are not unbiased after
+division by the current group's reward standard deviation.
+
+\paragraph{IID-only forecast.}
+Let $\mu_{s,j}=\E[s\mid U\in B_j]$ and $\mu_{r,j}=\E[r\mid U\in B_j]$.
+Stratification implies
+\begin{equation}
+g_{\rm strat}=g+\frac1{K-1}\operatorname{Cov}_B(\mu_{s,B},\mu_{r,B}).\label{eq:forecast}
+\end{equation}
+IID-only calibration can estimate these quantities. Our reference implementation
+integrates virtual groups containing one stored IID item per bin. This is an empirical
+product-distribution prediction; reusing stored items does not create independent data.
+For standardized binary rewards, independent Bernoulli stratum counts yield a
+Poisson-binomial calculation (Appendix~\ref{app:forecast}). Missing bins require more
+calibration; missing reward classes contribute zero empirical mass.
+
+Forecasts must be frozen before coupled-outcome inspection. Discovery prompts fix
+the procedure and comparators; each held-out prompt/checkpoint receives its own IID
+calibration bank. The claim is out-of-treatment prediction, not uncalibrated transfer
+of conditional bin means between prompts.

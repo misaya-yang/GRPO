@@ -1,0 +1,75 @@
+\section{Validation and experimental protocol}
+\paragraph{Completed finite-policy checks.}
+Table~\ref{tab:exact} reports CPU enumeration reproduced by the repository.
+For the count example, $p_i=1/4$, $r=(1,1,0,0)$ and $s=(5,-7,0,2)$.
+Two symmetric pair laws have the same marginal and count profile
+$(\Pr(N=0),\Pr(N=1),\Pr(N=2))=(1/8,3/4,1/8)$.
+Their coverage is $7/8$, compared with IID's $3/4$, yet their mean updates have
+opposite signs. A separate stratified example uses $s=(1,-4,3,0)$ and $r=(1,0,0,0)$;
+coverage rises from $7/16$ to $1/2$ while the update reverses.
+These are restricted finite policies, not evidence of prevalence in pretrained models.
+
+\begin{table}[t]
+\centering
+\caption{CPU finite-policy enumeration. Both count-example samplers have identical
+success-count distributions. Positive natural slope denotes local ascent in the
+one-parameter policy; the coupled update itself can have either sign.}
+\label{tab:exact}
+\begin{tabular}{lrrl}
+\toprule
+Example & True gradient & Coupled gradient & Natural slope sign\\
+\midrule
+Same counts, law A & $-1/2$ & $1/8$ & Negative\\
+Same counts, law B & $-1/2$ & $-11/8$ & Positive\\
+Two-bin stratification & $1/4$ & $-1/8$ & Negative\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Pretrained-model protocol (not yet run).}
+The bounded pilot uses full-parameter Qwen2.5-0.5B-Instruct \citep{qwen2025half},
+unrestricted responses, $K=4$, and IID/stratified/lattice sampling. It contains
+48 prompts (16 discovery, 32 confirmation), divided equally between generated
+four-number arithmetic and SVAMP \citep{patel2021svamp}, with 16 groups per
+prompt/sampler and a 160-token cap. The main bank has 9,216 responses before
+separate calibration/evaluation additions.
+All samplers use the same model revision, verifier and prompt distribution.
+
+The primary statistic uses a fixed update map (initially SGD) and independent
+evaluation directional scores:
+\begin{equation}
+\delta_{\rm func}=\min_{a\ge0}
+\frac{\|d_W-a d_C\|_{F_{\rm eval}}}{\|d_X\|_{F_{\rm eval}}},\qquad
+\|d\|_{F_{\rm eval}}^2=\E[(s^Td)^2].
+\end{equation}
+Independent original groups, nested within prompts, determine uncertainty.
+Sample norms require bank replication or cross-bank products; an unresolved
+reference norm makes the statistic unidentifiable. IID rewiring is a negative control.
+
+\paragraph{Prediction and consequences.}
+Compare the frozen IID forecast with discovery-fitted positive-scalar and count-only
+comparators on independent coupled banks. Apply W/C/X and fixed doses from the same
+checkpoint. Choose KL step sizes on separate calibration data, include a half step,
+and check directional finite differences by step halving. Measure verifier reward
+using fresh IID generation or an independent, unclipped likelihood-ratio estimate,
+reporting ESS, weight tails and paired uncertainty. Reference-answer likelihood alone
+does not establish a reasoning consequence. Before confirmation, the protocol also
+registers a small set of behavioral quantities---held-out verifier reward, the
+probability of a valid final-answer format, and a prespecified partition of
+arithmetic solution/failure types---whose changes are forecast from independent IID
+evaluation banks.
+
+\paragraph{Decision criteria.}
+The pilot requires passing implementation controls, a simultaneous lower 95\%
+confidence bound above 0.10 for a prespecified non-scalar mechanism effect,
+at least 25\% held-out forecast-error improvement with supporting uncertainty,
+and a confirmed predicted verifier-reward effect at least 10\% of the resolved
+cross-baseline reference slope. The 16 GPU-hour cap is a planning envelope.
+An unresolved pilot is not a positive result.
+
+Only after these gates pass does the plan expand to
+$\{\text{IID, stratified, lattice}\}\times\{\text{within, cross}\}$ RLOO with
+three seeds and two independent groups of four in every arm. Common IID evaluation,
+token counts and actual elapsed time accompany all learning curves. Online trajectories
+diverge as policies evolve; the strict same-trajectory causal claim belongs to the
+frozen/branched experiment.

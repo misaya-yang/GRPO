@@ -1,0 +1,20 @@
+{
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "PIN_WITH_scripts/pin_model.py",
+  "device": "cuda",
+  "dtype": "float32",
+  "attention": "eager",
+  "sampler": "iid",
+  "arm": "within",
+  "k": 4,
+  "groups_per_prompt": 2,
+  "prompts_per_update": 4,
+  "max_new_tokens": 160,
+  "updates": 100,
+  "optimizer": "sgd",
+  "learning_rate": 0.00001,
+  "checkpoint_every": 25,
+  "seed": 202711,
+  "max_wall_seconds": 5400,
+  "pilot_decision": "NOT_RUN"
+}

@@ -1,0 +1,21 @@
+\section{Limitations}
+The strongest practical claims remain untested. Finite counterexamples establish
+possibility, not prevalence, and the block-operator proof uses classical geometry.
+Universal natural compatibility does not guarantee ascent under AdamW or under an
+arbitrary noncommuting optimizer. The standardized extension assumes binary rewards
+and a specific score-point loss, not general clipped multi-epoch GRPO.
+
+The reference decoder retains arbitrary-precision latent intervals but computes
+token CDFs numerically. It records CDF discrepancy and rejects support loss; this
+does not prove exact real-valued softmax marginals on all prefixes. GPU throughput
+and numerical tolerances need checkpoint-specific validation. Empirical rewiring
+changes covariance and within-group text structure; small-step, independent-bank
+and common-noise controls are needed to support a mean-direction interpretation.
+
+\section{Discussion}
+Dependence determines a distribution of contrasts. The score-subspace condition
+specifies when its effect can be understood as reward-independent natural
+preconditioning. Count-preserving intervention and IID prediction provide an
+operational route to testing the remaining identity-selection component. Whether
+this component is substantial and consequential for pretrained policies is the
+question reserved for the bounded empirical program.

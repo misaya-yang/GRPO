@@ -1,0 +1,83 @@
+\section{Dependence and the score subspace}
+For a fixed prompt, let $p_\theta(y)>0$ be a finite-support differentiable policy,
+$s(y)=\nabla_\theta\log p_\theta(y)$, and $r(y)$ a parameter-independent reward.
+Let an exchangeable group $(Y_1,\ldots,Y_K)\sim Q_\theta$ have marginal $p_\theta$.
+The intended gradient is $g=\E_p[sr]$. At the generating checkpoint, the sequence
+RLOO estimator is
+\begin{equation}
+\widehat g_Q=\frac1K\sum_i\left(r_i-\frac1{K-1}\sum_{j\ne i}r_j\right)s_i.
+\label{eq:rloo}
+\end{equation}
+Advantages are detached, and sequence scores sum all response-token log-probability
+gradients, including emitted EOS. A capped response remains an outcome. This
+estimand excludes clipping, off-policy epochs, length normalization and KL rewards,
+axes along which practical implementations differ
+\citep{grpo2026ustatistic,trl}.
+
+Define $(Tf)(y)=\E[f(Y_2)\mid Y_1=y]$ and $L=I-T$. Exchangeability gives the known
+pairwise identity
+\begin{equation}
+g_Q=\E_p[sLr]=\tfrac12\E_Q[(s_1-s_2)(r_1-r_2)].\label{eq:operator}
+\end{equation}
+In $L_2(p)$, $T$ is self-adjoint and contractive, and $T1=1$.
+Its Dirichlet form is $\inner{f}{Lf}=\E[(f(Y_1)-f(Y_2))^2]/2\ge0$.
+Extendibility to $K$ exchangeable members gives
+$-I/(K-1)\preceq T\preceq I$ on centered functions. A reversible pair matrix
+alone does not guarantee extendibility for an arbitrary larger $K$.
+
+Let $(Sa)(y)=s(y)^Ta$, $F=S^*S$, $\V=\operatorname{range}(S)$ and
+$\Pi=SF^\dagger S^*$. Decompose centered reward as
+$r_0=r-\E r=v+e$ with $v=\Pi r_0$ and $e\perp\V$. Then
+\begin{equation}
+D_Q(r):=g^TF^\dagger g_Q
+=\inner{v}{Lv}-\inner{v}{Te}.\label{eq:decomposition}
+\end{equation}
+The first term is nonnegative; the second describes residual interference.
+
+\begin{theorem}[Universal local compatibility]
+For a fixed positive finite-support policy and exchangeable sampler, the following
+are equivalent: (i) $D_Q(r)\ge0$ for every parameter-independent reward;
+(ii) $T\V\subseteq\V$; (iii) $\Pi T(I-\Pi)=0$;
+(iv) one reward-independent positive self-adjoint operator $A$ on $\V$ satisfies
+$\Pi Lr=A\Pi r$ for every reward. In that case $A=\Pi L\Pi|_\V$.
+\end{theorem}
+\begin{proof}
+In $\V\oplus\V^\perp$, write $L=\left(\begin{smallmatrix}A&B\\B^*&C\end{smallmatrix}\right)$.
+The slope is $\inner{v}{Av}+\inner{v}{Be}$. If $B=0$, positivity of $L$ gives
+nonnegative slope. Otherwise choose a nonzero cross term and scale and sign $e$
+to make the slope negative. On finite support, an affine reward transformation
+maps this example into $[0,1]$ without changing its sign. Self-adjointness makes
+the off-diagonal blocks vanish together, yielding the equivalent conditions.
+\end{proof}
+
+This is a natural-gradient statement, not an AdamW ascent theorem. A saturated
+score subspace has $e=0$ and cannot exhibit natural reversal. One observed acute
+gradient pair cannot establish reward-independent preconditioning. Shared model
+parameters also mean positive prompt-specific scaling may rotate an aggregate update,
+as finite-group objective analyses of prompt weighting also emphasize
+\citep{softmaxgrpo2026}.
+
+\subsection{Stratified reweighting and lattice filtering}
+Fix a decoder $Y=G_\theta(U)$ with uniform $U\in[0,1)$ and a declared token ordering.
+Let $\mathcal C f=f\circ G_\theta$. For the projection $P_B$ onto means in $K$
+equal latent bins, define $H_B=\mathcal C^*P_B\mathcal C$.
+One independent sample per bin, followed by random labeling, gives on centered functions
+\begin{equation}
+L_{\rm strat}=I+\frac{H_B}{K-1},\qquad 0\preceq H_B\preceq I.\label{eq:strat}
+\end{equation}
+Thus if $\eta=\|v\|_p^2/\|r_0\|_p^2>0$,
+\begin{equation}
+\frac{D_{\rm strat}(r)}{\|v\|_p^2}
+\ge\frac{2K-1-\eta^{-1/2}}{2(K-1)}.\label{eq:bound}
+\end{equation}
+In particular, $\eta>1/(2K-1)^2$ suffices for strictly positive natural slope;
+falling below the threshold only permits reversal.
+
+For lattice sampling, define the orbit projection
+$P_Of(u)=K^{-1}\sum_{j=0}^{K-1}f((u+j/K)\bmod1)$ and
+$H_O=\mathcal C^*P_O\mathcal C$. Then
+\begin{equation}
+L_{\rm lattice}=\frac K{K-1}(I-H_O).\label{eq:lattice}
+\end{equation}
+An orbit-invariant lifted reward receives no RLOO signal. Compression matters:
+$H_B,H_O$ are positive contractions and need not themselves be projections on sequence space.

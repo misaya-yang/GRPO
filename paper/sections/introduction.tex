@@ -1,0 +1,36 @@
+\section{Introduction}
+Generating a group of responses defines a distribution over comparisons as well as
+a distribution over answers. Two samplers can preserve the marginal policy and
+have the same complete distribution of binary success counts while producing
+oppositely directed expected policy updates. Coverage therefore does not determine
+what a group-relative estimator teaches the policy.
+
+Dependence-induced baseline bias is established prior work. QuasiMoTTo studies
+marginal-preserving sequence sampling, its RLOO bias, and pairwise correction
+\citep{li2026quasimotto}; CARMS and ARMS develop coupled score-function estimators
+\citep{dimitriev2021carms,dimitriev2021arms}. Our target is the interaction between
+sampling dependence and the policy's learnable reward directions, together with
+a predictive causal test that preserves the reward-count explanation.
+
+The analysis uses classical reversible-kernel geometry and score-space projections
+\citep{sherlock2018reversible,sutton1999policy,kakade2001natural}. The mathematical
+ingredients are not claimed as new. Their application identifies a precise boundary:
+dependence is a reward-independent positive natural preconditioner exactly when
+the score subspace is invariant under the partner operator. Otherwise, a reward
+component invisible to the original policy gradient can enter the coupled update.
+
+For binary rewards, we further separate count-associated scale from the identities
+that receive positive or negative advantages. Permuting successful identities over
+the same successful slots, and failed identities over failed slots, preserves every
+group's count and all stored trajectories. Its analytic average removes additional
+permutation noise. The proposed empirical contribution is to predict the resulting
+functional and verifier-reward changes from independent data. No such pretrained-model
+claim is made in this initial version.
+
+\paragraph{Scope of the draft.}
+We provide the compatibility characterization, sampler consequences, the binary
+count/identity decomposition, and finite-policy checks. The planned empirical
+contribution is count-preserving causal identification supported by independent
+IID forecasts and held-out reward consequences. Cross-group baselines serve as
+an identification instrument, following established baseline principles
+\citep{greensmith2004variance,chung2020beyond}.

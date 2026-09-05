@@ -1,0 +1,102 @@
+{
+  "evidence_tier": "cpu_exact_enumeration",
+  "provenance": {
+    "created_at_utc": "2026-09-05T05:19:42.600034+00:00",
+    "python": "3.11.15",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "packages": {
+      "numpy": "2.3.2",
+      "torch": "2.8.0",
+      "transformers": "5.15.1",
+      "safetensors": "0.8.0"
+    },
+    "git_head": null,
+    "source_sha256": {
+      "src/dependent_rollouts/__init__.py": "5f4a6f1fe0db1fdfb43b9c451df9c2c0131def6c6ba2a19a2d2c427fdca8fa98",
+      "src/dependent_rollouts/artifacts.py": "0e7063e6388796fbe1760f96a188e3b84997aab7e3d845ddd7ca2d81dbd07fa3",
+      "src/dependent_rollouts/cli.py": "29b6f52c890f3b103daed3b13a34eb89171f501dc4107e507e94d2dcc6e2cdec",
+      "src/dependent_rollouts/estimators.py": "d57fc6d1459a753650724b90bce2846415d7af1650a5428bf0f306176ff31b2e",
+      "src/dependent_rollouts/interventions.py": "fad2beffd988b723641e3db6167897cc50ada59102229da358687daa82e2ada6",
+      "src/dependent_rollouts/llm.py": "79313da6b1fb2f652b2a3b246d5d360ad6f347a0c0071ffb91e975263fc20db1",
+      "src/dependent_rollouts/prediction.py": "522e531d45582aa1a8a9c81f5af7c4c6dd0b7c87bcc7f7a09d87f8b938e7ea6f",
+      "src/dependent_rollouts/sampling.py": "1186a87b6a51fb69af4cf8035ebd077f1a8506215a125730842e48fefeaa8c85",
+      "src/dependent_rollouts/statistics.py": "8c621e11b0a98053fbbeb609d776d23d98503b4261cb7fb52524b10b015cc676",
+      "src/dependent_rollouts/tasks.py": "6b0c50063d35a1fb2f57fc7fcb0ae2c45d78c325674be2b8722991f81db3bdd3",
+      "src/dependent_rollouts/theory.py": "879d3290a852c16696111c79128f263b2423cf2ec0a20f360897a9910c704a0e",
+      "src/dependent_rollouts/toy.py": "44a6533b809c05ad4acee39043fcf7e2c3028d6a66290e37aa2ea172bcc00990",
+      "src/dependent_rollouts/training.py": "33084f2cd4f6ee1fedd2c06b40709bc2aad6b3cdd105aa4a3d4f837d749ed984"
+    },
+    "config": null
+  },
+  "count_example": {
+    "true": [
+      -0.5
+    ],
+    "A": [
+      0.125
+    ],
+    "B": [
+      -1.375
+    ],
+    "count_profile": [
+      0.125,
+      0.75,
+      0.125
+    ],
+    "coverage": {
+      "A": 0.875,
+      "B": 0.875,
+      "iid": 0.75
+    }
+  },
+  "stratified_example": {
+    "g": [
+      0.25
+    ],
+    "gq": [
+      -0.125
+    ],
+    "fisher": [
+      [
+        6.5
+      ]
+    ],
+    "projection": [
+      [
+        0.038461538461538464,
+        -0.15384615384615385,
+        0.11538461538461539,
+        0.0
+      ],
+      [
+        -0.15384615384615385,
+        0.6153846153846154,
+        -0.46153846153846156,
+        0.0
+      ],
+      [
+        0.11538461538461539,
+        -0.46153846153846156,
+        0.34615384615384615,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "slope": -0.004807692307692308,
+    "positive": 0.012943786982248523,
+    "interference": 0.01775147928994083,
+    "eta": 0.05128205128205129,
+    "coverage": {
+      "stratified": 0.5,
+      "iid": 0.4375
+    }
+  },
+  "normalized_forecast_max_error": 3.3306690738754696e-16,
+  "stratified_bound": -0.7079402165819615,
+  "pretrained_model_experiment": "not_run"
+}

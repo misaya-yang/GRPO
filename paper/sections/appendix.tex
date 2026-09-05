@@ -1,0 +1,62 @@
+\section{Operator identities and spectral bound}
+Taking the expectation of Eq.~\ref{eq:rloo}, the diagonal term is $\E[sr]$ and
+each exchangeable off-diagonal term is $\E[s_1r_2]=\E[sTr]$.
+Symmetrization gives Eq.~\ref{eq:operator}. For centered $f$,
+\[
+0\le\operatorname{Var}\!\left(\sum_i f(Y_i)\right)
+=K\|f\|_p^2+K(K-1)\inner{f}{Tf},
+\]
+which proves the finite-group lower spectral bound.
+
+For stratification, conditional on a randomly labeled member's bin, its partner
+is uniformly distributed over the other $K-1$ bins. On centered latent functions
+$T_U=-P_B/(K-1)$; compression gives Eq.~\ref{eq:strat}.
+For a randomly labeled lattice orbit,
+$T_U=(KP_O-I)/(K-1)$, giving Eq.~\ref{eq:lattice}.
+
+For a positive operator $mI\preceq L\preceq MI$, normalize $\|v\|=1$ and write
+$r_0=v+e$, $\kappa=\|e\|$. The symmetric rank-two form
+$(r_0v^*+vr_0^*)/2$ has eigenvalues $(1\pm\sqrt{1+\kappa^2})/2$.
+Assigning $m$ to the positive eigenvector and $M$ to the negative one minimizes
+its trace pairing with $L$, yielding
+\[
+\inner{v}{Lr_0}\ge\frac{m+M}{2}-\frac{M-m}{2\sqrt\eta}.
+\]
+Set $m=1$, $M=K/(K-1)$ to obtain Eq.~\ref{eq:bound}.
+
+\section{Pair laws for the same-count example}
+With one-based response indices, law A assigns mass $1/4$ to each of $(1,3),(3,1)$,
+and $1/8$ to each of $(2,4),(4,2),(2,2),(4,4)$.
+Law B assigns $1/4$ to $(2,3),(3,2)$, and $1/8$ to
+$(1,4),(4,1),(1,1),(4,4)$. All other masses vanish. Direct summation gives the
+same uniform marginal and count distribution but the distinct gradients in
+Table~\ref{tab:exact}. The scalar exponential family
+$p_\theta(i)\propto p_i\exp(\theta s_i)$ realizes these centered scores at zero.
+
+\section{Normalized IID-only forecast}\label{app:forecast}
+Let $p_j=\Pr(r=1\mid B=j)$, $m_{j,+}=\E[s\mid B=j,r=1]$ and
+$m_{j,-}=\E[s\mid B=j,r=0]$. Let $M_{-j}$ be the sum of independent Bernoulli
+variables with parameters $p_\ell$ for $\ell\ne j$. Its law is computed by polynomial
+convolution. Define
+\[
+u_j^+=\E\!\left[\frac{K-1-M_{-j}}{K d_{1+M_{-j}}}\right],\qquad
+u_j^-=\E\!\left[\frac{M_{-j}}{K d_{M_{-j}}}\right].
+\]
+Conditioning on the reward of the item in stratum $j$ yields
+\[
+g_{\rm strat,std}=\frac1K\sum_j
+\left[p_ju_j^+m_{j,+}-(1-p_j)u_j^-m_{j,-}\right].
+\]
+The implementation checks this population formula against all $2^K$ reward
+configurations through $K=8$. For empirical IID banks, virtual-group integration
+is conditional on the stored empirical distributions; finite-sample uncertainty
+is based on original IID observations, not virtual combinations.
+
+\section{Rewiring invariants}
+Conditioned on stored binary slots, every successful slot receives a uniform
+successful trajectory from the pool, and likewise for failures. Substitute these
+two pool means into Eq.~\ref{eq:count} and average over groups to obtain
+Eq.~\ref{eq:rewire}. Exhaustive within-class permutations on a tiny pool verify
+the identity. Each slot's reward, every group's success count, trajectory-ID
+multiplicities and total response tokens are preserved. Gradient covariance is
+not preserved and is treated as a separate diagnostic target.

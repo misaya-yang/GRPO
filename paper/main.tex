@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{iclr2027_conference,times}
+\usepackage{amsmath,amssymb,amsthm,booktabs,graphicx,hyperref,url}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\inner}[2]{\langle #1,#2\rangle_p}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\title{What Dependent Rollouts Teach a Policy:\\From Coverage to Contrast Selection}
+\author{Anonymous authors}
+\begin{document}
+\maketitle
+\begin{abstract}
+Marginal-preserving rollout dependence changes which successful and unsuccessful
+trajectories are contrasted by group-relative learning. We study this effect at the
+on-policy score point. A partner operator characterizes the expected RLOO update,
+and invariance of the policy score subspace characterizes when dependence acts as
+a reward-independent positive natural preconditioner. Stratified sampling induces
+bounded reward-space reweighting, whereas lattice sampling can suppress reward
+modes. For binary rewards, an exact decomposition separates success-count weighting
+from response-identity selection, including population-standardized score-point
+advantages. Integrating count-preserving rewiring yields a deterministic intervention
+on identical stored trajectories. Independent IID data also yield stratified-update
+forecasts. Finite-policy enumeration reproduces two reversal examples and validates
+the normalized forecast. The accompanying experimental protocol tests these predictions
+on unrestricted pretrained-model responses. This initial manuscript reports theory
+and CPU validation; pretrained-model effects and learning consequences remain unmeasured.
+\end{abstract}
+
+\input{sections/introduction}
+\input{sections/theory}
+\input{sections/intervention}
+\input{sections/experiments}
+\input{sections/limitations}
+
+\section*{Reproducibility statement}
+The accompanying repository contains the unchanged theory dossier, source checksums,
+finite-policy enumeration, a sequence sampler, weighted-gradient and intervention
+runners, and machine-readable configurations. The current evidence is explicitly
+separated from the planned pretrained-model experiments. All future empirical
+tables require immutable rollout banks and run receipts.
+
+\section*{AI use statement}
+AI tools assisted with research-plan development, initial manuscript drafting,
+experimental code, and local tests. This is a working draft. Before submission,
+the authors must verify the mathematical claims, references, empirical evidence,
+and the final accuracy of this disclosure.
+
+\bibliography{references}
+\bibliographystyle{iclr2027_conference}
+\appendix
+\input{sections/appendix}
+\end{document}
