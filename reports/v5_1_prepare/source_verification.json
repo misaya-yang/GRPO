@@ -1,0 +1,14 @@
+{
+  "source_checks": {
+    "V4_DIAGNOSIS_AND_V5_1_EXECUTION.md": true,
+    "README.md": true,
+    "verify_v5_1.py": true,
+    "verify_v5_1_results.json": true,
+    "execution_contract.json": true
+  },
+  "guidance_sha256": "cea39b473586226399a9d32b78a154c9bb7e0e92fdd5d0fa67cea9416df9da9b",
+  "local_oracle_status": "PASS_CPU_FINITE_MODEL_ONLY",
+  "local_max_identity_error": 2.3869795029440866e-15,
+  "provided_max_identity_error": 1.4682699500667695e-14,
+  "note": "Original source preserved; rerun executed independent output copy; finite CPU only"
+}

@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/arkilpatel/SVAMP",
+  "commit": "689d7ccac74b9983a2ac7cc3b264f441b99e7c53",
+  "files": {
+    "SVAMP.json": "5be77703a6d891ae476d7c082787ad361392aa02453b132516cdd5f4e7934e3e",
+    "LICENSE": "07ce3a34de7a865345634f9278bc26ddcacc2d0defd348c28e3f4603448b9ba4"
+  },
+  "task_use": "Project-local predeclared calibration/confirmation/train/evaluation splits, not an official benchmark score"
+}
