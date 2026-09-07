@@ -264,6 +264,8 @@ def _run(config_path, tasks_path, output, mode, collector=None):
     out.mkdir(parents=True, exist_ok=False)
     model, tokenizer = load_model(config)
     initial_identity = parameter_identity(model)
+    if initial_identity["parameter_space_hash"] != config["stage_d_parameter_space_hash"]:
+        raise ValueError("Stage-D and Stage-E trainable parameter spaces differ")
     optimizer = _optimizer(model, config)
     optimizer_contract = {
         "name": config["optimizer"],
@@ -285,6 +287,11 @@ def _run(config_path, tasks_path, output, mode, collector=None):
             "optimizer": optimizer_contract,
             "aggregation": "mean_over_actual_responses_N_fixed_K",
             "on_policy": True,
+            "iid_budget_mode": config.get("iid_budget_mode", "same_prompt"),
+            "responses_per_training_macro": config["B"] * config["m"]
+            if arm != "iid_all" or config.get("iid_budget_mode", "same_prompt") == "same_prompt"
+            else config["K"],
+            "effective_prompts_per_update": _prompts_per_update(config, arm),
         },
     )
     rng = np.random.default_rng(config["seed"])
@@ -293,7 +300,9 @@ def _run(config_path, tasks_path, output, mode, collector=None):
     seen_trajectories, seen_rng, update_summaries = set(), set(), []
     macro_number = 0
     for update in range(config["updates"]):
-        chosen = rng.choice(len(training_tasks), size=config["prompts_per_update"], replace=False)
+        chosen = rng.choice(
+            len(training_tasks), size=_prompts_per_update(config, arm), replace=False
+        )
         update_rows, update_weights, costs = [], [], []
         for task_index in chosen:
             task = training_tasks[int(task_index)]
@@ -361,7 +370,12 @@ def _run(config_path, tasks_path, output, mode, collector=None):
     adapter_sha256 = _save_adapter(model, adapter_path)
     with (out / "optimizer.pt").open("xb") as handle:
         torch.save({"state_dict": optimizer.state_dict(), "config": optimizer_contract}, handle)
-    evaluation_config = {**config, "seed": config["evaluation_seed"], "stage": "online_evaluation"}
+    evaluation_config = {
+        **config,
+        "seed": config["evaluation_seed"],
+        "stage": "online_evaluation",
+        "iid_budget_mode": "same_prompt",
+    }
     evaluation_rows, evaluation_costs = [], []
     evaluation_macro = 0
     for task in evaluation_tasks:
@@ -376,8 +390,8 @@ def _run(config_path, tasks_path, output, mode, collector=None):
                 "iid_all",
                 deadline,
             )
-            if len(rows) != config["K"]:
-                raise ValueError("Independent evaluation macro must contain fixed K responses")
+            if len(rows) != config["B"] * config["m"]:
+                raise ValueError("Independent evaluation macro must use common N=B*m")
             for row in rows:
                 _validate_audit_row(row)
             bank_hash = digest([digest(row) for row in rows])
@@ -425,6 +439,9 @@ def _run(config_path, tasks_path, output, mode, collector=None):
         "seed": config["seed"],
         "shared_initialization_id": config["shared_initialization_id"],
         "updates": len(update_summaries),
+        "iid_budget_mode": config.get("iid_budget_mode", "same_prompt"),
+        "effective_prompts_per_update": _prompts_per_update(config, arm),
+        "responses_per_update": [summary["responses"] for summary in update_summaries],
         "adapter": str(adapter_path),
         "adapter_sha256": adapter_sha256,
         "optimizer_state_sha256": sha256(out / "optimizer.pt"),

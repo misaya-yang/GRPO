@@ -38,18 +38,55 @@ def _tasks(path):
 
 
 def _decision(path, evidence_path):
-    write_json(evidence_path, {"status": "COMPLETE"})
+    from stratified_grpo.model import parameter_identity
+
+    parameter_hash = parameter_identity(TinyAdapter())["parameter_space_hash"]
+    method_hash = "stage-d-method"
+    manifest_path = evidence_path.with_name("stage-d-manifest.json")
+    analysis_path = evidence_path.with_name("stage-d-analysis.json")
+    write_json(
+        manifest_path,
+        {
+            "config": {
+                "stage": "confirmation",
+                "metric": "full_lora_gradient_trace",
+                "K": 2,
+                "B": 2,
+                "m": 2,
+            },
+            "method_hash": method_hash,
+            "parameter_identity": {"parameter_space_hash": parameter_hash},
+        },
+    )
+    write_json(
+        analysis_path,
+        {
+            "stage": "confirmation",
+            "decision": "SUPPORT_CONTINUATION",
+            "metric": "full_lora_gradient_trace",
+            "K": 2,
+            "N": 4,
+        },
+    )
+    write_json(evidence_path, {"status": "COMPLETE", "manifest_sha256": sha256(manifest_path)})
     write_json(
         path,
         {
             "stage": "D",
             "decision": "SUPPORT_CONTINUATION",
-            "evidence": [{"path": str(evidence_path), "sha256": sha256(evidence_path)}],
+            "method_hash": method_hash,
+            "parameter_space_hash": parameter_hash,
+            "evidence": [
+                {"role": "analysis", "path": str(analysis_path), "sha256": sha256(analysis_path)},
+                {"role": "manifest", "path": str(manifest_path), "sha256": sha256(manifest_path)},
+                {"role": "receipt", "path": str(evidence_path), "sha256": sha256(evidence_path)},
+            ],
         },
     )
 
 
 def _config(tasks, decision):
+    stage_d = json.loads(decision.read_text())
     return {
         "K": 2,
         "B": 2,
@@ -72,6 +109,8 @@ def _config(tasks, decision):
         "tasks_sha256": sha256(tasks),
         "stage_d_decision_sha256": sha256(decision),
         "stage_d_decision": str(decision),
+        "stage_d_method_hash": stage_d.get("method_hash"),
+        "stage_d_parameter_space_hash": stage_d.get("parameter_space_hash"),
         "train_prompt_ids": ["train-a", "train-b"],
         "evaluation_prompt_ids": ["eval"],
         "token_logp_tolerance": 1e-5,
@@ -140,11 +179,11 @@ def test_common_warmup_and_single_online_run_are_fresh_on_policy_and_auditable(
     warm_output = tmp_path / "warm"
     warm = run_common_warmup(warm_config, tasks, warm_output, collector)
     assert warm["status"] == "common_warmup_complete"
-    assert [count for _, arm, count in calls if arm == "iid_all"] == [2, 2, 2]
-    assert [count for count, _ in gradient_calls] == [2, 2]
+    assert [count for _, arm, count in calls if arm == "iid_all"] == [4, 4, 4]
+    assert [count for count, _ in gradient_calls] == [4, 4]
     assert models[0].lora_B.item() == pytest.approx(0.2)
     assert len((warm_output / "update-0000.jsonl").read_text().splitlines()) == 2
-    assert len((warm_output / "evaluation.jsonl").read_text().splitlines()) == 2
+    assert len((warm_output / "evaluation.jsonl").read_text().splitlines()) == 4
     update_row = json.loads((warm_output / "update-0000.jsonl").read_text().splitlines()[0])
     for key in ("response_ids", "sampling_token_logp", "row_hash", "fresh_bank_hash", "weight"):
         assert key in update_row
@@ -168,9 +207,26 @@ def test_common_warmup_and_single_online_run_are_fresh_on_policy_and_auditable(
     assert result["arm"] == "stratified_full"
     assert [count for _, arm, count in calls if arm == "stratified_full"] == [4, 4]
     assert [count for count, _ in gradient_calls] == [4, 4]
-    assert [count for seed, arm, count in calls if seed == 12 and arm == "iid_all"] == [2]
+    assert [count for seed, arm, count in calls if seed == 12 and arm == "iid_all"] == [4]
     assert (online_output / "adapter.safetensors").is_file()
     assert (online_output / "optimizer.pt").is_file()
+
+    calls.clear()
+    gradient_calls.clear()
+    split_config = {
+        **online_config,
+        "arm": "iid_all",
+        "iid_budget_mode": "more_prompts",
+        "updates": 1,
+    }
+    split_path = tmp_path / "online-split.json"
+    write_json(split_path, split_config)
+    split_output = tmp_path / "online-split"
+    split = run_online(split_path, tasks, split_output, collector)
+    assert split["effective_prompts_per_update"] == 2
+    assert split["responses_per_update"] == [4]
+    assert [count for seed, arm, count in calls if seed == 11 and arm == "iid_all"] == [2, 2]
+    assert [count for seed, arm, count in calls if seed == 12 and arm == "iid_all"] == [4]
 
 
 def test_online_rejects_bare_or_unsealed_stage_d_go_before_model_loading(tmp_path, monkeypatch):

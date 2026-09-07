@@ -1,0 +1,17 @@
+{
+  "status": "RECONCILED_DISTINCT_LEDGER_JOBS",
+  "prior_whole_process_wall_seconds": 7363.544746805914,
+  "prior_hours": 2.045429096334976,
+  "jobs": 18,
+  "carried_pilot_cap_seconds": 36000,
+  "remaining_pilot_seconds_before_v5_1": 28636.455253194086,
+  "cap_basis": "Existing server runs/budget_4080.jsonl used 36000s; continuation preserves that engineering pilot cap, not a new grant per theory revision",
+  "original_total_caps_hours": {
+    "RTX5090": 200,
+    "Pro6000": 100
+  },
+  "actual_prior_device": "RTX 4080 SUPER (reported 32760 MiB)",
+  "source": "reports/v5_1_prepare/prior_budget_remote.jsonl",
+  "source_sha256": "d2f860da7e954554111a113ce66c086c4e3a11d47d294c1da0f8288d9eb7e907",
+  "accounting_note": "Original budget_4080 ledger plus cycle_035025 ledger; reports/cycle_2h_budget is a duplicate copy, not charged twice. Whole-process wall time includes load/CPU stalls; no claim of GPU kernel busy hours."
+}
