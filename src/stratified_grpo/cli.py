@@ -21,6 +21,10 @@ def main():
     p.add_argument("--config", required=True)
     p.add_argument("--tasks", required=True)
     p.add_argument("--output", required=True)
+    p = commands.add_parser("warmup")
+    p.add_argument("--config", required=True)
+    p.add_argument("--tasks", required=True)
+    p.add_argument("--output", required=True)
     args = parser.parse_args()
     if args.command == "run":
         from .pipeline import run
@@ -38,6 +42,10 @@ def main():
         from .pipeline import freeze_dev
 
         result = freeze_dev(args.directory, args.output)
+    elif args.command == "warmup":
+        from .online import run_common_warmup
+
+        result = run_common_warmup(args.config, args.tasks, args.output)
     else:
         from .online import run_online
 

@@ -134,7 +134,7 @@ def _validate(config, mode):
     return arm
 
 
-def _task_sets(config, tasks_path):
+def _task_sets(config, tasks_path, arm):
     if sha256(tasks_path) != config.get("tasks_sha256"):
         raise ValueError("Tasks file changed")
     rows = read_tasks(tasks_path)
@@ -150,7 +150,6 @@ def _task_sets(config, tasks_path):
         or not set(train_ids + evaluation_ids) <= lookup.keys()
     ):
         raise ValueError("Need disjoint frozen training and evaluation prompts")
-    arm = config.get("arm", "iid_all")
     if len(train_ids) < _prompts_per_update(config, arm):
         raise ValueError("Insufficient training prompts per update")
     return [lookup[key] for key in train_ids], [lookup[key] for key in evaluation_ids]
@@ -255,7 +254,7 @@ def _run(config_path, tasks_path, output, mode, collector=None):
     if not decision_path:
         raise ValueError("Missing frozen Stage-D decision path")
     decision = _stage_d_decision(config, decision_path)
-    training_tasks, evaluation_tasks = _task_sets(config, tasks_path)
+    training_tasks, evaluation_tasks = _task_sets(config, tasks_path, arm)
     if collector is None:
         from .pipeline import collect_macro
 
@@ -347,8 +346,11 @@ def _run(config_path, tasks_path, output, mode, collector=None):
             config["sequence_logp_tolerance"],
         )
         optimizer.zero_grad(set_to_none=True)
-        for name, parameter in trainable(model).items():
-            if name not in gradients or gradients[name].shape != parameter.shape:
+        parameters = trainable(model)
+        if set(gradients) != set(parameters):
+            raise ValueError("Gradient parameter identity mismatch")
+        for name, parameter in parameters.items():
+            if gradients[name].shape != parameter.shape:
                 raise ValueError("Gradient parameter identity mismatch")
             parameter.grad = -gradients[name].to(parameter.device, parameter.dtype)
         if time.monotonic() >= deadline:
@@ -365,6 +367,17 @@ def _run(config_path, tasks_path, output, mode, collector=None):
         }
         write_json(out / f"update-{update:04d}.json", summary)
         update_summaries.append(summary)
+        print(
+            json.dumps(
+                {
+                    "stage": "online_update",
+                    "arm": arm,
+                    "update": update,
+                    "responses": len(update_rows),
+                }
+            ),
+            flush=True,
+        )
 
     adapter_path = out / "adapter.safetensors"
     adapter_sha256 = _save_adapter(model, adapter_path)
