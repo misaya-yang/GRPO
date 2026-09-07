@@ -182,7 +182,7 @@ def test_common_warmup_and_single_online_run_are_fresh_on_policy_and_auditable(
     assert [count for _, arm, count in calls if arm == "iid_all"] == [4, 4, 4]
     assert [count for count, _ in gradient_calls] == [4, 4]
     assert models[0].lora_B.item() == pytest.approx(0.2)
-    assert len((warm_output / "update-0000.jsonl").read_text().splitlines()) == 2
+    assert len((warm_output / "update-0000.jsonl").read_text().splitlines()) == 4
     assert len((warm_output / "evaluation.jsonl").read_text().splitlines()) == 4
     update_row = json.loads((warm_output / "update-0000.jsonl").read_text().splitlines()[0])
     for key in ("response_ids", "sampling_token_logp", "row_hash", "fresh_bank_hash", "weight"):
