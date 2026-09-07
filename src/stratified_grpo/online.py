@@ -53,6 +53,8 @@ def _validate(config, mode):
         _positive_integer(config, key)
     if config["B"] < config["K"]:
         raise ValueError("Stratified online runs require B >= K")
+    if not np.isfinite(config.get("epsilon", np.nan)) or config["epsilon"] < 0:
+        raise ValueError("Invalid advantage epsilon")
     if mode == "common_warmup":
         arm = "iid_all"
     else:
@@ -115,6 +117,20 @@ def _binary_reward(row):
     return int(reward)
 
 
+def _validate_audit_row(row):
+    response = row.get("response_ids")
+    scores = np.asarray(row.get("sampling_token_logp", []), dtype=float)
+    if (
+        not isinstance(response, list)
+        or not response
+        or scores.shape != (len(response),)
+        or not np.isfinite(scores).all()
+        or row.get("response_mask") != [1] * len(response)
+        or not np.isclose(row.get("old_logp", np.nan), scores.sum(), atol=1e-12, rtol=0)
+    ):
+        raise ValueError("Incomplete response-token audit contract")
+
+
 def _macro_weights(rows, arm, config):
     if arm == "iid_all":
         if len(rows) != config["K"]:
@@ -124,14 +140,15 @@ def _macro_weights(rows, arm, config):
     expected = config["B"] * config["m"]
     if len(rows) != expected:
         raise ValueError("Strat-full macro must contain B*m responses")
-    positions = [(row.get("block"), row.get("stratum")) for row in rows]
+    positions = [(row.get("block"), row.get("stratum", row.get("slot"))) for row in rows]
     required = [(block, stratum) for block in range(config["B"]) for stratum in range(config["m"])]
     if sorted(positions) != required:
         raise ValueError("Strat-full macro has incomplete block/stratum identity")
     order = np.argsort([block * config["m"] + stratum for block, stratum in positions])
     matrix = np.empty((config["B"], config["m"]), dtype=int)
     for row in rows:
-        matrix[row["block"], row["stratum"]] = _binary_reward(row)
+        stratum = row.get("stratum", row.get("slot"))
+        matrix[row["block"], stratum] = _binary_reward(row)
     ordered_weights = full_stratified_weights(matrix, config["K"], config["epsilon"]).reshape(-1)
     inverse = np.empty(expected, dtype=int)
     inverse[order] = np.arange(expected)
@@ -160,7 +177,8 @@ def _save_adapter(model, path):
 
 
 def _collect(collector, model, tokenizer, config, task, macro, arm, deadline):
-    rows, costs = collector(model, tokenizer, config, task, macro, arm, deadline)
+    collection_config = {**config, "B": config["K"], "m": 1} if arm == "iid_all" else config
+    rows, costs = collector(model, tokenizer, collection_config, task, macro, arm, deadline)
     if not isinstance(rows, list) or not rows or not isinstance(costs, dict):
         raise ValueError("collect_macro returned an invalid result")
     return rows, costs
@@ -219,10 +237,12 @@ def _run(config_path, tasks_path, decision_path, output, mode, collector=None):
                     collector, model, tokenizer, config, task, macro_number, arm, deadline
                 )
                 weights = _macro_weights(rows, arm, config)
+                for row in rows:
+                    _validate_audit_row(row)
                 row_hashes = [digest(row) for row in rows]
                 bank_hash = digest(row_hashes)
                 for row, weight, row_hash in zip(rows, weights, row_hashes, strict=True):
-                    trajectory = row.get("trajectory_id")
+                    trajectory = row.get("trajectory_id", row.get("response_id"))
                     rng_seed = row.get("rng_seed")
                     if not trajectory or trajectory in seen_trajectories:
                         raise ValueError("Online updates require fresh trajectory identities")
@@ -293,8 +313,18 @@ def _run(config_path, tasks_path, decision_path, output, mode, collector=None):
             )
             if len(rows) != config["K"]:
                 raise ValueError("Independent evaluation macro must contain fixed K responses")
+            for row in rows:
+                _validate_audit_row(row)
             bank_hash = digest([digest(row) for row in rows])
             for row in rows:
+                trajectory = row.get("trajectory_id", row.get("response_id"))
+                rng_seed = row.get("rng_seed")
+                if not trajectory or trajectory in seen_trajectories:
+                    raise ValueError("Evaluation requires fresh trajectory identities")
+                if rng_seed is None or rng_seed in seen_rng:
+                    raise ValueError("Evaluation requires fresh RNG streams")
+                seen_trajectories.add(trajectory)
+                seen_rng.add(rng_seed)
                 audit = dict(row)
                 audit.update(
                     {

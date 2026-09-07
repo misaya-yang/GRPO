@@ -18,6 +18,14 @@ from .statistics import compare, trace_variance
 from .weights import cross_weights, full_stratified_weights, iid_weights
 
 
+def _write_same(path, value):
+    if path.exists():
+        if json.loads(path.read_text()) != value:
+            raise ValueError(f"Existing derived artifact differs: {path}")
+    else:
+        write_json(path, value)
+
+
 def collect_macro(model, tokenizer, config, task, macro, arm, deadline):
     if arm not in ("iid_all", "stratified_full"):
         raise ValueError("Unknown bank arm")
@@ -99,7 +107,7 @@ def run(config_path, tasks_path, output):
         "independence": "private fresh RNG for every actual response",
         "evidence_level": "pretrained_fixed_point_LoRA_only",
     }
-    write_json(out / "manifest.json", manifest)
+    write_json(out / "startup.json", manifest)
     started = time.monotonic()
     deadline = started + config["stage_max_seconds"]
     try:
@@ -325,8 +333,8 @@ def analyze(directory):
             "receipt_sha256": sha256(out / "receipt.json"),
         }
     )
-    write_json(out / "macro_statistics.json", records)
-    write_json(out / "analysis.json", result)
+    _write_same(out / "macro_statistics.json", records)
+    _write_same(out / "analysis.json", result)
     (out / "REPORT.md").write_text(
         "# v5.1 固定点实验报告\n\n"
         + f"状态：{result['decision']}。K={config['K']}，N={config['B'] * config['m']}；{len(records)} 题，每臂每题 {config['macro_repeats']} 个独立 macro-bank。\n\n"

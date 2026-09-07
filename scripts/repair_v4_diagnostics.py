@@ -5,8 +5,6 @@ import argparse
 import json
 from pathlib import Path
 
-from safetensors.torch import load_file
-
 from dependent_rollouts.artifacts import provenance, sha256, write_json, write_jsonl
 from reward_coupling.bank import read_bank
 from reward_coupling.diagnostics import (
@@ -65,6 +63,8 @@ def analyze_command(args):
 
 
 def repair_command(args):
+    from safetensors.torch import load_file
+
     manifest, groups = read_bank(args.bank)
     direction_manifest, direction_path = _direction_contract(args.direction, manifest)
     identity = direction_identity(direction_path, direction_manifest)
@@ -148,6 +148,8 @@ def repair_command(args):
 
 
 def local_command(args):
+    from safetensors.torch import load_file
+
     config = json.loads(Path(args.config).read_text())
     functions = json.loads(Path(args.functions).read_text())
     difference_manifest, difference_path = _gradient_metadata(args.difference)

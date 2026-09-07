@@ -7,8 +7,8 @@ import pytest
 import torch
 from safetensors.torch import save_file
 
-from dependent_rollouts.artifacts import sha256, write_json
-from reward_coupling.bank import digest
+from dependent_rollouts.artifacts import sha256, write_json, write_jsonl
+from reward_coupling.bank import digest, seal
 from reward_coupling.diagnostics import (
     analyze_bank_structure,
     local_finite_difference_diagnostic,
@@ -33,6 +33,8 @@ class TinyCausalLM(torch.nn.Module):
 
 def _row(prompt, group, slot, verdicts, response=None):
     response = response or [3, 4]
+    sampling = [-1.0] * len(response)
+    prompt_seed = int(digest(prompt)[:8], 16)
     return {
         "prompt_id": prompt,
         "group_id": group,
@@ -41,13 +43,18 @@ def _row(prompt, group, slot, verdicts, response=None):
         "prompt_ids": [1, 2],
         "prompt_hash": digest([1, 2]),
         "response_ids": response,
+        "response_length": len(response),
         "active_mask": [1] * len(response),
-        "sampling_token_logp": [-1.0] * len(response),
+        "sampling_token_logp": sampling,
+        "scoring_token_logp": sampling,
+        "old_logp": float(sum(sampling)),
+        "eos_index_or_null": None,
+        "truncated": True,
         "test_verdicts": verdicts,
         "test_manifest_hash": "fixture",
         "split": "D",
-        "group_seed": group + 10,
-        "actor_rng_stream": slot + 100,
+        "group_seed": prompt_seed + group,
+        "actor_rng_stream": prompt_seed + group * 10 + slot,
     }
 
 
@@ -139,6 +146,97 @@ def test_missing_projection_is_null_and_repairs_raw_b1_rloo():
     assert after["estimators"]["old_raw_reward_score"]["value"] == pytest.approx(1.0)
     assert after["estimators"]["fixed_baseline_b1"]["value"] == pytest.approx(1.5)
     assert after["estimators"]["rloo"]["value"] == pytest.approx(2.5)
+
+
+def test_repair_cli_prepare_only_writes_explicit_missing_null(tmp_path, monkeypatch):
+    import json
+    import runpy
+    import sys
+
+    config = {
+        "group_size": 2,
+        "feedback": "code",
+        "epsilon": 1e-6,
+        "model_id": "fake",
+        "model_revision": "a" * 40,
+        "tokenizer_revision": "b" * 40,
+        "checkpoint_manifest_sha256": "c" * 64,
+        "dtype": "float32",
+        "loss_reduction": "sum_tokens_then_mean_responses",
+    }
+    rows = [
+        _row("a", 0, 0, [1, 1]),
+        _row("a", 0, 1, [1, 1]),
+        _row("Mbpp/474", 0, 0, [1, 1]),
+        _row("Mbpp/474", 0, 1, [0, 0]),
+    ]
+    rows[-1]["trajectory_id"] = "Mbpp/474:0:7"
+    rows[-1]["slot_id"] = 1
+    bank = tmp_path / "bank"
+    bank.mkdir()
+    config["token_logp_tolerance"] = 1e-9
+    write_json(
+        bank / "manifest.json",
+        {"actor_sampling": "iid", "split": "D", "eos_ids": [11], "config": config},
+    )
+    write_jsonl(bank / "rows.jsonl", rows)
+    seal(bank, "rows.jsonl")
+
+    direction = tmp_path / "direction"
+    direction.mkdir()
+    save_file({"weight": torch.ones(2)}, direction / "gradient.safetensors")
+    write_json(
+        direction / "manifest.json",
+        {
+            "config": config,
+            "arm": "difference",
+            "bank_sha256": "old-C-bank",
+        },
+    )
+    seal(direction, "gradient.safetensors")
+
+    legacy = tmp_path / "legacy.jsonl"
+    write_jsonl(
+        legacy,
+        [
+            {
+                "trajectory_id": row["trajectory_id"],
+                "score_projection": 0.0 if row is rows[-1] else float(index),
+                "score_projection_computed": row is not rows[-1],
+                "zero_reward_placeholder": row is rows[-1],
+            }
+            for index, row in enumerate(rows)
+        ],
+    )
+    output = tmp_path / "prepared"
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "repair_v4_diagnostics.py",
+            "repair-projection",
+            "--bank",
+            str(bank),
+            "--direction",
+            str(direction),
+            "--projection-rows",
+            str(legacy),
+            "--output",
+            str(output),
+            "--prepare-only",
+        ],
+    )
+    runpy.run_path("scripts/repair_v4_diagnostics.py", run_name="__main__")
+    receipt = json.loads((output / "receipt.json").read_text())
+    repaired_rows = [
+        json.loads(line) for line in (output / "projection_rows.jsonl").read_text().splitlines()
+    ]
+    target = next(row for row in repaired_rows if row["trajectory_id"] == "Mbpp/474:0:7")
+    assert receipt["status"] == "PREPARED_MISSING_PROJECTION_EXPLICIT_NOT_MEASURED"
+    assert target["projection_status"] == "not_measured"
+    assert target["projection_value"] is None
+    assert receipt["estimators"]["estimators"]["old_raw_reward_score"]["status"] == "measured"
+    assert receipt["estimators"]["estimators"]["fixed_baseline_b1"]["value"] is None
 
 
 def _checkpoint_fixture(tmp_path):
