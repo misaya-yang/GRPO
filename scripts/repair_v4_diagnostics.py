@@ -29,7 +29,7 @@ def _fresh_output(path):
     return output
 
 
-def _direction_contract(direction_directory, bank_manifest):
+def _direction_contract(direction_directory, bank_manifest, evaluation_bank_sha256):
     direction_manifest, direction_path = _gradient_metadata(direction_directory)
     for key in (
         "model_id",
@@ -43,6 +43,8 @@ def _direction_contract(direction_directory, bank_manifest):
             raise ValueError(f"Direction/bank checkpoint contract mismatch: {key}")
     if direction_manifest.get("arm") != "difference":
         raise ValueError("The v4 repair requires the frozen old C difference direction")
+    if direction_manifest.get("bank_sha256") == evaluation_bank_sha256:
+        raise ValueError("Repair direction must come from old C, not the D evaluation bank")
     return direction_manifest, direction_path
 
 
@@ -66,7 +68,10 @@ def repair_command(args):
     from safetensors.torch import load_file
 
     manifest, groups = read_bank(args.bank)
-    direction_manifest, direction_path = _direction_contract(args.direction, manifest)
+    bank_sha256 = sha256(Path(args.bank) / "rows.jsonl")
+    direction_manifest, direction_path = _direction_contract(
+        args.direction, manifest, bank_sha256
+    )
     identity = direction_identity(direction_path, direction_manifest)
     legacy_rows = _jsonl(args.projection_rows)
     records = normalize_projection_rows(groups, legacy_rows, identity, args.reward_field)
@@ -82,7 +87,7 @@ def repair_command(args):
         {
             "status": "PREPARED_BOUNDED_V4_REPAIR",
             "bank": str(Path(args.bank).resolve()),
-            "bank_sha256": sha256(Path(args.bank) / "rows.jsonl"),
+            "bank_sha256": bank_sha256,
             "legacy_projection_rows": str(Path(args.projection_rows).resolve()),
             "legacy_projection_rows_sha256": sha256(args.projection_rows),
             "direction": str(Path(args.direction).resolve()),
@@ -162,6 +167,8 @@ def local_command(args):
     direction_hashes = {
         "difference": direction_identity(difference_path, difference_manifest),
     }
+    if not args.real_arms and (args.shared or args.independent):
+        raise ValueError("--shared/--independent require --real-arms")
     if args.real_arms:
         if not args.shared or not args.independent:
             raise ValueError("--real-arms requires --shared and --independent")
