@@ -1,0 +1,565 @@
+{
+  "status": "CPU_FIXED_BANK_STRUCTURE_ONLY",
+  "bank_rows_sha256": "a30dab4e1bd69ddf00d9fd4682880c7149d5cdfc400f3700485f509f41ce6450",
+  "groups": 8,
+  "rows": 64,
+  "partial_correct_rows": 14,
+  "nonzero_difference_groups": 2,
+  "zero_difference_groups": 6,
+  "group_diagnostics": [
+    {
+      "prompt_id": "Mbpp/119",
+      "group_id": 0,
+      "rows": 8,
+      "q_by_slot": [
+        0.5,
+        0.0,
+        0.625,
+        0.5,
+        0.625,
+        0.0,
+        0.5,
+        0.25
+      ],
+      "partial_correct_slots": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        7
+      ],
+      "difference_advantage": [
+        0.0037968598079697324,
+        -0.03403042533728262,
+        0.01907409008361116,
+        0.0037968598079697324,
+        0.01907409008361116,
+        -0.03403042533728262,
+        0.0037968598079697324,
+        0.018522091083434056
+      ],
+      "difference_l2": 0.058567036920227716,
+      "zero_difference": false,
+      "zero_difference_reason": "nonzero_exact_shared_independent_credit",
+      "included_in_bank_denominator": true
+    },
+    {
+      "prompt_id": "Mbpp/276",
+      "group_id": 0,
+      "rows": 8,
+      "q_by_slot": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "partial_correct_slots": [],
+      "difference_advantage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "difference_l2": 0.0,
+      "zero_difference": true,
+      "zero_difference_reason": "all_rows_configuration_invariant_q_in_0_1",
+      "included_in_bank_denominator": true
+    },
+    {
+      "prompt_id": "Mbpp/294",
+      "group_id": 0,
+      "rows": 8,
+      "q_by_slot": [
+        0.0,
+        1.0,
+        0.75,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0
+      ],
+      "partial_correct_slots": [
+        2
+      ],
+      "difference_advantage": [
+        -1.1102230246251565e-16,
+        0.0,
+        0.0,
+        -1.1102230246251565e-16,
+        -1.1102230246251565e-16,
+        0.0,
+        -1.1102230246251565e-16,
+        0.0
+      ],
+      "difference_l2": 2.220446049250313e-16,
+      "zero_difference": true,
+      "zero_difference_reason": "exact_shared_independent_expectations_cancel",
+      "included_in_bank_denominator": true
+    },
+    {
+      "prompt_id": "Mbpp/614",
+      "group_id": 0,
+      "rows": 8,
+      "q_by_slot": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "partial_correct_slots": [],
+      "difference_advantage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "difference_l2": 0.0,
+      "zero_difference": true,
+      "zero_difference_reason": "all_rows_configuration_invariant_q_in_0_1",
+      "included_in_bank_denominator": true
+    },
+    {
+      "prompt_id": "Mbpp/724",
+      "group_id": 0,
+      "rows": 8,
+      "q_by_slot": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "partial_correct_slots": [],
+      "difference_advantage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "difference_l2": 0.0,
+      "zero_difference": true,
+      "zero_difference_reason": "all_rows_configuration_invariant_q_in_0_1",
+      "included_in_bank_denominator": true
+    },
+    {
+      "prompt_id": "Mbpp/745",
+      "group_id": 0,
+      "rows": 8,
+      "q_by_slot": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "partial_correct_slots": [],
+      "difference_advantage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "difference_l2": 0.0,
+      "zero_difference": true,
+      "zero_difference_reason": "all_rows_configuration_invariant_q_in_0_1",
+      "included_in_bank_denominator": true
+    },
+    {
+      "prompt_id": "Mbpp/765",
+      "group_id": 0,
+      "rows": 8,
+      "q_by_slot": [
+        0.625,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "partial_correct_slots": [
+        0
+      ],
+      "difference_advantage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "difference_l2": 0.0,
+      "zero_difference": true,
+      "zero_difference_reason": "exact_shared_independent_expectations_cancel",
+      "included_in_bank_denominator": true
+    },
+    {
+      "prompt_id": "Mbpp/99",
+      "group_id": 0,
+      "rows": 8,
+      "q_by_slot": [
+        0.375,
+        0.375,
+        0.375,
+        0.0,
+        0.0,
+        0.375,
+        0.375,
+        0.375
+      ],
+      "partial_correct_slots": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        7
+      ],
+      "difference_advantage": [
+        0.008848542467221748,
+        0.008848542467221748,
+        0.008848542467221748,
+        -0.026545627401664884,
+        -0.026545627401664884,
+        0.008848542467221748,
+        0.008848542467221748,
+        0.008848542467221748
+      ],
+      "difference_l2": 0.04334882802408161,
+      "zero_difference": false,
+      "zero_difference_reason": "nonzero_exact_shared_independent_credit",
+      "included_in_bank_denominator": true
+    }
+  ],
+  "suite_failure_rows": [
+    {
+      "trajectory_id": "Mbpp/119:0:0",
+      "prompt_id": "Mbpp/119",
+      "group_id": 0,
+      "slot_id": 0,
+      "average_reward": 0.5,
+      "suite_reward": 0.0,
+      "response_ids_hash": "5752e76e8962b75f4def75ff01d8c7e8dcfdfa0e5b67e8412c3b6faf9cc8544a",
+      "response_mask_hash": "6a3c6177bfc1e190175ae5c899094acbd26d52490930bb0e7a5e802989195dc3"
+    },
+    {
+      "trajectory_id": "Mbpp/119:0:1",
+      "prompt_id": "Mbpp/119",
+      "group_id": 0,
+      "slot_id": 1,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "09e66fec4a6e2cafa0386c716e12bc6421916e126cb16cad3827c252e526ecbb",
+      "response_mask_hash": "1788dfd0e85cfe3679d2467416b713ca40e3c4070bc4bd4b6c1eea55531a2af3"
+    },
+    {
+      "trajectory_id": "Mbpp/119:0:2",
+      "prompt_id": "Mbpp/119",
+      "group_id": 0,
+      "slot_id": 2,
+      "average_reward": 0.625,
+      "suite_reward": 0.0,
+      "response_ids_hash": "1059212598ab36e2cffcbbca9c63dcaa875b439198f1da9c833ec3cfe230f08a",
+      "response_mask_hash": "87a2cd066ab39644563b104ae81e0f749c2c23cce4f008e0a0e3b8e4d3fd87e6"
+    },
+    {
+      "trajectory_id": "Mbpp/119:0:3",
+      "prompt_id": "Mbpp/119",
+      "group_id": 0,
+      "slot_id": 3,
+      "average_reward": 0.5,
+      "suite_reward": 0.0,
+      "response_ids_hash": "b59775ce438f1440ed07246443cf6c7f91de8610ad7810dba77e0699102bbc45",
+      "response_mask_hash": "75a427a56e7644d7241f4fa49857509d84a66dfea001d16e4c6718eb3d3d78c1"
+    },
+    {
+      "trajectory_id": "Mbpp/119:0:4",
+      "prompt_id": "Mbpp/119",
+      "group_id": 0,
+      "slot_id": 4,
+      "average_reward": 0.625,
+      "suite_reward": 0.0,
+      "response_ids_hash": "533487fe74c45f4cc5dd242994fb62442205fafb0b097a64051dd15cf61cf3c4",
+      "response_mask_hash": "d8fef7fc76e25e62c2711e5a7cca152bd73edb4a8f7565a3d1a17f72d452c42f"
+    },
+    {
+      "trajectory_id": "Mbpp/119:0:5",
+      "prompt_id": "Mbpp/119",
+      "group_id": 0,
+      "slot_id": 5,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "3188bcfb638c6dad2167dfc9eb8aabc664155c97511b2f493b99aa189a0e87fd",
+      "response_mask_hash": "ce3292cdb51090a5ee95adb70bf2febf7bde654923ac2cd641c93914e8bd2538"
+    },
+    {
+      "trajectory_id": "Mbpp/119:0:6",
+      "prompt_id": "Mbpp/119",
+      "group_id": 0,
+      "slot_id": 6,
+      "average_reward": 0.5,
+      "suite_reward": 0.0,
+      "response_ids_hash": "a8976bb4c9968389e7fb85577aaddd42eb7d83322f43f8f2afa735cb78267db0",
+      "response_mask_hash": "5f772fa77dd6eba71c645fd5a0733d38539db12750560183542ae47b68fed53c"
+    },
+    {
+      "trajectory_id": "Mbpp/119:0:7",
+      "prompt_id": "Mbpp/119",
+      "group_id": 0,
+      "slot_id": 7,
+      "average_reward": 0.25,
+      "suite_reward": 0.0,
+      "response_ids_hash": "11b55f6d5313cf6de553ffd95f36dcbd92b68af81d6014c0da4d082bf0b16ec8",
+      "response_mask_hash": "a86f4dac2e2f4f73d719d99c404cc423f814fa7ff66f08fb032a9bce59576138"
+    },
+    {
+      "trajectory_id": "Mbpp/294:0:0",
+      "prompt_id": "Mbpp/294",
+      "group_id": 0,
+      "slot_id": 0,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "29ba74ec9bf4f3e91601441f0c8b396a45b6a4e9675b9527069afdf40f626c5d",
+      "response_mask_hash": "47b8119c0179528e185b34f95f3b97843a22bd8c60c38fd6709f6488a98b56bb"
+    },
+    {
+      "trajectory_id": "Mbpp/294:0:2",
+      "prompt_id": "Mbpp/294",
+      "group_id": 0,
+      "slot_id": 2,
+      "average_reward": 0.75,
+      "suite_reward": 0.0,
+      "response_ids_hash": "ab7e6d19bd4d0e59e50fffc337339787cf6ee0c5d638bcef492327b2d63bf821",
+      "response_mask_hash": "a8ff2652fda3a0d9cc66f14abc6daf06f4da7d826589f41c434ff0e81feda901"
+    },
+    {
+      "trajectory_id": "Mbpp/294:0:3",
+      "prompt_id": "Mbpp/294",
+      "group_id": 0,
+      "slot_id": 3,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "b3fb9ea6d40ad403d0677f4c5813ae9d30d634b0c041bfd3974bdd4a002eb82e",
+      "response_mask_hash": "ba1e52e365a6fa132081a7bef3fe2800e0a5a907bbdcb8f183b7f1783905ea31"
+    },
+    {
+      "trajectory_id": "Mbpp/294:0:4",
+      "prompt_id": "Mbpp/294",
+      "group_id": 0,
+      "slot_id": 4,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "36aa7748716eab13663a8b630365b956154206aa4aaf89077b73cb427206cc36",
+      "response_mask_hash": "e3cda3ece46275baabb55860338d32999246b607d136f2a2dbd831f6d663ccd2"
+    },
+    {
+      "trajectory_id": "Mbpp/294:0:6",
+      "prompt_id": "Mbpp/294",
+      "group_id": 0,
+      "slot_id": 6,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "f32be0cb2563ef6527c03ceb92fb37c8f0e0f45e2222ce6dcd4633ca878f30dc",
+      "response_mask_hash": "47b8119c0179528e185b34f95f3b97843a22bd8c60c38fd6709f6488a98b56bb"
+    },
+    {
+      "trajectory_id": "Mbpp/765:0:0",
+      "prompt_id": "Mbpp/765",
+      "group_id": 0,
+      "slot_id": 0,
+      "average_reward": 0.625,
+      "suite_reward": 0.0,
+      "response_ids_hash": "96d167ce83cc86694f55d971c6039459bb376ad00c100b8a69241a88d1854e6f",
+      "response_mask_hash": "52a74038345b65689f6f7717ccaea4655efdb1c4be57063f8b7fce303eb234ce"
+    },
+    {
+      "trajectory_id": "Mbpp/765:0:1",
+      "prompt_id": "Mbpp/765",
+      "group_id": 0,
+      "slot_id": 1,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "2a35d08bda49efebf18fa7607022051341400208de02612411e3fff9672c20a6",
+      "response_mask_hash": "e1648907c3041211067b442f4edb258afce83a23015b9ca4c3cb6a8797a6c722"
+    },
+    {
+      "trajectory_id": "Mbpp/765:0:2",
+      "prompt_id": "Mbpp/765",
+      "group_id": 0,
+      "slot_id": 2,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "89724b97df8b6f3fa9c8c542e11b988014ae90850054dd66164c6dd0749e769b",
+      "response_mask_hash": "7da6ade544c7769b1f26e34cba4070ca41f10be8159b897243891fb2113a6bd9"
+    },
+    {
+      "trajectory_id": "Mbpp/765:0:3",
+      "prompt_id": "Mbpp/765",
+      "group_id": 0,
+      "slot_id": 3,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "621b6a7a5078560a368ad932418f47a3ae37913c3a53042f2293ac8434953174",
+      "response_mask_hash": "9684a778f3ca59b4ccb81dc827333c62c89cd72f78494c39da40183dc11aece9"
+    },
+    {
+      "trajectory_id": "Mbpp/765:0:4",
+      "prompt_id": "Mbpp/765",
+      "group_id": 0,
+      "slot_id": 4,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "4263d40900fe265f7f33fe5a7e4d09a067cae3acc8497a5e68b599cf150de02a",
+      "response_mask_hash": "102d54f1457d70ff4b20ef5d2e658c115b819aba9236334da944c51d1410a775"
+    },
+    {
+      "trajectory_id": "Mbpp/765:0:5",
+      "prompt_id": "Mbpp/765",
+      "group_id": 0,
+      "slot_id": 5,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "912df2d596c3c294a2797d9a7ded601766f8cd48e152ca51b0d02f2dce2861d5",
+      "response_mask_hash": "ab6ce6d7fecea17fe808805b82fabb53f8440f661dd03f566ae046036c53cc61"
+    },
+    {
+      "trajectory_id": "Mbpp/765:0:6",
+      "prompt_id": "Mbpp/765",
+      "group_id": 0,
+      "slot_id": 6,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "9bb4e4d407ef463aaeb1bcbf3e710953adc4784175fce58cee103c21a9af2195",
+      "response_mask_hash": "afd6ad4d7b75faf3cb7b5bb519ef7e730a1335c8c1b89d9c3a04ade34c603f8d"
+    },
+    {
+      "trajectory_id": "Mbpp/765:0:7",
+      "prompt_id": "Mbpp/765",
+      "group_id": 0,
+      "slot_id": 7,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "ade842b1f5939e8e2a0d37d84e346c958234657e2f74aef20ef0b8147f2ea069",
+      "response_mask_hash": "6a3c6177bfc1e190175ae5c899094acbd26d52490930bb0e7a5e802989195dc3"
+    },
+    {
+      "trajectory_id": "Mbpp/99:0:0",
+      "prompt_id": "Mbpp/99",
+      "group_id": 0,
+      "slot_id": 0,
+      "average_reward": 0.375,
+      "suite_reward": 0.0,
+      "response_ids_hash": "93e9441212a45c181916400a96316f66b43ab00a6417a8db0b8f98d9037189e3",
+      "response_mask_hash": "47b8119c0179528e185b34f95f3b97843a22bd8c60c38fd6709f6488a98b56bb"
+    },
+    {
+      "trajectory_id": "Mbpp/99:0:1",
+      "prompt_id": "Mbpp/99",
+      "group_id": 0,
+      "slot_id": 1,
+      "average_reward": 0.375,
+      "suite_reward": 0.0,
+      "response_ids_hash": "93e9441212a45c181916400a96316f66b43ab00a6417a8db0b8f98d9037189e3",
+      "response_mask_hash": "47b8119c0179528e185b34f95f3b97843a22bd8c60c38fd6709f6488a98b56bb"
+    },
+    {
+      "trajectory_id": "Mbpp/99:0:2",
+      "prompt_id": "Mbpp/99",
+      "group_id": 0,
+      "slot_id": 2,
+      "average_reward": 0.375,
+      "suite_reward": 0.0,
+      "response_ids_hash": "d9175dbddc55ad27e5bc9cb8b4fd6f8534d4c75c2b515d0445c8a68a98224ac4",
+      "response_mask_hash": "5ba37a0fc0e3fcdf3a99e135edaab2dfd3e8c3286d255750fccc2a14e4506e9e"
+    },
+    {
+      "trajectory_id": "Mbpp/99:0:3",
+      "prompt_id": "Mbpp/99",
+      "group_id": 0,
+      "slot_id": 3,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "a7940c4b2739b950faa4fa409d0d4b9254cd2fa6153c00c00e63806f6b636262",
+      "response_mask_hash": "3a6693036691f171758196984779f8b7bc8098445cddc16b0c140b535d6bec1a"
+    },
+    {
+      "trajectory_id": "Mbpp/99:0:4",
+      "prompt_id": "Mbpp/99",
+      "group_id": 0,
+      "slot_id": 4,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "d40ea714f258ca025ec3d451977c1c4f3c7b45a825e2d4326eb374773e764e80",
+      "response_mask_hash": "b047295c3b29718307a625287d127fca83537101db2876876aae8991e848c3ca"
+    },
+    {
+      "trajectory_id": "Mbpp/99:0:5",
+      "prompt_id": "Mbpp/99",
+      "group_id": 0,
+      "slot_id": 5,
+      "average_reward": 0.375,
+      "suite_reward": 0.0,
+      "response_ids_hash": "0638558530acd34a0c40c759353d6b6465e7cd18368b412a6f9a7985684211c9",
+      "response_mask_hash": "ea279df0d8241b59588c917623324a2390cfd698835f42954029d97af6118d07"
+    },
+    {
+      "trajectory_id": "Mbpp/99:0:6",
+      "prompt_id": "Mbpp/99",
+      "group_id": 0,
+      "slot_id": 6,
+      "average_reward": 0.375,
+      "suite_reward": 0.0,
+      "response_ids_hash": "8ff2bf51b7048137f9697e827bb16aa95e867bcbc7234e9c1abf2dc4d8e298e2",
+      "response_mask_hash": "6c15669e5057bd8c19d27a0cc0848fcf536dbda4d7ff7eb3e8dea2f28a967a77"
+    },
+    {
+      "trajectory_id": "Mbpp/99:0:7",
+      "prompt_id": "Mbpp/99",
+      "group_id": 0,
+      "slot_id": 7,
+      "average_reward": 0.375,
+      "suite_reward": 0.0,
+      "response_ids_hash": "b86f7e25b052480e1f235a612a148a78059f38975744cdf220600e5061be0f60",
+      "response_mask_hash": "afd6ad4d7b75faf3cb7b5bb519ef7e730a1335c8c1b89d9c3a04ade34c603f8d"
+    }
+  ],
+  "expected_failure": null,
+  "interpretation": "fixed_bank_exact_credit_structure_not_population_gradient_or_confirmation",
+  "bank": "/Users/misaya.yanghejazfs.com.au/paper_project/grpo/runs/remote_archive_2h/C8_scored_2h_20260907",
+  "script_source_sha256": "9215c3fe39286196b856f4c9421c2e4420a05701c342490376a8727379bad53c"
+}

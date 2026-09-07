@@ -335,6 +335,17 @@ def analyze(directory):
     )
     _write_same(out / "macro_statistics.json", records)
     _write_same(out / "analysis.json", result)
+    if config["stage"] == "confirmation":
+        manifest = json.loads((out / "manifest.json").read_text())
+        _write_same(out / "decision.json", {
+            "stage": "D", "decision": result["decision"],
+            "method_hash": manifest["method_hash"],
+            "parameter_space_hash": manifest["parameter_identity"]["parameter_space_hash"],
+            "evidence": [{"role": role, "path": str((out / (role + ".json")).resolve()),
+                          "sha256": sha256(out / (role + ".json"))}
+                         for role in ("analysis", "manifest", "receipt")],
+            "scope": "fixed_point_screening_supports_review_of_stage_E_not_online_success",
+        })
     (out / "REPORT.md").write_text(
         "# v5.1 固定点实验报告\n\n"
         + f"状态：{result['decision']}。K={config['K']}，N={config['B'] * config['m']}；{len(records)} 题，每臂每题 {config['macro_repeats']} 个独立 macro-bank。\n\n"

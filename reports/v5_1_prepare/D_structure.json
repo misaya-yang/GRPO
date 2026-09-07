@@ -1,0 +1,156 @@
+{
+  "status": "CPU_FIXED_BANK_STRUCTURE_ONLY",
+  "bank_rows_sha256": "28575d893f9da02f733cc3d55e177501472e9b7dae239a75bad303a300ecd832",
+  "groups": 4,
+  "rows": 32,
+  "partial_correct_rows": 0,
+  "nonzero_difference_groups": 0,
+  "zero_difference_groups": 4,
+  "group_diagnostics": [
+    {
+      "prompt_id": "Mbpp/409",
+      "group_id": 0,
+      "rows": 8,
+      "q_by_slot": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "partial_correct_slots": [],
+      "difference_advantage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "difference_l2": 0.0,
+      "zero_difference": true,
+      "zero_difference_reason": "all_rows_configuration_invariant_q_in_0_1",
+      "included_in_bank_denominator": true
+    },
+    {
+      "prompt_id": "Mbpp/474",
+      "group_id": 0,
+      "rows": 8,
+      "q_by_slot": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.0
+      ],
+      "partial_correct_slots": [],
+      "difference_advantage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "difference_l2": 0.0,
+      "zero_difference": true,
+      "zero_difference_reason": "all_rows_configuration_invariant_q_in_0_1",
+      "included_in_bank_denominator": true
+    },
+    {
+      "prompt_id": "Mbpp/591",
+      "group_id": 0,
+      "rows": 8,
+      "q_by_slot": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "partial_correct_slots": [],
+      "difference_advantage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "difference_l2": 0.0,
+      "zero_difference": true,
+      "zero_difference_reason": "all_rows_configuration_invariant_q_in_0_1",
+      "included_in_bank_denominator": true
+    },
+    {
+      "prompt_id": "Mbpp/778",
+      "group_id": 0,
+      "rows": 8,
+      "q_by_slot": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "partial_correct_slots": [],
+      "difference_advantage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "difference_l2": 0.0,
+      "zero_difference": true,
+      "zero_difference_reason": "all_rows_configuration_invariant_q_in_0_1",
+      "included_in_bank_denominator": true
+    }
+  ],
+  "suite_failure_rows": [
+    {
+      "trajectory_id": "Mbpp/474:0:7",
+      "prompt_id": "Mbpp/474",
+      "group_id": 0,
+      "slot_id": 7,
+      "average_reward": 0.0,
+      "suite_reward": 0.0,
+      "response_ids_hash": "7e4009fd482046f8d231959ea2617938e483aa174d12162565e5a50622ca3543",
+      "response_mask_hash": "cf3bdd090c09674e43fe5ac1edee6ef8e37f5eeb89f214d80377ce7fdbefd43e"
+    }
+  ],
+  "expected_failure": {
+    "trajectory_id": "Mbpp/474:0:7",
+    "prompt_id": "Mbpp/474",
+    "group_id": 0,
+    "slot_id": 7,
+    "average_reward": 0.0,
+    "suite_reward": 0.0,
+    "response_ids_hash": "7e4009fd482046f8d231959ea2617938e483aa174d12162565e5a50622ca3543",
+    "response_mask_hash": "cf3bdd090c09674e43fe5ac1edee6ef8e37f5eeb89f214d80377ce7fdbefd43e"
+  },
+  "interpretation": "fixed_bank_exact_credit_structure_not_population_gradient_or_confirmation",
+  "bank": "/Users/misaya.yanghejazfs.com.au/paper_project/grpo/runs/remote_archive_2h/D4_scored_2h_20260907",
+  "script_source_sha256": "9215c3fe39286196b856f4c9421c2e4420a05701c342490376a8727379bad53c"
+}
