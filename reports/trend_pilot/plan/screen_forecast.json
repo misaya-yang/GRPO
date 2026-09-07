@@ -1,0 +1,7 @@
+{
+  "estimated_seconds_with_25pct_margin": 2573.49294054412,
+  "macros": 32,
+  "responses": 256,
+  "basis": "user-requested exploratory prefix, measured exact replay speedup",
+  "benchmark_sha256": "11f6530799385461eb4508dd9dc18fab7502971c18e3a44ab2b19b91fbda83f4"
+}

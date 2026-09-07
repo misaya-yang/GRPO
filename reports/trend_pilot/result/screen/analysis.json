@@ -1,0 +1,43 @@
+{
+  "decision": "INCONCLUSIVE",
+  "rho": 0.9208860929053283,
+  "cost_ratio_q": 0.9799075668161841,
+  "rho_time": 0.9023832506137227,
+  "rho_interval": [
+    0.34943256767626385,
+    1.9743395361672997
+  ],
+  "rho_time_interval": [
+    0.3341165506479507,
+    1.9911523263069484
+  ],
+  "variances": {
+    "iid": 392.5422712275582,
+    "stratified": 361.48671845092974
+  },
+  "mean_macro_cost_seconds": {
+    "iid": 76.51611161546316,
+    "stratified": 74.97871675534407
+  },
+  "practical_threshold": 0.85,
+  "prompts": 4,
+  "bootstrap_replicates": 2000,
+  "valid_replicates": 2000,
+  "interval_method": "hierarchical_prompt_and_independent_macro_percentile_95",
+  "limitations": "Small-sample exploratory interval; no automatic expansion or training GO",
+  "uncertainty_units": [
+    "prompt",
+    "independent_macro_bank"
+  ],
+  "stage": "confirmation",
+  "metric": "full_lora_gradient_trace",
+  "K": 4,
+  "N": 8,
+  "all_equal_macros_retained": 10,
+  "mean_reward": 0.78515625,
+  "max_token_error": 0.0001391477973586852,
+  "max_sequence_error": 0.0004365700171433673,
+  "max_lora_B_gradient_l2": 39.77496268552667,
+  "cost_scope": "generation + deterministic reward + weight compilation + score-checked replay; model loading and cross audit separate",
+  "receipt_sha256": "654126edd8fcef7845526521f7c668a16516567244fce3bd60f11d58e88a156c"
+}

@@ -19,7 +19,7 @@
   "onset": 0,
   "token_order": "vocabulary_id",
   "temperature": 1.0,
-  "base_dtype": "bfloat16",
+  "base_dtype": "float32",
   "lora": {
     "rank": 8,
     "alpha": 16,
@@ -53,5 +53,7 @@
     "svamp-8b2602bc3ff1ec47"
   ],
   "tasks_sha256": "8a6cf72a4ebd8895dc6f8664bef562fa06632f5b6333dd94c86276c7273e2a68",
-  "cross_diagnostic_macros": 2
+  "cross_diagnostic_macros": 2,
+  "cpu_embeddings": true,
+  "offload_activations": true
 }

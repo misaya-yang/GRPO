@@ -1,0 +1,24 @@
+{
+  "stage": "D",
+  "decision": "INCONCLUSIVE",
+  "method_hash": "f85e585323d592a8381e67824d90870cbb7fcf00d6b178f56fa8f9ea98ff73dc",
+  "parameter_space_hash": "06266bb33934dbb30a72ed6cda7b6807fc8d61bcae14623ddca9e9ec7ad29f00",
+  "evidence": [
+    {
+      "role": "analysis",
+      "path": "/root/autodl-tmp/feedback-grpo/runs/v5_1_20260907T094302Z/screen/analysis.json",
+      "sha256": "a71cf9079de568ca1eb05b4e37da9245a4060f68088dcd0557bcb6bb7a67c54f"
+    },
+    {
+      "role": "manifest",
+      "path": "/root/autodl-tmp/feedback-grpo/runs/v5_1_20260907T094302Z/screen/manifest.json",
+      "sha256": "4767a7fec8b96ef1702d823062b81c105eb4b9a8321c24613de58b3b16e823de"
+    },
+    {
+      "role": "receipt",
+      "path": "/root/autodl-tmp/feedback-grpo/runs/v5_1_20260907T094302Z/screen/receipt.json",
+      "sha256": "654126edd8fcef7845526521f7c668a16516567244fce3bd60f11d58e88a156c"
+    }
+  ],
+  "scope": "fixed_point_screening_supports_review_of_stage_E_not_online_success"
+}

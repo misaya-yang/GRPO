@@ -28,6 +28,8 @@ def calibrate(config_path, tasks_path, output):
     eos = model.generation_config.eos_token_id
     eos = [eos] if isinstance(eos, int) else eos
     eos = eos or [tokenizer.eos_token_id]
+    if None in eos:
+        raise ValueError("Missing EOS token")
     rows, errors = [], []
     # Fixed first two Dev tasks; both strata, separate streams, full horizon.
     for task in tasks[:2]:

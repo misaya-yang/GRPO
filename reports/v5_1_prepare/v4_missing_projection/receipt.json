@@ -1,0 +1,42 @@
+{
+  "status": "PREPARED_MISSING_PROJECTION_EXPLICIT_NOT_MEASURED",
+  "projection_rows_sha256": "6e5e13db7c496082372734e2075b519042cfee8d749c0270fb73656f404f3bd9",
+  "repair_trajectory_id": "Mbpp/474:0:7",
+  "projection_status": "not_measured",
+  "projection_value": null,
+  "estimators": {
+    "status": "missing_projection_explicit",
+    "prompt_weighting": "equal_prompt_then_equal_response",
+    "estimators": {
+      "old_raw_reward_score": {
+        "status": "measured",
+        "value": 81.99273266965089,
+        "missing_projection_ids": []
+      },
+      "fixed_baseline_b1": {
+        "status": "not_measured",
+        "value": null,
+        "known_measured_contribution": 0.0,
+        "missing_projection_coefficients": {
+          "Mbpp/474:0:7": -0.03125
+        },
+        "missing_projection_ids": [
+          "Mbpp/474:0:7"
+        ]
+      },
+      "rloo": {
+        "status": "not_measured",
+        "value": null,
+        "known_measured_contribution": -0.7801849729962019,
+        "missing_projection_coefficients": {
+          "Mbpp/474:0:7": -0.03125
+        },
+        "missing_projection_ids": [
+          "Mbpp/474:0:7"
+        ]
+      }
+    },
+    "interpretation": "post_hoc_v4_diagnostic_not_new_confirmation_or_pilot_GO"
+  },
+  "pilot_decision": "INCONCLUSIVE"
+}

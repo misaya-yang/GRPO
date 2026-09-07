@@ -45,9 +45,14 @@ def test_tree_leaf_marginals():
         assert abs(count / 2500 - expected) < 0.03
 
 
-def test_no_silent_support_loss():
-    with pytest.raises(FloatingPointError):
-        cdf_from_probs([1.0, 1e-30])
+def test_positive_tail_support_is_preserved():
+    samples = sample_categorical([1.0, 1e-30], "iid", 2, 4, 7)
+    assert np.all(samples == 0)
+
+
+def test_invalid_probability_values_are_rejected():
+    with pytest.raises(ValueError):
+        cdf_from_probs([1.0, float("nan")])
 
 
 def test_lattice_orbit_null_mode():

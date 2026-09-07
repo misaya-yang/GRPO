@@ -40,6 +40,25 @@ def validate(config):
         raise ValueError("Freeze practical variance-time threshold")
     if config.get("metric") != "full_lora_gradient_trace":
         raise ValueError("This pipeline measures the full declared LoRA trace")
+    for key in ("seed", "projection_seed", "analysis_seed"):
+        if type(config.get(key)) is not int or config[key] < 0:
+            raise ValueError(f"Nonnegative integer {key} required")
+    if type(config.get("use_cache")) is not bool:
+        raise ValueError("use_cache must be boolean")
+    lora = config.get("lora")
+    if not isinstance(lora, dict) or type(lora.get("rank")) is not int or lora["rank"] < 1:
+        raise ValueError("Declare positive LoRA rank")
+    if not 0 < lora.get("alpha", 0) < float("inf") or type(lora.get("seed")) is not int:
+        raise ValueError("Declare finite LoRA alpha and integer initialization seed")
+    if (
+        not isinstance(lora.get("targets"), list)
+        or not lora["targets"]
+        or len(set(lora["targets"])) != len(lora["targets"])
+    ):
+        raise ValueError("Declare distinct LoRA target module names")
+    ceiling = config.get("numeric_calibration_ceiling", {})
+    if any(not 0 < ceiling.get(k, 0) < float("inf") for k in ("token", "sequence")):
+        raise ValueError("Declare finite numeric calibration ceilings")
     return config
 
 
@@ -65,6 +84,8 @@ def method_contract(config):
         "tokenizer_revision",
         "checkpoint_manifest_sha256",
         "base_dtype",
+        "cpu_embeddings",
+        "offload_activations",
         "lora",
         "adapter_sha256",
         "sampling",

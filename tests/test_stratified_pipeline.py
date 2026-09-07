@@ -115,6 +115,8 @@ def test_real_tiny_model_score_lora_and_pipeline(tmp_path, monkeypatch):
         "use_cache": True,
         "projection_seed": 18,
         "analysis_seed": 19,
+        "lora": {"rank": 2, "alpha": 4, "seed": 13, "targets": ["q_proj", "v_proj"]},
+        "numeric_calibration_ceiling": {"token": 0.05, "sequence": 0.25},
     }
     path = tmp_path / "config.json"
     path.write_text(json.dumps(config))

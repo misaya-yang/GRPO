@@ -53,7 +53,12 @@ def test_two_token_mixture_preserves_joint_law():
 
 
 def test_invalid_lost_support_rejected():
-    with pytest.raises(FloatingPointError):
-        ConditionalInterval(1).step([1.0, 1e-100])
+    token, _ = ConditionalInterval(1).step([1.0, 1e-100])
+    assert token == 0
     with pytest.raises(ValueError):
         ConditionalInterval(1, 2, 2)
+
+
+def test_invalid_probability_values_are_rejected():
+    with pytest.raises(ValueError):
+        ConditionalInterval(1).step([1.0, float("nan")])

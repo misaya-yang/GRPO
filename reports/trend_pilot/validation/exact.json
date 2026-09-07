@@ -1,0 +1,1235 @@
+{
+  "status": "CPU_ONLY",
+  "v4": {
+    "environment": {
+      "python": "3.13.11",
+      "numpy": "2.4.2"
+    },
+    "constant_reward_K2_0.1_error": 0.0,
+    "constant_reward_K2_0.2_error": 0.0,
+    "constant_reward_K2_0.3333333333333333_error": 0.0,
+    "constant_reward_K3_0.1_error": 0.0,
+    "constant_reward_K3_0.2_error": 0.0,
+    "constant_reward_K3_0.3333333333333333_error": 0.0,
+    "constant_reward_K7_0.1_error": 0.0,
+    "constant_reward_K7_0.2_error": 0.0,
+    "constant_reward_K7_0.3333333333333333_error": 0.0,
+    "fixed_bank_K2_eps0.0_0_error": 5.551115123125783e-17,
+    "fixed_bank_K2_eps0.0_1_error": 1.1102230246251565e-16,
+    "fixed_bank_K2_eps0.0_2_error": 7.979727989493313e-17,
+    "fixed_bank_K2_eps0.0_3_error": 2.7755575615628914e-17,
+    "fixed_bank_K2_eps0.0_4_error": 1.1102230246251565e-16,
+    "fixed_bank_K2_eps0.0_5_error": 0.0,
+    "fixed_bank_K2_eps0.0_6_error": 0.0,
+    "fixed_bank_K2_eps0.0_7_error": 8.326672684688674e-17,
+    "fixed_bank_K2_eps0.0_8_error": 0.0,
+    "fixed_bank_K2_eps0.0_9_error": 0.0,
+    "fixed_bank_K2_eps0.0_10_error": 0.0,
+    "fixed_bank_K2_eps0.0_11_error": 0.0,
+    "fixed_bank_K3_eps0.0_0_error": 1.1102230246251565e-16,
+    "fixed_bank_K3_eps0.0_1_error": 2.220446049250313e-16,
+    "fixed_bank_K3_eps0.0_2_error": 1.1102230246251565e-16,
+    "fixed_bank_K3_eps0.0_3_error": 1.3877787807814457e-16,
+    "fixed_bank_K3_eps0.0_4_error": 2.220446049250313e-16,
+    "fixed_bank_K3_eps0.0_5_error": 1.1102230246251565e-16,
+    "fixed_bank_K3_eps0.0_6_error": 1.942890293094024e-16,
+    "fixed_bank_K3_eps0.0_7_error": 2.220446049250313e-16,
+    "fixed_bank_K3_eps0.0_8_error": 1.249000902703301e-16,
+    "fixed_bank_K3_eps0.0_9_error": 1.1102230246251565e-16,
+    "fixed_bank_K3_eps0.0_10_error": 1.1102230246251565e-16,
+    "fixed_bank_K3_eps0.0_11_error": 1.1102230246251565e-16,
+    "fixed_bank_K2_eps1e-06_0_error": 1.1102230246251565e-16,
+    "fixed_bank_K2_eps1e-06_1_error": 5.551115123125783e-17,
+    "fixed_bank_K2_eps1e-06_2_error": 0.0,
+    "fixed_bank_K2_eps1e-06_3_error": 0.0,
+    "fixed_bank_K2_eps1e-06_4_error": 0.0,
+    "fixed_bank_K2_eps1e-06_5_error": 1.6653345369377348e-16,
+    "fixed_bank_K2_eps1e-06_6_error": 8.326672684688674e-17,
+    "fixed_bank_K2_eps1e-06_7_error": 5.551115123125783e-17,
+    "fixed_bank_K2_eps1e-06_8_error": 1.1102230246251565e-16,
+    "fixed_bank_K2_eps1e-06_9_error": 1.1102230246251565e-16,
+    "fixed_bank_K2_eps1e-06_10_error": 1.1102230246251565e-16,
+    "fixed_bank_K2_eps1e-06_11_error": 5.551115123125783e-17,
+    "fixed_bank_K3_eps1e-06_0_error": 1.1102230246251565e-16,
+    "fixed_bank_K3_eps1e-06_1_error": 2.7755575615628914e-17,
+    "fixed_bank_K3_eps1e-06_2_error": 1.1102230246251565e-16,
+    "fixed_bank_K3_eps1e-06_3_error": 1.6653345369377348e-16,
+    "fixed_bank_K3_eps1e-06_4_error": 2.220446049250313e-16,
+    "fixed_bank_K3_eps1e-06_5_error": 1.1102230246251565e-16,
+    "fixed_bank_K3_eps1e-06_6_error": 1.1102230246251565e-16,
+    "fixed_bank_K3_eps1e-06_7_error": 8.326672684688674e-17,
+    "fixed_bank_K3_eps1e-06_8_error": 1.1102230246251565e-16,
+    "fixed_bank_K3_eps1e-06_9_error": 4.440892098500626e-16,
+    "fixed_bank_K3_eps1e-06_10_error": 1.1102230246251565e-16,
+    "fixed_bank_K3_eps1e-06_11_error": 1.1102230246251565e-16,
+    "binary_K2_K3_sample_identity_max_error": 2.220446049250313e-16,
+    "binary_DP_vs_enumeration_max_error": 1.1102230246251565e-15,
+    "RLOO_fixed_bank_coupling_invariance_max_error": 2.7755575615628914e-16,
+    "grid_DP_vs_enumeration_max_error": 1.3322676295501878e-15,
+    "old_counterexample_eps0.0_formula_enum_error": 1.2922996006636822e-13,
+    "old_counterexample_eps0.0_shared_collinearity_error": 3.279711571768651e-18,
+    "old_counterexample_eps0.0_independent_collinearity_error": 2.6020852139652106e-17,
+    "counterexample_eps0.0": {
+      "shared_c": -0.04332212711742495,
+      "independent_c": 0.13006674006863228,
+      "J_true": 0.01,
+      "true_slope_shared": -4.24600167877882e-06,
+      "true_slope_independent": 1.2747841194126652e-05
+    },
+    "population_covariance_eps0.0_error": 2.4069288229178198e-17,
+    "class_conditional_reduction_eps0.0_error": 7.216449660063518e-16,
+    "old_counterexample_eps1e-06_formula_enum_error": 2.2648549702353193e-14,
+    "old_counterexample_eps1e-06_shared_collinearity_error": 3.686287386450715e-18,
+    "old_counterexample_eps1e-06_independent_collinearity_error": 2.6020852139652106e-17,
+    "counterexample_eps1e-06": {
+      "shared_c": -0.04332152301781931,
+      "independent_c": 0.13006646143940206,
+      "J_true": 0.01,
+      "true_slope_shared": -4.245942470976471e-06,
+      "true_slope_independent": 1.2747813885675799e-05
+    },
+    "population_covariance_eps1e-06_error": 3.458604930228759e-17,
+    "class_conditional_reduction_eps1e-06_error": 7.563394355258879e-16,
+    "random_population_formula_enum_max_error": 9.575673587391975e-16,
+    "equal_marginal_independent_advantage_zero_error": 0.0,
+    "equal_marginals_fixed_bank": {
+      "marginals": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "shared_advantages": [
+        0.03867496792868583,
+        0.038674967928685855,
+        -0.03867496792868588,
+        -0.03867496792868588
+      ],
+      "independent_advantages": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "equal_marginal_population_independent_gradient_zero_error": 0.0,
+    "equal_marginal_population_shared_gradient": [
+      0.0009064445608285704,
+      0.0009064445608285704,
+      -0.0009064445608285704,
+      -0.0009064445608285704
+    ],
+    "affine_scale_eps0_error": 2.220446049250313e-16,
+    "epsilon_affine_scale_discrepancy": 0.2792142248859186,
+    "continuous_K2_shared_zero_error": 0.0,
+    "continuous_K2_independent_advantage_error": 0.0,
+    "continuous_K2_counterexample": {
+      "shared": [
+        0.0,
+        0.0
+      ],
+      "independent": [
+        0.25,
+        -0.25
+      ]
+    },
+    "weight_complement_symmetry_error": 1.3322676295501878e-15,
+    "symmetric_shared_flip_min_positive_coefficient": 1.113391188520747,
+    "class_conditional_safety_certificates": {
+      "4": {
+        "min_Bernstein_coefficient": 1.5773469358633716,
+        "max_Bernstein_coefficient": 1.732046807578115,
+        "sufficient_mean_Youden_threshold": 0.046745683260363206
+      },
+      "8": {
+        "min_Bernstein_coefficient": 1.7745930692487883,
+        "max_Bernstein_coefficient": 2.6457433110887805,
+        "sufficient_mean_Youden_threshold": 0.19707781645646272
+      },
+      "16": {
+        "min_Bernstein_coefficient": 1.8819133259180028,
+        "max_Bernstein_coefficient": 3.8729673462735152,
+        "sufficient_mean_Youden_threshold": 0.34597659513195406
+      }
+    },
+    "constant_weight_RLOO_recurrence_K2_error": 0.0,
+    "constant_weight_RLOO_recurrence_K3_error": 0.0,
+    "constant_weight_RLOO_recurrence_K4_error": 0.0,
+    "constant_weight_RLOO_recurrence_K5_error": 2.220446049250313e-16,
+    "constant_weight_RLOO_recurrence_K6_error": 4.440892098500626e-16,
+    "constant_weight_RLOO_recurrence_K7_error": 6.661338147750939e-16,
+    "constant_weight_RLOO_recurrence_K8_error": 1.3322676295501878e-15,
+    "constant_weight_RLOO_recurrence_K9_error": 2.4424906541753444e-15,
+    "constant_weight_RLOO_recurrence_K10_error": 0.0,
+    "constant_weight_RLOO_recurrence_K11_error": 5.995204332975845e-15,
+    "constant_weight_RLOO_recurrence_K12_error": 0.0,
+    "finite_bank_centering_covariance_0_error": 2.220446049250313e-16,
+    "finite_bank_centering_covariance_1_error": 2.220446049250313e-16,
+    "finite_bank_centering_covariance_2_error": 6.661338147750939e-16,
+    "finite_bank_centering_covariance_3_error": 3.3306690738754696e-16,
+    "finite_bank_centering_covariance_4_error": 3.3306690738754696e-16,
+    "finite_bank_centering_covariance_5_error": 2.7755575615628914e-16,
+    "finite_bank_centering_covariance_6_error": 1.1102230246251565e-16,
+    "finite_bank_centering_covariance_7_error": 1.1102230246251565e-16,
+    "LP_K3": {
+      "min": -0.1697052674855351,
+      "max": -0.1697052674855351,
+      "max_primal_residual": 5.551115123125783e-17,
+      "status": "Numerical LP optimum; FP64 solver, not symbolic certificate"
+    },
+    "LP_K4_equal_marginals": {
+      "min": -0.051566623904914566,
+      "max": 0.05156662390491454,
+      "max_primal_residual": 2.220446049250313e-16,
+      "status": "Numerical LP optimum; FP64 solver, not symbolic certificate"
+    },
+    "LP_K3_collapsed_interval_error": 0.0,
+    "max_asserted_equality_error": 1.2922996006636822e-13,
+    "status": "PASS: finite CPU checks only. No LLM outputs, model downloads, GPU, or training."
+  },
+  "legacy": {
+    "evidence_tier": "cpu_exact_enumeration",
+    "provenance": {
+      "created_at_utc": "2026-09-07T12:14:32.154731+00:00",
+      "python": "3.13.11",
+      "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "packages": {
+        "numpy": "2.4.2",
+        "torch": "2.10.0",
+        "transformers": "5.2.0",
+        "safetensors": "0.7.0"
+      },
+      "git_head": "d7ba46a47d63cdc2d58c3320e8939709473ff737",
+      "source_sha256": {
+        "src/dependent_rollouts/__init__.py": "5f4a6f1fe0db1fdfb43b9c451df9c2c0131def6c6ba2a19a2d2c427fdca8fa98",
+        "src/dependent_rollouts/artifacts.py": "0e7063e6388796fbe1760f96a188e3b84997aab7e3d845ddd7ca2d81dbd07fa3",
+        "src/dependent_rollouts/cli.py": "29b6f52c890f3b103daed3b13a34eb89171f501dc4107e507e94d2dcc6e2cdec",
+        "src/dependent_rollouts/estimators.py": "d57fc6d1459a753650724b90bce2846415d7af1650a5428bf0f306176ff31b2e",
+        "src/dependent_rollouts/interventions.py": "fad2beffd988b723641e3db6167897cc50ada59102229da358687daa82e2ada6",
+        "src/dependent_rollouts/llm.py": "4e91d247ab7c0f1d0331357c2a97a2b3b3f47ac47950bb784c0bea9dd00cf8ef",
+        "src/dependent_rollouts/prediction.py": "522e531d45582aa1a8a9c81f5af7c4c6dd0b7c87bcc7f7a09d87f8b938e7ea6f",
+        "src/dependent_rollouts/sampling.py": "28ad499c0f9058cfa36a1d5b0891e03aad14838bdc8e54bed144edc70f8d1816",
+        "src/dependent_rollouts/statistics.py": "8c621e11b0a98053fbbeb609d776d23d98503b4261cb7fb52524b10b015cc676",
+        "src/dependent_rollouts/tasks.py": "6b0c50063d35a1fb2f57fc7fcb0ae2c45d78c325674be2b8722991f81db3bdd3",
+        "src/dependent_rollouts/theory.py": "879d3290a852c16696111c79128f263b2423cf2ec0a20f360897a9910c704a0e",
+        "src/dependent_rollouts/toy.py": "44a6533b809c05ad4acee39043fcf7e2c3028d6a66290e37aa2ea172bcc00990",
+        "src/dependent_rollouts/training.py": "33084f2cd4f6ee1fedd2c06b40709bc2aad6b3cdd105aa4a3d4f837d749ed984",
+        "src/reward_coupling/__init__.py": "0e76bc4dc3c25262af6567a23d7b952e6b95c2ccdc53f699e7d5588b8fc7efd1",
+        "src/reward_coupling/advantages.py": "b16a25a334791a2ab47c6ca2246913284abc4348bcc524d3c687a75ea330394b",
+        "src/reward_coupling/bank.py": "ebf82de3282e2ffe0cc772f37d5be6fc0893879ce2947c2997602050eb14130a",
+        "src/reward_coupling/budget.py": "df1d6555345e546aec93db8047491a15b7c511a75815a60edbf94847b78300de",
+        "src/reward_coupling/cli.py": "246ed9aae04298dcfc10fde8dab1f727b4696828a6a6a7683d0636ff57519442",
+        "src/reward_coupling/contract.py": "bc710aa4fcbb441aa63bc6d7199c24410d6863a240f05984131c4d02836f2251",
+        "src/reward_coupling/diagnostics.py": "8dc1cd16697e2f539fb60c3ce47353b0571d1ca3aa2740c680eaa8b5a562f8ce",
+        "src/reward_coupling/execute_tests.py": "867f20aeba313b1313a9ce9a081b2d552fbdbccdbad051e1f43fc8381708266d",
+        "src/reward_coupling/expectation.py": "9e530dcc8b11ab5a8228d3f090985a1ba9c9cf5f0082925b59abf3e38e09dc76",
+        "src/reward_coupling/feedback.py": "bcb6e7dbec880e8e1913179089930b84e490c1e0cee09c0b0a157c5dbad925ef",
+        "src/reward_coupling/gradient_audit.py": "073ba75225d7083e88d6f6bba272ec19426a1fa145861a0e711db7219ec06c20",
+        "src/reward_coupling/judge.py": "892ab665558e50a0fb78072d7d76de1ca54d0a85f50e746e09d282aa0ab2c181",
+        "src/reward_coupling/local_steps.py": "3f1fc592c3dc2f953ad9ebfcc248ef446188db501a9f0eb5985f9f2413c42ed4",
+        "src/reward_coupling/sample.py": "c30be3907882f6291b943c4885594dfdf2a79fcd675f3255290364bf31d97f5e",
+        "src/reward_coupling/statistics.py": "097321c4ee6945f58153c339ff48b04db7630c8089c30ed73104c07238861a7e",
+        "src/reward_coupling/theory.py": "048f1038737f225192410798391e007d0b12199b6712b2872339c616ff66233a",
+        "src/reward_coupling/training.py": "bf8c4353d6ad4c68284ca11d0681c95f19aa453f0501d35f39af8d97dac52d95",
+        "src/stratified_grpo/__init__.py": "6265d1e22f2e3d7e016eb7010623e3fe9deb8773dfd46be979f966796dbafd75",
+        "src/stratified_grpo/calibration.py": "a32fd4accc9f760dc51d9dbfa6136cf2df9f135024b6213b5868e5f7de326ce0",
+        "src/stratified_grpo/cli.py": "e351f2d0458df9c5fbd58ba5d28facf22bbddea60714462227f984d743b8d22d",
+        "src/stratified_grpo/contract.py": "8207bd71d7fa179ca7c09a64ddd8760dc677b191d0340d27139efefadfd51cf4",
+        "src/stratified_grpo/model.py": "7c3cd6cbf747b1e04af9befe324e3bc8eeb7d7a6d3b623fbb954333f008b58a3",
+        "src/stratified_grpo/online.py": "b4a9aecd2f39b4f572a228432d85f8a636e045692b20d2f55bb92899fd7c2298",
+        "src/stratified_grpo/pipeline.py": "9d1550a69546e5665da21787461c6d69ef074342903b43a1eeddccad71f41c52",
+        "src/stratified_grpo/sampling.py": "d26ded09ce191b192bea544a89ffb65ad8c8264af0316eab7333a87a13761013",
+        "src/stratified_grpo/statistics.py": "1c4de198dcc9f82bc497d0ff3e52295a23ca726f4001173db87e70231774fa53",
+        "src/stratified_grpo/weights.py": "f4561fdea91c4fae7899f7c4194a155c5d483baf5318e7fb4f17919a04817f67"
+      },
+      "config": null
+    },
+    "count_example": {
+      "true": [
+        -0.5
+      ],
+      "A": [
+        0.125
+      ],
+      "B": [
+        -1.375
+      ],
+      "count_profile": [
+        0.125,
+        0.75,
+        0.125
+      ],
+      "coverage": {
+        "A": 0.875,
+        "B": 0.875,
+        "iid": 0.75
+      }
+    },
+    "stratified_example": {
+      "g": [
+        0.25
+      ],
+      "gq": [
+        -0.125
+      ],
+      "fisher": [
+        [
+          6.5
+        ]
+      ],
+      "projection": [
+        [
+          0.038461538461538464,
+          -0.15384615384615385,
+          0.11538461538461539,
+          0.0
+        ],
+        [
+          -0.15384615384615385,
+          0.6153846153846154,
+          -0.46153846153846156,
+          0.0
+        ],
+        [
+          0.11538461538461539,
+          -0.46153846153846156,
+          0.34615384615384615,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "slope": -0.004807692307692308,
+      "positive": 0.012943786982248523,
+      "interference": 0.01775147928994083,
+      "eta": 0.05128205128205129,
+      "coverage": {
+        "stratified": 0.5,
+        "iid": 0.4375
+      }
+    },
+    "normalized_forecast_max_error": 3.3306690738754696e-16,
+    "stratified_bound": -0.7079402165819615,
+    "pretrained_model_experiment": "not_run"
+  },
+  "v5_1": {
+    "status": "PASS_CPU_FINITE_MODEL_ONLY",
+    "models": [
+      {
+        "name": "K2_q(0.2, 0.8)",
+        "K": 2,
+        "B": 2,
+        "m": 2,
+        "enumerated_banks": 16,
+        "target": [
+          -0.249999500001,
+          0.249999500001
+        ],
+        "trace_full": 0.009599961600115198,
+        "trace_cross": 0.012799948800153598,
+        "trace_iid_all": 0.020833250000249996,
+        "full_over_cross": 0.7499999999999999,
+        "full_over_iid_all": 0.4608,
+        "min_eigenvalue_cross_minus_full": 0.0,
+        "orthogonal_parts": [
+          {
+            "alpha": [
+              0,
+              1
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              1,
+              0
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              0,
+              2
+            ],
+            "trace": 0.0031999872000383987
+          },
+          {
+            "alpha": [
+              1,
+              1
+            ],
+            "trace": 0.0031999872000383995
+          },
+          {
+            "alpha": [
+              2,
+              0
+            ],
+            "trace": 0.003199987200038401
+          }
+        ]
+      },
+      {
+        "name": "K2_q(0.5, 0.5)",
+        "K": 2,
+        "B": 2,
+        "m": 2,
+        "enumerated_banks": 16,
+        "target": [
+          -0.249999500001,
+          0.249999500001
+        ],
+        "trace_full": 0.023437406250281248,
+        "trace_cross": 0.031249875000375,
+        "trace_iid_all": 0.020833250000249996,
+        "full_over_cross": 0.75,
+        "full_over_iid_all": 1.1250000000000002,
+        "min_eigenvalue_cross_minus_full": 0.0,
+        "orthogonal_parts": [
+          {
+            "alpha": [
+              0,
+              1
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              1,
+              0
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              0,
+              2
+            ],
+            "trace": 0.00781246875009375
+          },
+          {
+            "alpha": [
+              1,
+              1
+            ],
+            "trace": 0.00781246875009375
+          },
+          {
+            "alpha": [
+              2,
+              0
+            ],
+            "trace": 0.00781246875009375
+          }
+        ]
+      },
+      {
+        "name": "K4_q(0.2, 0.8)",
+        "K": 4,
+        "B": 4,
+        "m": 2,
+        "enumerated_banks": 256,
+        "target": [
+          -0.4040054759480144,
+          0.4040054759480144
+        ],
+        "trace_full": 0.0042054971444414856,
+        "trace_cross": 0.004817625422109088,
+        "trace_iid_all": 0.01006864156851079,
+        "full_over_cross": 0.8729398357002979,
+        "full_over_iid_all": 0.41768267504863643,
+        "min_eigenvalue_cross_minus_full": 6.383495613963243e-19,
+        "orthogonal_parts": [
+          {
+            "alpha": [
+              0,
+              1
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              1,
+              0
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              0,
+              2
+            ],
+            "trace": 0.0011999952000143997
+          },
+          {
+            "alpha": [
+              1,
+              1
+            ],
+            "trace": 0.0017999928000215998
+          },
+          {
+            "alpha": [
+              2,
+              0
+            ],
+            "trace": 0.0011999952000144004
+          },
+          {
+            "alpha": [
+              0,
+              3
+            ],
+            "trace": 2.407412430484044e-37
+          },
+          {
+            "alpha": [
+              1,
+              2
+            ],
+            "trace": 5.777789833161708e-37
+          },
+          {
+            "alpha": [
+              2,
+              1
+            ],
+            "trace": 6.355568816477879e-36
+          },
+          {
+            "alpha": [
+              3,
+              0
+            ],
+            "trace": 3.6592668943357494e-36
+          },
+          {
+            "alpha": [
+              0,
+              4
+            ],
+            "trace": 1.102788878218357e-06
+          },
+          {
+            "alpha": [
+              1,
+              3
+            ],
+            "trace": 1.102788878218357e-06
+          },
+          {
+            "alpha": [
+              2,
+              2
+            ],
+            "trace": 1.1027888782183574e-06
+          },
+          {
+            "alpha": [
+              3,
+              1
+            ],
+            "trace": 1.1027888782183576e-06
+          },
+          {
+            "alpha": [
+              4,
+              0
+            ],
+            "trace": 1.1027888782183578e-06
+          }
+        ]
+      },
+      {
+        "name": "K4_q(0.5, 0.5)",
+        "K": 4,
+        "B": 4,
+        "m": 2,
+        "enumerated_banks": 256,
+        "target": [
+          -0.4040054759480144,
+          0.4040054759480144
+        ],
+        "trace_full": 0.010286730904172247,
+        "trace_cross": 0.011823873268098131,
+        "trace_iid_all": 0.01006864156851079,
+        "full_over_cross": 0.8699967151987976,
+        "full_over_iid_all": 1.0216602541839925,
+        "min_eigenvalue_cross_minus_full": 0.0,
+        "orthogonal_parts": [
+          {
+            "alpha": [
+              0,
+              1
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              1,
+              0
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              0,
+              2
+            ],
+            "trace": 0.002929675781285157
+          },
+          {
+            "alpha": [
+              1,
+              1
+            ],
+            "trace": 0.004394513671927735
+          },
+          {
+            "alpha": [
+              2,
+              0
+            ],
+            "trace": 0.002929675781285157
+          },
+          {
+            "alpha": [
+              0,
+              3
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              1,
+              2
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              2,
+              1
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              3,
+              0
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              0,
+              4
+            ],
+            "trace": 6.57313393484567e-06
+          },
+          {
+            "alpha": [
+              1,
+              3
+            ],
+            "trace": 6.57313393484567e-06
+          },
+          {
+            "alpha": [
+              2,
+              2
+            ],
+            "trace": 6.57313393484567e-06
+          },
+          {
+            "alpha": [
+              3,
+              1
+            ],
+            "trace": 6.57313393484567e-06
+          },
+          {
+            "alpha": [
+              4,
+              0
+            ],
+            "trace": 6.57313393484567e-06
+          }
+        ]
+      },
+      {
+        "name": "K4_q(0.1, 0.6)",
+        "K": 4,
+        "B": 4,
+        "m": 2,
+        "enumerated_banks": 256,
+        "target": [
+          -0.37002059301771256,
+          0.37002059301771256
+        ],
+        "trace_full": 0.013602055501908482,
+        "trace_cross": 0.014169044106156365,
+        "trace_iid_all": 0.020916484307688932,
+        "full_over_cross": 0.9599839904513014,
+        "full_over_iid_all": 0.6503031437701193,
+        "min_eigenvalue_cross_minus_full": 4.301199120176414e-19,
+        "orthogonal_parts": [
+          {
+            "alpha": [
+              0,
+              1
+            ],
+            "trace": 0.0062453173078305954
+          },
+          {
+            "alpha": [
+              1,
+              0
+            ],
+            "trace": 0.0023419939904364734
+          },
+          {
+            "alpha": [
+              0,
+              2
+            ],
+            "trace": 0.0029302517073508047
+          },
+          {
+            "alpha": [
+              1,
+              1
+            ],
+            "trace": 0.0016482665853848279
+          },
+          {
+            "alpha": [
+              2,
+              0
+            ],
+            "trace": 0.000412066646346207
+          },
+          {
+            "alpha": [
+              0,
+              3
+            ],
+            "trace": 8.374303043970673e-06
+          },
+          {
+            "alpha": [
+              1,
+              2
+            ],
+            "trace": 4.710545462233499e-06
+          },
+          {
+            "alpha": [
+              2,
+              1
+            ],
+            "trace": 1.7664545483375628e-06
+          },
+          {
+            "alpha": [
+              3,
+              0
+            ],
+            "trace": 4.416136370843907e-07
+          },
+          {
+            "alpha": [
+              0,
+              4
+            ],
+            "trace": 5.582868695980443e-06
+          },
+          {
+            "alpha": [
+              1,
+              3
+            ],
+            "trace": 2.093575760992666e-06
+          },
+          {
+            "alpha": [
+              2,
+              2
+            ],
+            "trace": 7.8509091037225e-07
+          },
+          {
+            "alpha": [
+              3,
+              1
+            ],
+            "trace": 2.9440909138959374e-07
+          },
+          {
+            "alpha": [
+              4,
+              0
+            ],
+            "trace": 1.1040340927109766e-07
+          }
+        ]
+      },
+      {
+        "name": "K4_identity_strata",
+        "K": 4,
+        "B": 4,
+        "m": 2,
+        "enumerated_banks": 65536,
+        "target": [
+          0.20200273797400717,
+          0.20200273797400717,
+          -0.20200273797400722,
+          -0.2020027379740072
+        ],
+        "trace_full": 0.02896222911267601,
+        "trace_cross": 0.029736825667412533,
+        "trace_iid_all": 0.051684753738240385,
+        "full_over_cross": 0.9739516058842362,
+        "full_over_iid_all": 0.5603631055176628,
+        "min_eigenvalue_cross_minus_full": -2.831483946125549e-18,
+        "orthogonal_parts": [
+          {
+            "alpha": [
+              0,
+              1
+            ],
+            "trace": 0.010201276537248848
+          },
+          {
+            "alpha": [
+              1,
+              0
+            ],
+            "trace": 0.010201276537248852
+          },
+          {
+            "alpha": [
+              0,
+              2
+            ],
+            "trace": 0.0031650506468507175
+          },
+          {
+            "alpha": [
+              1,
+              1
+            ],
+            "trace": 0.002197256835963867
+          },
+          {
+            "alpha": [
+              2,
+              0
+            ],
+            "trace": 0.003165050646850719
+          },
+          {
+            "alpha": [
+              0,
+              3
+            ],
+            "trace": 3.2865669674228267e-06
+          },
+          {
+            "alpha": [
+              1,
+              2
+            ],
+            "trace": 5.477611612371361e-07
+          },
+          {
+            "alpha": [
+              2,
+              1
+            ],
+            "trace": 5.477611612371407e-07
+          },
+          {
+            "alpha": [
+              3,
+              0
+            ],
+            "trace": 3.286566967422827e-06
+          },
+          {
+            "alpha": [
+              0,
+              4
+            ],
+            "trace": 6.5731339348456695e-06
+          },
+          {
+            "alpha": [
+              1,
+              3
+            ],
+            "trace": 4.108208709278545e-06
+          },
+          {
+            "alpha": [
+              2,
+              2
+            ],
+            "trace": 3.2865669674228348e-06
+          },
+          {
+            "alpha": [
+              3,
+              1
+            ],
+            "trace": 4.1082087092785434e-06
+          },
+          {
+            "alpha": [
+              4,
+              0
+            ],
+            "trace": 6.5731339348456695e-06
+          }
+        ]
+      },
+      {
+        "name": "K4_reward_strata",
+        "K": 4,
+        "B": 4,
+        "m": 2,
+        "enumerated_banks": 65536,
+        "target": [
+          0.20200273797400717,
+          0.20200273797400717,
+          -0.20200273797400722,
+          -0.2020027379740072
+        ],
+        "trace_full": 0.040805106148995435,
+        "trace_cross": 0.040805106148995435,
+        "trace_iid_all": 0.051684753738240385,
+        "full_over_cross": 1.0,
+        "full_over_iid_all": 0.7894998659692686,
+        "min_eigenvalue_cross_minus_full": 0.0,
+        "orthogonal_parts": [
+          {
+            "alpha": [
+              0,
+              1
+            ],
+            "trace": 0.020402553074497704
+          },
+          {
+            "alpha": [
+              1,
+              0
+            ],
+            "trace": 0.020402553074497697
+          },
+          {
+            "alpha": [
+              0,
+              2
+            ],
+            "trace": 1.0833355937178202e-34
+          },
+          {
+            "alpha": [
+              1,
+              1
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              2,
+              0
+            ],
+            "trace": 1.0833355937178202e-34
+          },
+          {
+            "alpha": [
+              0,
+              3
+            ],
+            "trace": 2.633107345841924e-36
+          },
+          {
+            "alpha": [
+              1,
+              2
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              2,
+              1
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              3,
+              0
+            ],
+            "trace": 2.633107345841924e-36
+          },
+          {
+            "alpha": [
+              0,
+              4
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              1,
+              3
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              2,
+              2
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              3,
+              1
+            ],
+            "trace": 0.0
+          },
+          {
+            "alpha": [
+              4,
+              0
+            ],
+            "trace": 0.0
+          }
+        ]
+      }
+    ],
+    "baseline": {
+      "target": -0.09299999999999997,
+      "rloo_variance": 0.0722775,
+      "fixed_one_variance": 0.10104525
+    },
+    "dependence_counterexample": {
+      "target": 0.249999500001,
+      "cross_mean": 0.249999500001,
+      "invalid_full_mean": 0.18749962500075
+    },
+    "grid_and_clipping": {
+      "cases": 3,
+      "max_dp_error": 4.440892098500626e-16,
+      "continuous_rewards_quantized": false,
+      "clip_kinks_excluded_from_derivative_check": true
+    },
+    "diagnostic_identities": {
+      "bilinear_variance": 0.1844,
+      "polynomial_only": true
+    },
+    "equal_reward_influence": [
+      {
+        "name": "identity",
+        "stratum_influence_means": [
+          [
+            0.0505006844935018,
+            -0.050500684493501785,
+            -0.050500684493501785,
+            0.0505006844935018
+          ],
+          [
+            -0.050500684493501785,
+            0.0505006844935018,
+            0.05050068449350183,
+            -0.050500684493501785
+          ]
+        ]
+      },
+      {
+        "name": "uninformative",
+        "stratum_influence_means": [
+          [
+            6.938893903907228e-18,
+            6.938893903907228e-18,
+            2.0816681711721685e-17,
+            6.938893903907228e-18
+          ],
+          [
+            6.938893903907228e-18,
+            6.938893903907228e-18,
+            2.0816681711721685e-17,
+            6.938893903907228e-18
+          ]
+        ]
+      }
+    ],
+    "uninformative_chi_penalties": {
+      "1": 0.0,
+      "2": 0.020833333333333332,
+      "3": 0.09375000000000001,
+      "4": 0.3671875
+    },
+    "report_derived_missing_projection": {
+      "T_fixed1": "-z_fail/32",
+      "T_RLOO": "-0.7801849729962018 - z_fail/32",
+      "RLOO_positive_requires_z_fail_below": -24.96591913587846,
+      "z_fail_measured_here": false
+    },
+    "checks": {
+      "partner_pmf_last": 0.0,
+      "dp_bruteforce_B2_m2_K2": 0.0,
+      "zero_sum_B2_m2_K2": 0.0,
+      "dp_bruteforce_B4_m2_K4": 5.551115123125783e-16,
+      "zero_sum_B4_m2_K4": 1.1102230246251565e-16,
+      "dp_bruteforce_B4_m3_K4": 1.7763568394002505e-15,
+      "zero_sum_B4_m3_K4": 8.881784197001252e-16,
+      "dp_bruteforce_B5_m2_K3": 3.3306690738754696e-16,
+      "zero_sum_B5_m2_K3": 1.4432899320127035e-15,
+      "permutation_average_vs_full": 1.1102230246251565e-16,
+      "K2_q(0.2, 0.8)_mixture_normalized": 0.0,
+      "K2_q(0.2, 0.8)_full_mean": 5.551115123125783e-17,
+      "K2_q(0.2, 0.8)_cross_mean": 5.551115123125783e-17,
+      "K2_q(0.2, 0.8)_iid_mean": 2.7755575615628914e-17,
+      "K2_q(0.2, 0.8)_full_covariance_formula": 8.673617379884035e-19,
+      "K2_q(0.2, 0.8)_conditional_variance_identity": 4.336808689942018e-19,
+      "K2_q(0.5, 0.5)_mixture_normalized": 0.0,
+      "K2_q(0.5, 0.5)_full_mean": 2.7755575615628914e-17,
+      "K2_q(0.5, 0.5)_cross_mean": 0.0,
+      "K2_q(0.5, 0.5)_iid_mean": 2.7755575615628914e-17,
+      "K2_q(0.5, 0.5)_full_covariance_formula": 0.0,
+      "K2_q(0.5, 0.5)_conditional_variance_identity": 4.336808689942018e-19,
+      "K4_q(0.2, 0.8)_mixture_normalized": 0.0,
+      "K4_q(0.2, 0.8)_full_mean": 1.1657341758564144e-15,
+      "K4_q(0.2, 0.8)_cross_mean": 3.885780586188048e-16,
+      "K4_q(0.2, 0.8)_iid_mean": 2.220446049250313e-16,
+      "K4_q(0.2, 0.8)_full_covariance_formula": 2.6020852139652106e-18,
+      "K4_q(0.2, 0.8)_conditional_variance_identity": 9.215718466126788e-19,
+      "K4_q(0.5, 0.5)_mixture_normalized": 0.0,
+      "K4_q(0.5, 0.5)_full_mean": 1.2212453270876722e-15,
+      "K4_q(0.5, 0.5)_cross_mean": 3.3306690738754696e-16,
+      "K4_q(0.5, 0.5)_iid_mean": 2.220446049250313e-16,
+      "K4_q(0.5, 0.5)_full_covariance_formula": 1.3877787807814457e-17,
+      "K4_q(0.5, 0.5)_conditional_variance_identity": 1.951563910473908e-18,
+      "K4_q(0.1, 0.6)_mixture_normalized": 0.0,
+      "K4_q(0.1, 0.6)_full_mean": 1.3322676295501878e-15,
+      "K4_q(0.1, 0.6)_cross_mean": 7.216449660063518e-16,
+      "K4_q(0.1, 0.6)_iid_mean": 9.43689570931383e-16,
+      "K4_q(0.1, 0.6)_full_covariance_formula": 2.949029909160572e-17,
+      "K4_q(0.1, 0.6)_conditional_variance_identity": 1.5395670849294163e-17,
+      "K4_identity_strata_mixture_normalized": 0.0,
+      "K4_identity_strata_full_mean": 5.551115123125783e-17,
+      "K4_identity_strata_cross_mean": 5.551115123125783e-17,
+      "K4_identity_strata_iid_mean": 6.938893903907228e-16,
+      "K4_identity_strata_full_covariance_formula": 9.540979117872439e-18,
+      "K4_identity_strata_conditional_variance_identity": 1.2224379494774062e-17,
+      "K4_reward_strata_mixture_normalized": 0.0,
+      "K4_reward_strata_full_mean": 8.326672684688674e-17,
+      "K4_reward_strata_cross_mean": 8.326672684688674e-17,
+      "K4_reward_strata_iid_mean": 6.938893903907228e-16,
+      "K4_reward_strata_full_covariance_formula": 1.3877787807814457e-17,
+      "K4_reward_strata_conditional_variance_identity": 0.0,
+      "uninformative_K2_chi_ratio": 2.220446049250313e-16,
+      "rloo_mean": 2.7755575615628914e-17,
+      "rloo_exact_variance": 0.0,
+      "fixed_one_baseline_mean": 1.3877787807814457e-17,
+      "fixed_one_baseline_variance": 1.3877787807814457e-17,
+      "dependent_blocks_cross_valid": 0.0,
+      "grid_partner_pmf_last": 1.1102230246251565e-16,
+      "grid_dp_vs_brute_0": 0.0,
+      "grid_zero_sum_0": 0.0,
+      "grid_sign_sum_0": 0.0,
+      "grid_clipped_loss_0": 0.0,
+      "grid_clipped_derivative_0": 0.0,
+      "grid_dp_vs_brute_1": 4.440892098500626e-16,
+      "grid_zero_sum_1": 2.7755575615628914e-16,
+      "grid_sign_sum_1": 5.551115123125783e-17,
+      "grid_clipped_loss_1": 3.3306690738754696e-16,
+      "grid_clipped_derivative_1": 4.440892098500626e-16,
+      "grid_dp_vs_brute_2": 4.440892098500626e-16,
+      "grid_zero_sum_2": 0.0,
+      "grid_sign_sum_2": 0.0,
+      "grid_clipped_loss_2": 4.440892098500626e-16,
+      "grid_clipped_derivative_2": 2.220446049250313e-16,
+      "two_bank_bilinear_mean": 2.7755575615628914e-17,
+      "two_bank_bilinear_variance": 5.551115123125783e-17,
+      "common_curvature_even_part": 6.5052130349130266e-18,
+      "pure_central_difference_polynomial": 2.3869795029440866e-15,
+      "equal_reward_influence_identity": 2.7755575615628914e-17,
+      "equal_reward_influence_uninformative": 2.0816681711721685e-17
+    },
+    "max_identity_error": 2.3869795029440866e-15,
+    "limitations": [
+      "No real model loaded",
+      "No remote v4 receipts independently checked",
+      "No GPU experiments",
+      "Mathematical examples do not establish real-model effect size"
+    ]
+  },
+  "v5_1_verifier_sha256": "2eb4f0e79ee61381d5c7bc25d18ba8d228971e8752bafb21cd7c4ac2e649e56f",
+  "verifier_sha256": "53a60b2c10740df0229e47b13de65b6899fd1c5e4dd97833f41e6100a8f00b1c",
+  "provenance": {
+    "created_at_utc": "2026-09-07T12:14:32.655803+00:00",
+    "python": "3.13.11",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "packages": {
+      "numpy": "2.4.2",
+      "torch": "2.10.0",
+      "transformers": "5.2.0",
+      "safetensors": "0.7.0"
+    },
+    "git_head": "d7ba46a47d63cdc2d58c3320e8939709473ff737",
+    "source_sha256": {
+      "src/dependent_rollouts/__init__.py": "5f4a6f1fe0db1fdfb43b9c451df9c2c0131def6c6ba2a19a2d2c427fdca8fa98",
+      "src/dependent_rollouts/artifacts.py": "0e7063e6388796fbe1760f96a188e3b84997aab7e3d845ddd7ca2d81dbd07fa3",
+      "src/dependent_rollouts/cli.py": "29b6f52c890f3b103daed3b13a34eb89171f501dc4107e507e94d2dcc6e2cdec",
+      "src/dependent_rollouts/estimators.py": "d57fc6d1459a753650724b90bce2846415d7af1650a5428bf0f306176ff31b2e",
+      "src/dependent_rollouts/interventions.py": "fad2beffd988b723641e3db6167897cc50ada59102229da358687daa82e2ada6",
+      "src/dependent_rollouts/llm.py": "4e91d247ab7c0f1d0331357c2a97a2b3b3f47ac47950bb784c0bea9dd00cf8ef",
+      "src/dependent_rollouts/prediction.py": "522e531d45582aa1a8a9c81f5af7c4c6dd0b7c87bcc7f7a09d87f8b938e7ea6f",
+      "src/dependent_rollouts/sampling.py": "28ad499c0f9058cfa36a1d5b0891e03aad14838bdc8e54bed144edc70f8d1816",
+      "src/dependent_rollouts/statistics.py": "8c621e11b0a98053fbbeb609d776d23d98503b4261cb7fb52524b10b015cc676",
+      "src/dependent_rollouts/tasks.py": "6b0c50063d35a1fb2f57fc7fcb0ae2c45d78c325674be2b8722991f81db3bdd3",
+      "src/dependent_rollouts/theory.py": "879d3290a852c16696111c79128f263b2423cf2ec0a20f360897a9910c704a0e",
+      "src/dependent_rollouts/toy.py": "44a6533b809c05ad4acee39043fcf7e2c3028d6a66290e37aa2ea172bcc00990",
+      "src/dependent_rollouts/training.py": "33084f2cd4f6ee1fedd2c06b40709bc2aad6b3cdd105aa4a3d4f837d749ed984",
+      "src/reward_coupling/__init__.py": "0e76bc4dc3c25262af6567a23d7b952e6b95c2ccdc53f699e7d5588b8fc7efd1",
+      "src/reward_coupling/advantages.py": "b16a25a334791a2ab47c6ca2246913284abc4348bcc524d3c687a75ea330394b",
+      "src/reward_coupling/bank.py": "ebf82de3282e2ffe0cc772f37d5be6fc0893879ce2947c2997602050eb14130a",
+      "src/reward_coupling/budget.py": "df1d6555345e546aec93db8047491a15b7c511a75815a60edbf94847b78300de",
+      "src/reward_coupling/cli.py": "246ed9aae04298dcfc10fde8dab1f727b4696828a6a6a7683d0636ff57519442",
+      "src/reward_coupling/contract.py": "bc710aa4fcbb441aa63bc6d7199c24410d6863a240f05984131c4d02836f2251",
+      "src/reward_coupling/diagnostics.py": "8dc1cd16697e2f539fb60c3ce47353b0571d1ca3aa2740c680eaa8b5a562f8ce",
+      "src/reward_coupling/execute_tests.py": "867f20aeba313b1313a9ce9a081b2d552fbdbccdbad051e1f43fc8381708266d",
+      "src/reward_coupling/expectation.py": "9e530dcc8b11ab5a8228d3f090985a1ba9c9cf5f0082925b59abf3e38e09dc76",
+      "src/reward_coupling/feedback.py": "bcb6e7dbec880e8e1913179089930b84e490c1e0cee09c0b0a157c5dbad925ef",
+      "src/reward_coupling/gradient_audit.py": "073ba75225d7083e88d6f6bba272ec19426a1fa145861a0e711db7219ec06c20",
+      "src/reward_coupling/judge.py": "892ab665558e50a0fb78072d7d76de1ca54d0a85f50e746e09d282aa0ab2c181",
+      "src/reward_coupling/local_steps.py": "3f1fc592c3dc2f953ad9ebfcc248ef446188db501a9f0eb5985f9f2413c42ed4",
+      "src/reward_coupling/sample.py": "c30be3907882f6291b943c4885594dfdf2a79fcd675f3255290364bf31d97f5e",
+      "src/reward_coupling/statistics.py": "097321c4ee6945f58153c339ff48b04db7630c8089c30ed73104c07238861a7e",
+      "src/reward_coupling/theory.py": "048f1038737f225192410798391e007d0b12199b6712b2872339c616ff66233a",
+      "src/reward_coupling/training.py": "bf8c4353d6ad4c68284ca11d0681c95f19aa453f0501d35f39af8d97dac52d95",
+      "src/stratified_grpo/__init__.py": "6265d1e22f2e3d7e016eb7010623e3fe9deb8773dfd46be979f966796dbafd75",
+      "src/stratified_grpo/calibration.py": "a32fd4accc9f760dc51d9dbfa6136cf2df9f135024b6213b5868e5f7de326ce0",
+      "src/stratified_grpo/cli.py": "e351f2d0458df9c5fbd58ba5d28facf22bbddea60714462227f984d743b8d22d",
+      "src/stratified_grpo/contract.py": "8207bd71d7fa179ca7c09a64ddd8760dc677b191d0340d27139efefadfd51cf4",
+      "src/stratified_grpo/model.py": "7c3cd6cbf747b1e04af9befe324e3bc8eeb7d7a6d3b623fbb954333f008b58a3",
+      "src/stratified_grpo/online.py": "b4a9aecd2f39b4f572a228432d85f8a636e045692b20d2f55bb92899fd7c2298",
+      "src/stratified_grpo/pipeline.py": "9d1550a69546e5665da21787461c6d69ef074342903b43a1eeddccad71f41c52",
+      "src/stratified_grpo/sampling.py": "d26ded09ce191b192bea544a89ffb65ad8c8264af0316eab7333a87a13761013",
+      "src/stratified_grpo/statistics.py": "1c4de198dcc9f82bc497d0ff3e52295a23ca726f4001173db87e70231774fa53",
+      "src/stratified_grpo/weights.py": "f4561fdea91c4fae7899f7c4194a155c5d483baf5318e7fb4f17919a04817f67"
+    },
+    "config": null
+  }
+}

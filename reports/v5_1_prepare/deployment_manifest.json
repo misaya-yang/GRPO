@@ -1,0 +1,23 @@
+{
+  "status": "CODE_PREPARED_GPU_NOT_RUN",
+  "files": {
+    "src/stratified_grpo/online.py": "b4a9aecd2f39b4f572a228432d85f8a636e045692b20d2f55bb92899fd7c2298",
+    "src/stratified_grpo/__init__.py": "6265d1e22f2e3d7e016eb7010623e3fe9deb8773dfd46be979f966796dbafd75",
+    "src/stratified_grpo/model.py": "f953bd50b5a3a3288f633547ecc6bf08dec1c84ba9493ebb87bd746af0d7bbe3",
+    "src/stratified_grpo/cli.py": "e351f2d0458df9c5fbd58ba5d28facf22bbddea60714462227f984d743b8d22d",
+    "src/stratified_grpo/pipeline.py": "9d1550a69546e5665da21787461c6d69ef074342903b43a1eeddccad71f41c52",
+    "src/stratified_grpo/sampling.py": "cb1f3b356595b7ef37cc7e06bcaffa19801ae25ae15275460c54619f6f409f85",
+    "src/stratified_grpo/statistics.py": "1c4de198dcc9f82bc497d0ff3e52295a23ca726f4001173db87e70231774fa53",
+    "src/stratified_grpo/weights.py": "f4561fdea91c4fae7899f7c4194a155c5d483baf5318e7fb4f17919a04817f67",
+    "src/stratified_grpo/contract.py": "8dee54b3ecad3364e8919a9f15a1418a4340deb2975ef3926726971d4c65a5fd",
+    "src/stratified_grpo/calibration.py": "a32fd4accc9f760dc51d9dbfa6136cf2df9f135024b6213b5868e5f7de326ce0",
+    "scripts/start_v5_1.sh": "557f1b9d724a2a05a4eea498a33264a0b725d0630d9f79a34b7ba9e414d1020d",
+    "scripts/v5_1_control.py": "f6fee0d2ffbf6714b878d308c0e73aa4ebf1870fc188875297de1f0fcb91482a",
+    "scripts/repair_v4_diagnostics.py": "9215c3fe39286196b856f4c9421c2e4420a05701c342490376a8727379bad53c",
+    "scripts/prepare_v5_1_stage_e.py": "b50d70d2392268a1c13e33e6fcf9d1ff07da62261ec4b1c5a09c0df911641f3f",
+    "src/reward_coupling/diagnostics.py": "8dc1cd16697e2f539fb60c3ce47353b0571d1ca3aa2740c680eaa8b5a562f8ce",
+    "src/reward_coupling/local_steps.py": "3f1fc592c3dc2f953ad9ebfcc248ef446188db501a9f0eb5985f9f2413c42ed4",
+    "configs/v5_1/screen.json": "e0bb5d5ec65d76f5e8089e7d43e3bfb2c1b4f940ddb9c7d02cb19b596afe602d",
+    "configs/v5_1/dev.json": "4f8cdbddb2073db9d69483b54124d884fa97cff3e7747ec4f675e6673437e945"
+  }
+}

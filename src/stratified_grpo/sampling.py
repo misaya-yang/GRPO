@@ -1,16 +1,20 @@
 """Independent conditional-interval sampling with fresh bits at every token.
 
 The interval is an exact rational posterior of the stratum event under the
-recorded float64 token CDF. No narrow-interval release or shared prefix RNG.
+exact normalized binary64 token weights. No narrow-interval release or shared prefix RNG.
 """
 
 import random
-from bisect import bisect_right
 from fractions import Fraction
 
 import numpy as np
 
-from dependent_rollouts.sampling import BitUniform, cdf_from_probs
+from dependent_rollouts.sampling import (
+    BitUniform,
+    _cdf_bisect_right,
+    _cdf_boundary_fraction,
+    cdf_from_probs,
+)
 from reward_coupling.bank import digest
 
 
@@ -41,12 +45,16 @@ class ConditionalInterval:
             a, b = source.interval()
             left, right = self.low + width * a, self.low + width * b
             midpoint = (left + right) / 2
-            token = min(len(cdf) - 2, max(0, bisect_right(cdf, float(midpoint)) - 1))
-            while token > 0 and midpoint < Fraction(float(cdf[token])):
+            token = min(
+                len(cdf) - 2,
+                max(0, _cdf_bisect_right(cdf, midpoint) - 1),
+            )
+            while token > 0 and midpoint < _cdf_boundary_fraction(cdf[token]):
                 token -= 1
-            while token < len(cdf) - 2 and midpoint >= Fraction(float(cdf[token + 1])):
+            while token < len(cdf) - 2 and midpoint >= _cdf_boundary_fraction(cdf[token + 1]):
                 token += 1
-            c, d = Fraction(float(cdf[token])), Fraction(float(cdf[token + 1]))
+            c = _cdf_boundary_fraction(cdf[token])
+            d = _cdf_boundary_fraction(cdf[token + 1])
             if c <= left and right <= d and d > c:
                 break
             source.refine()
@@ -120,5 +128,5 @@ def generate(
         "cdf_tv_sum": sum(tvs),
         "cdf_tv_max": max(tvs),
         "fresh_bits_used": decoder.bits_used + conditional.bits_used,
-        "interval_numeric_law": "exact_rational_posterior_of_float64_CDF",
+        "interval_numeric_law": "exact_rational_posterior_of_integer_CDF_binary64_weights",
     }

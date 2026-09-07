@@ -1,7 +1,6 @@
-"""Lazy-bit, rational-interval reference sequence arithmetic sampler.
+"""Lazy-bit sampling from exact integer CDFs of supplied binary64 probabilities.
 
-Token CDFs approximate softmax in float64; measure their TV discrepancy and
-reject lost support. Latent randomness never runs out after 53 bits.
+No positive input weight is lost in accumulation; zero weights stay zero.
 """
 
 import random
@@ -69,18 +68,83 @@ def latent_group(kind, k, seed):
     return members
 
 
+class _IntegerPrefixes:
+    """Compact base-2**32 cumulative integers, reconstructed only when queried."""
+
+    def __init__(self, limbs):
+        self.limbs = limbs
+
+    def __len__(self):
+        return self.limbs.shape[1]
+
+    def __getitem__(self, index):
+        value = 0
+        for limb in self.limbs[::-1, index]:
+            value = (value << 32) | int(limb)
+        return value
+
+
+class IntegerCDF:
+    """Exact binary64-weight CDF; vectorized integer limbs avoid Python per token."""
+
+    def __init__(self, probabilities):
+        p = np.ascontiguousarray(probabilities, dtype=np.float64)
+        if len(p) >= 2**31:
+            raise ValueError("Vocabulary exceeds uint64 accumulation capacity")
+        bits = p.view(np.uint64)
+        exponents = ((bits >> 52) & 2047).astype(np.int64)
+        mantissa = bits & ((1 << 52) - 1)
+        mantissa = mantissa | np.where(exponents > 0, np.uint64(1 << 52), np.uint64(0))
+        effective = np.maximum(exponents, 1)
+        shifts = effective - int(effective[p > 0].min())
+        width = int(shifts[p > 0].max()) + 53 + len(p).bit_length()
+        count = (width + 31) // 32
+        limbs = np.zeros((count, len(p) + 1), dtype=np.uint32)
+        carry = np.zeros(len(p), dtype=np.uint64)
+        for limb in range(count):
+            delta = shifts - 32 * limb
+            left = np.clip(delta, 0, 64).astype(np.uint64)
+            right = np.clip(-delta, 0, 64).astype(np.uint64)
+            weights = np.where(delta >= 0, mantissa << left, mantissa >> right) & np.uint64(
+                0xFFFFFFFF
+            )
+            sums = np.cumsum(weights, dtype=np.uint64) + carry
+            limbs[limb, 1:] = (sums & np.uint64(0xFFFFFFFF)).astype(np.uint32)
+            carry = sums >> np.uint64(32)
+        if np.any(carry):
+            raise OverflowError("Integer CDF limb allocation was insufficient")
+        self.cumulative = _IntegerPrefixes(limbs)
+        self.total = self.cumulative[-1]
+
+    def __len__(self):
+        return len(self.cumulative)
+
+    def __getitem__(self, index):
+        return Fraction(self.cumulative[index], self.total)
+
+
+def _cdf_boundary_fraction(value):
+    if hasattr(value, "as_integer_ratio"):
+        return Fraction(*value.as_integer_ratio())
+    return Fraction(value)
+
+
+def _cdf_bisect_right(cdf, value):
+    if isinstance(cdf, IntegerCDF):
+        # All cumulative weights are integers; floor gives the exact search key.
+        key = value.numerator * cdf.total // value.denominator
+        return bisect_right(cdf.cumulative, key)
+    return bisect_right(cdf, value)
+
+
 def cdf_from_probs(probabilities):
     p = np.asarray(probabilities, dtype=np.float64)
-    if p.ndim != 1 or not np.isfinite(p).all() or np.any(p < 0) or p.sum() <= 0:
+    if p.ndim != 1 or not len(p) or not np.isfinite(p).all() or np.any(p < 0) or not np.any(p > 0):
         raise ValueError("Invalid token probabilities")
-    p = p / p.sum()
-    cdf = np.r_[0.0, np.cumsum(p)]
-    cdf[-1] = 1.0
-    numerical = np.diff(cdf)
-    if np.any(numerical < 0) or np.any((p > 0) & (numerical == 0)):
-        raise FloatingPointError("Float64 token CDF lost positive support; no silent fallback")
-    tv = float(np.abs(numerical - p).sum() / 2)
-    return cdf, tv
+    # Binary64 numbers have power-of-two denominators. A common integer scale
+    # preserves their ratios exactly without precision-dependent tail repairs.
+    # TV=0 refers to normalized supplied binary64 weights, not ideal real softmax.
+    return IntegerCDF(p), 0.0
 
 
 @dataclass
@@ -91,21 +155,25 @@ class ArithmeticDecoder:
 
     def step(self, cdf):
         """Certify both latent interval endpoints select the same token."""
-        if len(cdf) < 2 or cdf[0] != 0 or cdf[-1] != 1:
+        if (
+            len(cdf) < 2
+            or _cdf_boundary_fraction(cdf[0]) != 0
+            or _cdf_boundary_fraction(cdf[-1]) != 1
+        ):
             raise ValueError("CDF must span [0,1]")
         width = self.high - self.low
         while True:
             ulow, uhigh = self.latent.interval()
             relative = ((ulow + uhigh) / 2 - self.low) / width
-            token = max(0, min(len(cdf) - 2, bisect_right(cdf, float(relative)) - 1))
-            # Float conversion may round across a boundary; certify the index
-            # using rational comparisons to avoid indefinite refinement there.
-            while token > 0 and relative < Fraction(float(cdf[token])):
+            token = max(0, min(len(cdf) - 2, _cdf_bisect_right(cdf, relative) - 1))
+            # Certify the index against preserved boundaries, including when a
+            # caller supplies a non-IntegerCDF representation.
+            while token > 0 and relative < _cdf_boundary_fraction(cdf[token]):
                 token -= 1
-            while token < len(cdf) - 2 and relative >= Fraction(float(cdf[token + 1])):
+            while token < len(cdf) - 2 and relative >= _cdf_boundary_fraction(cdf[token + 1]):
                 token += 1
-            left = self.low + width * Fraction(float(cdf[token]))
-            right = self.low + width * Fraction(float(cdf[token + 1]))
+            left = self.low + width * _cdf_boundary_fraction(cdf[token])
+            right = self.low + width * _cdf_boundary_fraction(cdf[token + 1])
             if left <= ulow and uhigh <= right and left < right:
                 self.low, self.high = left, right
                 return token

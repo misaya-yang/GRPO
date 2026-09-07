@@ -1,0 +1,21 @@
+{
+  "implementation": "Exact integer cumulative weights of normalized supplied binary64 probabilities",
+  "source_hashes": {
+    "src/dependent_rollouts/sampling.py": "3ba09e9bfa596b16067666b4869ec28622365dcb7327943b1713e95cfeb9f966",
+    "src/dependent_rollouts/llm.py": "4e91d247ab7c0f1d0331357c2a97a2b3b3f47ac47950bb784c0bea9dd00cf8ef",
+    "src/stratified_grpo/sampling.py": "d26ded09ce191b192bea544a89ffb65ad8c8264af0316eab7333a87a13761013",
+    "tests/test_integer_cdf.py": "42da64bdbb8856a51418abb5c28c51df9cc07560836322cb7f0c3645407d6060",
+    "src/stratified_grpo/model.py": "7c3cd6cbf747b1e04af9befe324e3bc8eeb7d7a6d3b623fbb954333f008b58a3",
+    "src/stratified_grpo/contract.py": "8207bd71d7fa179ca7c09a64ddd8760dc677b191d0340d27139efefadfd51cf4",
+    "configs/v5_1/dev.json": "668863f81d70f119166b3a494f427b67b165bfd21188163a58cd86568ff054bf",
+    "configs/v5_1/screen.json": "2726c82358ea50c8c25f1ba0208231680704b7f6b174eb6631fca3be12e5779c"
+  },
+  "run": "/root/autodl-tmp/feedback-grpo/runs/v5_1_20260907T091300Z",
+  "actual_model_validation": "NUMERIC_PASS_DEV_RUNNING",
+  "note": "CDF TV=0 relative to supplied normalized binary64 probabilities; not a claim of exact real-number softmax",
+  "base_dtype": "float32",
+  "cpu_embeddings": true,
+  "offload_activations": true,
+  "bf16_diagnostic_run": "v5_1_20260907T090902Z",
+  "bf16_observed_max_token_logp_error": 0.8479709727193079
+}

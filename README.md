@@ -1,21 +1,18 @@
-# 相同反馈边际与不同标准化信用
+# v5.1 独立分层 GRPO 实验
 
-本项目研究一个受控问题：actor 回答保持 IID，且每条回答的反馈边际完全相同，仅改变评分配置在组内共享（S）还是独立（I），组标准化是否会改变平均信用方向与局部学习后果。
+本项目比较同一 checkpoint、固定 K 和回答预算 N 下，独立分层 Strat-full 与强 IID-all 的梯度估计方差及实际成本。两者以同一个 IID K 更新为目标；分层不是提高未训练模型期望正确率的机制。
 
-当前主线是 [dependent feedback v4](docs/theory/dependent_feedback_v4.md)。固定候选银行保存每条回答在所有预定测试或 criterion 下的 verdict，再精确积分 shared、independent 与 RLOO 优势；同一组 token score 用不同权重累积全参数梯度。独立 C/D 数据、Dev 冻结读出以及同一初态的 `eta`/`eta/2` 更新用于区分代数机制、功能方向和实际后果。
+当前已完成真实模型小规模实验：4 题、32 个独立宏组、256 回答。方差比 0.9209，耗时修正比 0.9024，但区间宽、结果对题目及单组敏感，结论为 **INCONCLUSIVE**，尚无训练收益证据。见[实验报告](reports/trend_pilot/REPORT.md)、[详细诊断](reports/trend_pilot/ANALYSIS.md)和[当前状态](docs/STATUS.md)。
 
-模型只是实验载体，不锁定某个型号或参数规模。优先复用已有、能力和显存适配的权重；任何模型、精度或梯度存储变化都写入回执，并按实际配置限定结论。旧 dependent-rollouts 理论和实现保留为历史对照，不与 S/I 证据混写。
+## 实现与入口
 
-## 已实现内容
+- 独立条件区间采样，使用私有随机流与保留 binary64 输入权重比例的整数 CDF。
+- Strat-full、IID-all、Strat-cross 的二值及网格奖励权重；K 保持不变，虚拟组不计作新增样本。
+- 共同 LoRA 参数空间、逐 token score 校验、宏组聚合梯度、题目/宏组层级统计与成本记录。
+- 原生运行、累计预算、start/status/report 命令，见[执行交接](docs/experiments/V5_1_HANDOFF.md)。
+- 共同 checkpoint 与在线训练代码已实现，本轮未运行。
 
-- 二值 Poisson-binomial 与离散奖励 `(sum, sumsq)` 精确积分。
-- RLOO、standardized advantage、一般奖励不变性刻画与大组极限的 CPU 检查。
-- IID actor 采样、逐 token score 核验、完整组所有权和不可覆盖回执。
-- 原生 Python 逐测试执行；Docker 只是可选执行后端。
-- shared/independent/RLOO/full-rubric 权重、全参数梯度、Dev 读出和局部步长比较。
-- prompt 级统计、C/D 独立性检查、预算 ledger 与 GO/STOP/INCONCLUSIVE 门禁。
-
-代码可运行不等于真实模型实验通过。当前证据、未运行项和报告入口见 [index.md](index.md) 与 [docs/STATUS.md](docs/STATUS.md)。
+模型是实验载体，不锁定特定型号。优先复用现有权重，记录实际精度、参数空间和 revision。v4 的回答 IID、评分随机性关联实验保留在 `src/reward_coupling/`；更早的回答依赖实现保留在 `src/dependent_rollouts/`，其中采样基础设施由当前主线复用。原始理论档案保持原字节。
 
 ## 本地环境
 
@@ -34,16 +31,16 @@ conda activate aidemo
 make test
 make lint
 make exact
-PYTHONPATH=src python -m reward_coupling.cli --help
+PYTHONPATH=src python -m stratified_grpo.cli --help
 ```
 
-也可以用 `make test PYTHON=/path/to/python` 选择其他已准备环境。完整阶段、输入输出与停止条件见 [RUNBOOK](docs/experiments/RUNBOOK.md)。
+也可以用 `make test PYTHON=/path/to/python` 选择其他已准备环境。当前操作见[执行交接](docs/experiments/V5_1_HANDOFF.md)；旧 v4 操作见 [RUNBOOK](docs/experiments/RUNBOOK.md)。
 
 ## 文档职责
 
 - `agent.md`：稳定的项目核心约束。
 - `index.md`：代码、理论、运行记录和证据索引。
-- `docs/experiments/PLAN.md`：当前实验优先级、预算边界和判据。
-- `docs/experiments/MANIFEST.md`：冻结值与待补回执。
+- `docs/experiments/V5_1_HANDOFF.md`：当前执行入口及已运行范围。
+- `docs/experiments/PLAN.md` / `MANIFEST.md`：v4 历史计划与冻结信息。
 
 原始方案、Pro 建议和历史 dossier 保存在 `docs/theory/` 与 `docs/archive/`。不要改写这些原始来源，也不要把 NOT_RUN、准备完成或单点 probe 写成 pilot GO。

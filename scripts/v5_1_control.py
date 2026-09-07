@@ -46,6 +46,7 @@ def preflight(full_assets=True):
     import torch
 
     checks = {}
+    asset_checks = {}
     for stage, split in (("dev", "calibration"), ("screen", "confirmation")):
         config = validate(json.loads((ROOT / f"configs/v5_1/{stage}.json").read_text()))
         tasks = selected_tasks(config, ROOT / f"data/v5_1/svamp/{split}.jsonl")
@@ -54,8 +55,11 @@ def preflight(full_assets=True):
             "macros_per_arm": len(tasks) * config["macro_repeats"],
             "responses": len(tasks) * config["macro_repeats"] * config["B"] * config["m"] * 2,
         }
-    if full_assets:
-        checks["assets"] = verify_assets(config)
+        if full_assets:
+            key = (config["model_path"], config["checkpoint_manifest_sha256"])
+            if key not in asset_checks:
+                asset_checks[key] = verify_assets(config)
+            checks[stage]["assets"] = asset_checks[key]
     old = ROOT / "runs/C8_difference_2h_20260907/gradient.safetensors"
     checks["old_direction_present"] = old.is_file()
     checks["free_bytes"] = shutil.disk_usage(ROOT).free
@@ -116,7 +120,7 @@ def execute_stage(run, name, command, deadline, seconds):
         raise RuntimeError(f"{name} failed ({code}); see {name}.log")
 
 
-def workflow(run, seconds, skip_v4=False):
+def workflow(run, seconds, skip_v4=False, source_run=None):
     from stratified_grpo.pipeline import freeze_dev
 
     run = Path(run)
@@ -131,6 +135,52 @@ def workflow(run, seconds, skip_v4=False):
             raise RuntimeError(
                 "Less than 6 GiB free; preserve assets and resolve storage before collection"
             )
+        if source_run is not None:
+            source = Path(source_run).resolve()
+            state = json.loads((source / "state.json").read_text())
+            if state.get("status") != "READY_NEEDS_COSTED_WINDOW" or (source / "screen").exists():
+                raise ValueError("Only an unstarted, costed confirmation can resume automatically")
+            config = json.loads((source / "screen_config.json").read_text())
+            forecast = json.loads((source / "screen_forecast.json").read_text())[
+                "estimated_seconds_with_25pct_margin"
+            ]
+            if forecast > deadline - time.time() - 60:
+                raise ValueError("Requested window cannot fit the already measured screen forecast")
+            config["stage_max_seconds"] = max(1, int(deadline - time.time() - 60))
+            write_json(run / "screen_config.json", config)
+            write_json(
+                run / "source_cycle.json",
+                {"path": str(source), "config_sha256": sha256(source / "screen_config.json")},
+            )
+            execute_stage(
+                run,
+                "screen",
+                [
+                    python,
+                    "-m",
+                    "stratified_grpo.cli",
+                    "run",
+                    "--config",
+                    str(run / "screen_config.json"),
+                    "--tasks",
+                    "data/v5_1/svamp/confirmation.jsonl",
+                    "--output",
+                    str(run / "screen"),
+                ],
+                deadline,
+                deadline - time.time() - 30,
+            )
+            analysis = json.loads((run / "screen/analysis.json").read_text())
+            atomic(
+                run / "state.json",
+                {
+                    "status": "COMPLETE",
+                    "stage": "screen",
+                    "decision": analysis["decision"],
+                    "online_started": False,
+                },
+            )
+            return
         if not skip_v4:
             if not checks["old_direction_present"]:
                 write_json(
@@ -315,7 +365,7 @@ def report_cycle(run):
     (run / "FINAL_REPORT.md").write_text("\n".join(text) + "\n")
 
 
-def start(seconds, skip_v4):
+def start(seconds, skip_v4, source_run=None):
     import torch
 
     if not torch.cuda.is_available():
@@ -345,6 +395,8 @@ def start(seconds, skip_v4):
         ]
         if skip_v4:
             command.append("--skip-v4")
+        if source_run is not None:
+            command.extend(["--source-run", str(Path(source_run).resolve())])
         with (run / "supervisor.log").open("x") as log:
             process = subprocess.Popen(
                 command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT, start_new_session=True
@@ -362,10 +414,20 @@ def start(seconds, skip_v4):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "command", choices=["preflight", "start", "status", "report", "_supervise", "_workflow"]
+        "command",
+        choices=[
+            "preflight",
+            "start",
+            "start-screen",
+            "status",
+            "report",
+            "_supervise",
+            "_workflow",
+        ],
     )
     parser.add_argument("--seconds", type=int, default=7200)
     parser.add_argument("--run")
+    parser.add_argument("--source-run")
     parser.add_argument("--skip-v4", action="store_true")
     args = parser.parse_args()
     os.chdir(ROOT)
@@ -373,13 +435,17 @@ def main():
         result = preflight()
     elif args.command == "start":
         result = start(args.seconds, args.skip_v4)
+    elif args.command == "start-screen":
+        if not args.run:
+            raise ValueError("start-screen requires --run pointing to the prepared prior cycle")
+        result = start(args.seconds, True, args.run)
     elif args.command == "status":
         result = status()
     elif args.command == "report":
         report_cycle(args.run or json.loads(ACTIVE.read_text())["run"])
         result = {"status": "REPORT_WRITTEN"}
     elif args.command == "_workflow":
-        workflow(args.run, args.seconds, args.skip_v4)
+        workflow(args.run, args.seconds, args.skip_v4, args.source_run)
         result = {"status": "WORKFLOW_ENDED"}
     else:
         run = Path(args.run)
@@ -394,6 +460,8 @@ def main():
         ]
         if args.skip_v4:
             cmd.append("--skip-v4")
+        if args.source_run:
+            cmd.extend(["--source-run", args.source_run])
         result = run_budgeted(
             cmd,
             LEDGER,

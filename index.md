@@ -2,7 +2,7 @@
 
 ## 当前结论
 
-主线为 dependent feedback v4：回答保持 IID，只改变外生评分配置在组内 shared 或 independent。代码与 CPU 机制检查已具备；真实预训练模型 pilot 尚未形成 GO/STOP 结论。最新状态见 [docs/STATUS.md](docs/STATUS.md)。
+当前主线为 v5.1 独立分层：Strat-full 对固定 K/N 的 IID-all；v4 保留为一次旧银行诊断修复。真实小规模 v5.1 实验已完成：4 题、32 个宏组、256 回答，ρ=0.9209、qρ=0.9024，结论 INCONCLUSIVE。收益不稳定的机制原因尚未定位，不能归因于评分严格。见[实验报告](reports/trend_pilot/REPORT.md)、[离线诊断](reports/trend_pilot/ANALYSIS.md)及[可复算数据](reports/trend_pilot/diagnosis.json)；旧记录保留。
 
 ## 合同与入口
 
@@ -20,7 +20,7 @@
 
 | 文件 | 状态 / 内容 |
 |---|---|
-| [dependent_feedback_v4.md](docs/theory/dependent_feedback_v4.md) | 当前原始研究合同；保持原字节 |
+| [dependent_feedback_v4.md](docs/theory/dependent_feedback_v4.md) | v4 原始研究合同；保持原字节 |
 | [feedback_v4_pro_review.md](docs/theory/feedback_v4_pro_review.md) | Pro 审核建议；保持原字节 |
 | [FEEDBACK_THEORY.md](docs/theory/FEEDBACK_THEORY.md) | 可修订理论说明：一般不变性定理、ANOVA 交互、大组极限、统计边界 |
 | [feedback_sources.json](docs/theory/feedback_sources.json) | 原始来源与验证器 hash |
@@ -28,7 +28,7 @@
 | [dependent_rollout_research_dossier.md](docs/theory/dependent_rollout_research_dossier.md) | 旧回答依赖主线，仅作历史对照 |
 | `docs/archive/` | v4 迁移前文档快照，不作为当前状态 |
 
-## 当前实现
+## v4 实现与可复用基础设施
 
 | 文件 | 功能 |
 |---|---|
@@ -65,7 +65,7 @@
 | `reports/dev_all16_credit_2h.json` | 完整 Dev fixed bank：16 prompts、32 groups、256 responses；只含候选信用诊断 |
 | `reports/dev_first2/gradient/receipt.json` | 前两题 S-I 全参数梯度回执；L2 11.98609163397219，远端 gradient SHA256 300dd4f... |
 | `reports/dev_first2/step_calibration/receipt.json` | eta 1e-4 / 5e-5 relative residual 1.02998 / 0.69919；没有 accepted linear step |
-| `reports/pilot_result.json` | `NOT_RUN` / `INCONCLUSIVE`；所有四门均无预训练证据 |
+| `reports/pilot_result.json` | v4 `PRELIMINARY_EXPERIMENT_COMPLETE` / `INCONCLUSIVE`；不得当作 v5 GO |
 | `reports/remote_cleanup_20260907.json` | 307 项旧结果/代码清理完成，保留模型资产 |
 | [docs/CLAIMS.md](docs/CLAIMS.md) | 声明到证据等级对应表 |
 
@@ -84,7 +84,7 @@
 - [Dev 步长回执](reports/dev_first2/step_calibration/receipt.json)：两个 step 都未通过线性残差门，pilot 保持 INCONCLUSIVE。
 - [服务器环境下 CPU 测试](reports/validation/remote_cpu_tests_final.log)：94 passed；本地与服务器版本不同，分别记录。
 
-## 当前两小时周期
+## v4 历史两小时周期
 
 - [两小时实验报告](reports/cycle_2h_REPORT.md)
 - [周期计划和截止时间](reports/cycle_2h_20260907.json)
@@ -103,3 +103,25 @@
 
 - [v4受挫原因与v5理论审查](reports/v5_review/ANALYSIS.md)：ANALYZED；未重启服务器，未改变主线。含给Pro的五项优先问题。
 - [独立分层重配对有限枚举](reports/v5_review/verify_reblocking.json)：CPU有限例子，不是真实模型收益。
+
+## v5.1 主线、实测与交接
+
+- [本轮实验报告](reports/trend_pilot/REPORT.md) / [详细诊断](reports/trend_pilot/ANALYSIS.md) / [机器可读诊断](reports/trend_pilot/diagnosis.json)
+- [原始实测配置](reports/trend_pilot/result/screen_config.json)、[主统计](reports/trend_pilot/result/screen/analysis.json)、[数据及梯度 hash 回执](reports/trend_pilot/result/screen/receipt.json)
+- [采样数值修复](reports/integer_sampler_fix/RESULT.md) / [同输出性能验证](reports/integer_sampler_fix/fast_replay_receipt.json)
+- `scripts/analyze_v5_1_trend.py`：CPU 原评分/权重/统计复算，逐题与逐宏组敏感性，反事实格式诊断
+
+- [一键运行交接](docs/experiments/V5_1_HANDOFF.md) / [新窗口 Luna 指令](docs/experiments/LUNA_START.md)
+- [无卡准备验证](reports/v5_1_prepare/VALIDATION.md) / [历史预算对账](reports/v5_1_prepare/budget_inventory.json)
+- [Pro 原始 guidance](docs/theory/v5_1_original/guidance.md) / [完整参考包](docs/theory/v5_1_original/README.md) / [源文件核验](reports/v5_1_prepare/source_verification.json)
+- [本机重新运行的 CPU oracle](reports/v5_1_prepare/oracle/verify_v5_1_results.json)：不是自然模型结果
+- [Dev](reports/v5_1_prepare/Dev_structure.json)、[C](reports/v5_1_prepare/C_structure.json)、[D](reports/v5_1_prepare/D_structure.json) 原 v4 固定银行结构分析
+- `src/stratified_grpo/weights.py`：Strat-full / IID-all / cross / 网格正负精确权重
+- `src/stratified_grpo/sampling.py`：私有 fresh RNG 条件区间采样
+- `src/stratified_grpo/model.py`：共同 LoRA 初始化、原始策略 score、聚合梯度
+- `src/stratified_grpo/calibration.py` / `pipeline.py` / `statistics.py`：数值校准、macro-bank 测量、层级统计与报告
+- `src/stratified_grpo/online.py`：共同 warmup、fresh-bank 在线单 run、同预算更多题
+- `scripts/start_v5_1.sh` / `scripts/v5_1_control.py`：预检、后台启动、硬预算、状态与报告
+- `scripts/repair_v4_diagnostics.py` / `src/reward_coupling/diagnostics.py`：旧缺失投影、中心化估计、精确重置中心差分
+- `scripts/prepare_v5_1_stage_e.py`：从真实 Stage-D 证据编译后续配置，不运行训练
+- `configs/v5_1/`：预声明 Dev 和确认配置；`data/v5_1/`：固定来源 SVAMP 与分割

@@ -1,0 +1,26 @@
+{
+  "status": "EXACT_REPLAY_PASS",
+  "sample_count_added": 0,
+  "rows": 8,
+  "original_rows_sha256": "7c3719ac56015a74516d25ca1593455d8fdd2bfa74fd866973ad42ac882a3659",
+  "costs": {
+    "generation_seconds": 64.77688943222165,
+    "scoring_seconds": 0.002280370332300663,
+    "weight_seconds": 0.0011907704174518585,
+    "replay_seconds": 12.190292844548821
+  },
+  "old_costs": {
+    "generation_seconds": 142.9014349654317,
+    "scoring_seconds": 0.0021683573722839355,
+    "weight_seconds": 0.0012228023260831833,
+    "replay_seconds": 11.87465425953269
+  },
+  "new_over_old_macro_cost": 0.4972923621802475,
+  "model_load_seconds": 33.25984730385244,
+  "errors": {
+    "max_token_error": 0.00010144930058797463,
+    "max_sequence_error": 0.0002512303858495102,
+    "l2_A": 0.0,
+    "l2_B": 26.779233452142435
+  }
+}

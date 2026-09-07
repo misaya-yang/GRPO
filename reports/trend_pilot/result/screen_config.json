@@ -45,29 +45,20 @@
   "projection_seed": 50811,
   "analysis_seed": 50812,
   "stage": "confirmation",
-  "macro_repeats": 8,
+  "macro_repeats": 4,
   "seed": 50814,
-  "stage_max_seconds": 7200,
+  "stage_max_seconds": 3519,
   "prompt_ids": [
     "svamp-452a829b11e09d01",
     "svamp-562b610e1bbbe4ae",
     "svamp-3261dfcf9d6219ae",
-    "svamp-298f11f5543c1c0f",
-    "svamp-49353591084b2191",
-    "svamp-f61ef09fbee2c3fa",
-    "svamp-2ad674abd4290e4a",
-    "svamp-08470d73b3424854",
-    "svamp-c76bcea8d4875ca3",
-    "svamp-10fa28616de78e2a",
-    "svamp-3b6a32a3b3d64c5d",
-    "svamp-4990e6d7addec32d",
-    "svamp-ac745f7bbc158f08",
-    "svamp-0f7788a35734e960",
-    "svamp-ab72c428ea5cfe8a",
-    "svamp-b1b788a9fd1a117d"
+    "svamp-298f11f5543c1c0f"
   ],
   "tasks_sha256": "5889766e0d22c5110878802be084c0e1ac3fc2a468931ea6e6960f8ab4841771",
   "cross_diagnostic_macros": 0,
   "cpu_embeddings": true,
-  "offload_activations": true
+  "offload_activations": true,
+  "dev_freeze": "/root/autodl-tmp/feedback-grpo/runs/v5_1_20260907T091300Z/dev_freeze.json",
+  "dev_freeze_sha256": "9dc698b1f9df2b03882d7823cc1324d173a7845501c13bf23526d98c1163cfb7",
+  "scope": "user_requested_exploratory_trend_not_full_confirmation"
 }

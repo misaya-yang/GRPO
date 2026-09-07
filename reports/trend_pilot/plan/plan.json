@@ -1,0 +1,11 @@
+{
+  "user_decision": "\u5148\u770b\u8d8b\u52bf\u518d\u5224\u65ad\u8ffd\u52a0\u6295\u5165",
+  "prompts": 4,
+  "repeats_per_arm_per_prompt": 4,
+  "responses": 256,
+  "selection": "First four predeclared unseen confirmation prompts; no reward-dependent selection",
+  "full_confirmation_not_run": true,
+  "source_plan": "runs/v5_1_20260907T091300Z",
+  "unchanged": "K,N,model,score,LoRA,stratification,primary estimators",
+  "speedup": "exact same eight responses, logp, RNG, reward and release; CPU limb vectorization only"
+}

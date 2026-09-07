@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-07",
+  "scope": "CPU pre-commit checks; no new GPU work",
+  "tests": {
+    "command": "make test PYTHON=<aidemo python>",
+    "passed": 139,
+    "elapsed_seconds": 6.68
+  },
+  "lint": "make lint PASS",
+  "exact": "make exact PASS; exact.json preserves output",
+  "saved_data_reproduction": "original verifier, all weights, primary ratios and intervals passed",
+  "source_hashes": {
+    "src/dependent_rollouts/sampling.py": "1c83bfd0435af911dc41e6c887edb40ad5a36ea5cc9d1d6efd6fff70b27cdbbc",
+    "src/stratified_grpo/sampling.py": "d26ded09ce191b192bea544a89ffb65ad8c8264af0316eab7333a87a13761013",
+    "src/stratified_grpo/model.py": "7c3cd6cbf747b1e04af9befe324e3bc8eeb7d7a6d3b623fbb954333f008b58a3",
+    "scripts/analyze_v5_1_trend.py": "3daf61cc5a808877aee08cddbae661ff6dabbb8be0bc8c4fe7bb12ff42c7ca92",
+    "scripts/v5_1_control.py": "f6fee0d2ffbf6714b878d308c0e73aa4ebf1870fc188875297de1f0fcb91482a"
+  }
+}

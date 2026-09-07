@@ -118,7 +118,7 @@ def collect(config_path, tasks_path, output):
             "tasks_sha256": sha256(tasks_path),
             "verifier_version": VERIFIER_VERSION,
             "loss": "detached_advantage_times_sum_response_logp_including_EOS",
-            "sampler_numeric_law": "float64_CDF_with_lazy_rational_sequence_uniform",
+            "sampler_numeric_law": "integer_CDF_binary64_weights_with_lazy_rational_sequence_uniform",
         }
     )
     write_json(out / "manifest.json", manifest)

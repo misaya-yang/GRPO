@@ -1,0 +1,11 @@
+{
+  "status": "COMPLETE",
+  "macros": 32,
+  "rows": 256,
+  "model_load_seconds": 31.871642817743123,
+  "elapsed_seconds": 2471.2262046476826,
+  "rows_sha256": "9faebe7a0afcea0b8b57be7e37939fefdbd38513f9f1850b427dd0891e28e667",
+  "progress_sha256": "9d8c87a8cadd1e755e8b6b707e3e2588c0d28e87542e3476d12931f82a5efbc2",
+  "manifest_sha256": "4767a7fec8b96ef1702d823062b81c105eb4b9a8321c24613de58b3b16e823de",
+  "cuda_peak_allocated_bytes": 30611364864
+}

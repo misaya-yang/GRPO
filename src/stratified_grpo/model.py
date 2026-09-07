@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+from contextlib import nullcontext
 from pathlib import Path
 
 import numpy as np
@@ -114,6 +115,10 @@ def load_model(config):
         revision=config["tokenizer_revision"],
         trust_remote_code=False,
     )
+    if config.get("cpu_embeddings", False):
+        embedding = model.get_input_embeddings().to("cpu")
+        embedding.register_forward_hook(lambda module, args, output: output.to(config["device"]))
+    model._stratified_offload_activations = config.get("offload_activations", False)
     install_lora(model, **config["lora"])
     if config.get("adapter_path"):
         from safetensors.torch import load_file
@@ -141,7 +146,11 @@ def token_logps(model, prompt_ids, response_ids):
     device = model.get_input_embeddings().weight.device
     ids = torch.tensor([prompt_ids + response_ids], device=device)
     logits = model(input_ids=ids, use_cache=False).logits[0, len(prompt_ids) - 1 : -1].double()
-    return logits.log_softmax(-1).gather(1, ids[0, len(prompt_ids) :, None]).squeeze(1)
+    return (
+        logits.log_softmax(-1)
+        .gather(1, ids[0, len(prompt_ids) :, None].to(logits.device))
+        .squeeze(1)
+    )
 
 
 def aggregate_gradient(model, rows, weights, token_tolerance, sequence_tolerance):
@@ -152,8 +161,23 @@ def aggregate_gradient(model, rows, weights, token_tolerance, sequence_tolerance
         raise ValueError("Invalid bank/weights")
     model.eval().zero_grad(set_to_none=True)
     errors = []
+    storages = {p.untyped_storage().data_ptr() for p in model.parameters()}
+
+    def pack(tensor):
+        if tensor.device.type == "cpu" or tensor.untyped_storage().data_ptr() in storages:
+            return tensor
+        return tensor.device, tensor.to("cpu")
+
+    def unpack(value):
+        return value[1].to(value[0]) if isinstance(value, tuple) else value
+
     for row, weight in zip(rows, weights, strict=True):
-        with torch.set_grad_enabled(bool(weight)):
+        context = (
+            torch.autograd.graph.saved_tensors_hooks(pack, unpack)
+            if getattr(model, "_stratified_offload_activations", False)
+            else nullcontext()
+        )
+        with context, torch.set_grad_enabled(bool(weight)):
             lp = token_logps(model, row["prompt_ids"], row["response_ids"])
         actual = lp.detach().cpu().numpy()
         expected = np.asarray(row["sampling_token_logp"])
