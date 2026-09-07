@@ -1,0 +1,71 @@
+{
+  "model_id": "Qwen/Qwen2.5-7B-Instruct",
+  "model_path": "/root/autodl-tmp/models/Qwen2.5-7B-Instruct",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "checkpoint_manifest": "/root/autodl-tmp/feedback-assets/qwen7b_checkpoint.json",
+  "checkpoint_manifest_sha256": "5b46432ffe9cedd6681211efaa5a1a0948fbb3d95c274792f143e6203c377fa3",
+  "device": "cuda",
+  "K": 4,
+  "B": 4,
+  "m": 2,
+  "arms": [
+    "iid_all",
+    "stratified_full"
+  ],
+  "epsilon": 1e-06,
+  "score": "original_policy_sum_including_emitted_EOS",
+  "sampling": "independent_conditional_interval",
+  "onset": 0,
+  "token_order": "vocabulary_id",
+  "temperature": 1.0,
+  "base_dtype": "bfloat16",
+  "lora": {
+    "rank": 8,
+    "alpha": 16,
+    "targets": [
+      "q_proj",
+      "v_proj"
+    ],
+    "seed": 20260907
+  },
+  "max_new_tokens": 192,
+  "token_logp_tolerance": 0.001,
+  "sequence_logp_tolerance": 0.01,
+  "cdf_tv_tolerance": 1e-10,
+  "numeric_calibration_ceiling": {
+    "token": 0.05,
+    "sequence": 0.25
+  },
+  "metric": "full_lora_gradient_trace",
+  "practical_threshold": 0.85,
+  "use_cache": true,
+  "cpu_threads": 4,
+  "functional_projections": 4,
+  "projection_seed": 50811,
+  "analysis_seed": 50812,
+  "stage": "confirmation",
+  "macro_repeats": 8,
+  "seed": 50814,
+  "stage_max_seconds": 7200,
+  "prompt_ids": [
+    "svamp-452a829b11e09d01",
+    "svamp-562b610e1bbbe4ae",
+    "svamp-3261dfcf9d6219ae",
+    "svamp-298f11f5543c1c0f",
+    "svamp-49353591084b2191",
+    "svamp-f61ef09fbee2c3fa",
+    "svamp-2ad674abd4290e4a",
+    "svamp-08470d73b3424854",
+    "svamp-c76bcea8d4875ca3",
+    "svamp-10fa28616de78e2a",
+    "svamp-3b6a32a3b3d64c5d",
+    "svamp-4990e6d7addec32d",
+    "svamp-ac745f7bbc158f08",
+    "svamp-0f7788a35734e960",
+    "svamp-ab72c428ea5cfe8a",
+    "svamp-b1b788a9fd1a117d"
+  ],
+  "tasks_sha256": "5889766e0d22c5110878802be084c0e1ac3fc2a468931ea6e6960f8ab4841771",
+  "cross_diagnostic_macros": 0
+}

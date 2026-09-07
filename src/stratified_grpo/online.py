@@ -64,6 +64,18 @@ def _validate(config, mode):
         adapter = Path(config.get("adapter_path", ""))
         if not adapter.is_file() or sha256(adapter) != config.get("adapter_sha256"):
             raise ValueError("Online arms require the identical frozen common adapter")
+        common_path = Path(config.get("common_checkpoint_receipt", ""))
+        if not common_path.is_file() or sha256(common_path) != config.get(
+            "common_checkpoint_receipt_sha256"
+        ):
+            raise ValueError("Missing or modified common warmup receipt")
+        common = json.loads(common_path.read_text())
+        if (
+            common.get("status") != "common_warmup_complete"
+            or common.get("adapter_sha256") != config.get("adapter_sha256")
+            or common.get("shared_initialization_id") != config.get("shared_initialization_id")
+        ):
+            raise ValueError("Online arm does not match the frozen common warmup")
     if config.get("on_policy") is not True or config.get("epochs_per_bank") != 1:
         raise ValueError("Online training requires one on-policy epoch per fresh bank")
     if config.get("clip_policy_ratio") is not False:
@@ -184,11 +196,14 @@ def _collect(collector, model, tokenizer, config, task, macro, arm, deadline):
     return rows, costs
 
 
-def _run(config_path, tasks_path, decision_path, output, mode, collector=None):
+def _run(config_path, tasks_path, output, mode, collector=None):
     import torch
 
     config = json.loads(Path(config_path).read_text())
     arm = _validate(config, mode)
+    decision_path = config.get("stage_d_decision")
+    if not decision_path:
+        raise ValueError("Missing frozen Stage-D decision path")
     decision = _stage_d_decision(config, decision_path)
     training_tasks, evaluation_tasks = _task_sets(config, tasks_path)
     if collector is None:
@@ -358,6 +373,7 @@ def _run(config_path, tasks_path, decision_path, output, mode, collector=None):
         "mode": mode,
         "arm": arm,
         "seed": config["seed"],
+        "shared_initialization_id": config["shared_initialization_id"],
         "updates": len(update_summaries),
         "adapter": str(adapter_path),
         "adapter_sha256": adapter_sha256,
@@ -374,11 +390,11 @@ def _run(config_path, tasks_path, decision_path, output, mode, collector=None):
     return result
 
 
-def run_common_warmup(config_path, tasks_path, decision_path, output, collector=None):
+def run_common_warmup(config_path, tasks_path, output, collector=None):
     """Run one evidence-gated common IID warmup and independent evaluation."""
-    return _run(config_path, tasks_path, decision_path, output, "common_warmup", collector)
+    return _run(config_path, tasks_path, output, "common_warmup", collector)
 
 
-def run_online(config_path, tasks_path, decision_path, output, collector=None):
+def run_online(config_path, tasks_path, output, collector=None):
     """Run one arm and one seed from a frozen common adapter, then evaluate."""
-    return _run(config_path, tasks_path, decision_path, output, "online", collector)
+    return _run(config_path, tasks_path, output, "online", collector)

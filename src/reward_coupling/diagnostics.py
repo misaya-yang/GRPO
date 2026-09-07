@@ -107,7 +107,7 @@ def direction_identity(direction_path, manifest):
             for name in sorted(handle.keys())
         ]
     config = manifest["config"]
-    return {
+    identity = {
         "direction_hash": sha256(path),
         "parameter_space_hash": digest(schema),
         "parameter_schema": schema,
@@ -117,6 +117,16 @@ def direction_identity(direction_path, manifest):
         "score_reduction": config.get("loss_reduction"),
         "dtype_contract": config.get("dtype"),
     }
+    required = (
+        "direction_hash",
+        "parameter_space_hash",
+        "checkpoint_hash",
+        "score_reduction",
+        "dtype_contract",
+    )
+    if any(not identity[key] for key in required):
+        raise ValueError("Incomplete checkpoint/direction projection identity")
+    return identity
 
 
 def normalize_projection_rows(
@@ -197,22 +207,29 @@ def normalize_projection_rows(
 
 
 def _weighted_projection(records, coefficients):
-    required = [
-        row["trajectory_id"]
+    missing = {
+        row["trajectory_id"]: float(coefficient)
         for row, coefficient in zip(records, coefficients, strict=True)
         if coefficient != 0 and row["projection_status"] != "measured"
-    ]
-    if required:
+    }
+    known = sum(
+        coefficient * (row["projection_value"] or 0.0)
+        for row, coefficient in zip(records, coefficients, strict=True)
+        if row["projection_status"] == "measured"
+    )
+    if missing:
         return {
             "status": "not_measured",
             "value": None,
-            "missing_projection_ids": required,
+            "known_measured_contribution": float(known),
+            "missing_projection_coefficients": missing,
+            "missing_projection_ids": list(missing),
         }
-    value = sum(
-        coefficient * (row["projection_value"] or 0.0)
-        for row, coefficient in zip(records, coefficients, strict=True)
-    )
-    return {"status": "measured", "value": float(value), "missing_projection_ids": []}
+    return {
+        "status": "measured",
+        "value": float(known),
+        "missing_projection_ids": [],
+    }
 
 
 def projection_estimators(records):

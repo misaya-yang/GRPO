@@ -114,10 +114,9 @@ def checkpoint_parameter_status(model, config, restore_plan=None):
         for filename, names in plan.items():
             with safe_open(source / filename, framework="pt", device="cpu") as handle:
                 for name in names:
-                    expected = handle.get_tensor(name).to(
-                        parameters[name].device, parameters[name].dtype
-                    )
-                    changed = int(torch.count_nonzero(parameters[name] != expected))
+                    expected = handle.get_tensor(name).to(dtype=parameters[name].dtype)
+                    actual = parameters[name].detach().to("cpu")
+                    changed = int(torch.count_nonzero(actual != expected))
                     changed_elements += changed
                     changed_tensors += int(changed > 0)
     return {

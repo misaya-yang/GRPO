@@ -139,6 +139,10 @@ def test_missing_projection_is_null_and_repairs_raw_b1_rloo():
     }
     assert before["estimators"]["fixed_baseline_b1"]["value"] is None
     assert before["estimators"]["rloo"]["value"] is None
+    assert before["estimators"]["fixed_baseline_b1"]["missing_projection_coefficients"] == {
+        "b:0:1": -0.25
+    }
+    assert before["estimators"]["rloo"]["known_measured_contribution"] == pytest.approx(1.0)
 
     replace_single_missing_projection(records, "b:0:1", -6.0)
     after = projection_estimators(records)
