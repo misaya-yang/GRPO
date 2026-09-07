@@ -1,0 +1,48 @@
+{
+  "recorded_utc": "2026-09-07T05:47:30.797005+00:00",
+  "tests_local": 94,
+  "tests_remote": 94,
+  "status": "PASS",
+  "logs": {
+    "local_tests.log": {
+      "sha256": "d9415f953a1d731e46edefa0674bbc9f96489b70275c3b34616bbf26fc8438cb",
+      "tail": [
+        "........................................................................ [ 76%]",
+        "......................                                                   [100%]",
+        "94 passed in 3.24s"
+      ]
+    },
+    "remote_cpu_tests_final.log": {
+      "sha256": "87eecc9daf0a310a6031c34db6847f57fd38aee1b32691a9c9b1ae3af02f5b27",
+      "tail": [
+        "........................................................................ [ 76%]",
+        "......................                                                   [100%]",
+        "94 passed in 9.80s"
+      ]
+    },
+    "lint.log": {
+      "sha256": "877785fc82a936ca5b3fbe64ef4b9229787a5f9de76a500ea053d82870b09515",
+      "tail": [
+        "All checks passed!",
+        "ruff format --check .",
+        "48 files already formatted"
+      ]
+    },
+    "exact_final.log": {
+      "sha256": "cc4cdd0e7122a59072f73de34461d015dbfb9d8ea1d5cb10c35a023dbd609307",
+      "tail": [
+        "PYTHONPATH=src /Users/misaya.yanghejazfs.com.au/miniconda3/envs/aidemo/bin/python scripts/validate_exact.py --output runs/exact/$(date -u +%Y%m%dT%H%M%SZ).json",
+        "runs/exact/20260907T045459Z.json"
+      ]
+    },
+    "package_build_final.log": {
+      "sha256": "86e9c5a6be5d7d6120588670842c4281f88727099926b3ea05be42400109072d",
+      "tail": [
+        "Building wheel from source distribution...",
+        "Successfully built runs/packagecheck-final/dependent_rollouts-0.1.0.tar.gz",
+        "Successfully built runs/packagecheck-final/dependent_rollouts-0.1.0-py3-none-any.whl"
+      ]
+    }
+  },
+  "scope": "CPU correctness and packaging; not pilot GO"
+}

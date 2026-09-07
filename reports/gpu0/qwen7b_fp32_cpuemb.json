@@ -1,0 +1,18 @@
+{
+  "status": "PASS_pretrained_score_and_full_gradient_plumbing_only",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "dtype": "float32",
+  "gradient_storage": "CPU_after_accumulation",
+  "tokens": 32,
+  "truncated": true,
+  "max_token_error": 3.958325204667101e-06,
+  "loading_seconds": 30.360990449786186,
+  "generation_seconds": 2.8518995186313987,
+  "gradient_seconds": 29.418719968758523,
+  "gradient_norm": 501.646231978103,
+  "peak_gpu_bytes": 32080404992,
+  "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+  "natural_coupling_effect": "NOT_MEASURED",
+  "pilot_decision": "NOT_RUN"
+}

@@ -1,0 +1,71 @@
+{
+  "source_sha256": "b54e762755248ca411b523c917fa9f93c07b5ff2966bf60b3917b853926a3dad",
+  "decoder_sha256": "186e09b7b14dcf12ed259dfca1d6644a1c266c1bbac41c917fd3c0449a734b24",
+  "tasks_sha256": "a39d757611cb58d9d7f48f49e0920f0be1b4c6dd7a93cd9dcda28bf6f37746b4",
+  "seed": 20260906,
+  "excluded": [
+    {
+      "id": "Mbpp/2",
+      "reason": "predeclared_special_oracle_not_in_subset"
+    },
+    {
+      "id": "Mbpp/7",
+      "reason": "predeclared_special_oracle_not_in_subset"
+    },
+    {
+      "id": "Mbpp/111",
+      "reason": "predeclared_special_oracle_not_in_subset"
+    },
+    {
+      "id": "Mbpp/140",
+      "reason": "predeclared_special_oracle_not_in_subset"
+    },
+    {
+      "id": "Mbpp/232",
+      "reason": "predeclared_special_oracle_not_in_subset"
+    },
+    {
+      "id": "Mbpp/558",
+      "reason": "predeclared_special_oracle_not_in_subset"
+    },
+    {
+      "id": "Mbpp/579",
+      "reason": "predeclared_special_oracle_not_in_subset"
+    },
+    {
+      "id": "Mbpp/581",
+      "reason": "predeclared_special_oracle_not_in_subset"
+    },
+    {
+      "id": "Mbpp/635",
+      "reason": "too_few_distinct_test_inputs"
+    },
+    {
+      "id": "Mbpp/734",
+      "reason": "too_few_distinct_test_inputs"
+    },
+    {
+      "id": "Mbpp/737",
+      "reason": "predeclared_special_oracle_not_in_subset"
+    },
+    {
+      "id": "Mbpp/769",
+      "reason": "predeclared_special_oracle_not_in_subset"
+    },
+    {
+      "id": "Mbpp/787",
+      "reason": "predeclared_special_oracle_not_in_subset"
+    },
+    {
+      "id": "Mbpp/793",
+      "reason": "unsupported_or_missing_plus_input_schema"
+    },
+    {
+      "id": "Mbpp/794",
+      "reason": "predeclared_special_oracle_not_in_subset"
+    }
+  ],
+  "rows": 363,
+  "status": "frozen_before_actor_reference_check_required",
+  "tests_per_task": 8
+}

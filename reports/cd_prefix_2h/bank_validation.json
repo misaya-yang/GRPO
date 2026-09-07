@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "C_prompts": 8,
+  "D_prompts": 4,
+  "C_D_config_equal": true,
+  "checks": [
+    "sealed files and manifests",
+    "complete K8 groups",
+    "disjoint prompts, group seeds and actor streams",
+    "IID uniform cache mode",
+    "per-token and sequence score gates"
+  ],
+  "max_sequence_error_C": 0.00027314551462254144,
+  "max_sequence_error_D": 0.000266105692366736
+}

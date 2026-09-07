@@ -1,0 +1,316 @@
+{
+  "targets": {
+    "average": {
+      "estimate": 81.9927326696509,
+      "per_prompt": {
+        "Mbpp/409": 295.43814121592044,
+        "Mbpp/474": -21.845179243893654,
+        "Mbpp/591": 7.373516334548473,
+        "Mbpp/778": 47.00445237202835
+      },
+      "uncertainty": "C_fixed_D_prompt_values_not_full_two_bank_CI"
+    },
+    "suite": {
+      "estimate": 81.9927326696509,
+      "per_prompt": {
+        "Mbpp/409": 295.43814121592044,
+        "Mbpp/474": -21.845179243893654,
+        "Mbpp/591": 7.373516334548473,
+        "Mbpp/778": 47.00445237202835
+      },
+      "uncertainty": "C_fixed_D_prompt_values_not_full_two_bank_CI"
+    }
+  },
+  "rows": [
+    {
+      "prompt_id": "Mbpp/778",
+      "trajectory_id": "Mbpp/778:0:0",
+      "score_projection": 253.278979790853,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/778",
+      "trajectory_id": "Mbpp/778:0:1",
+      "score_projection": -152.0839455119651,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/778",
+      "trajectory_id": "Mbpp/778:0:2",
+      "score_projection": 6.496523523090166,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/778",
+      "trajectory_id": "Mbpp/778:0:3",
+      "score_projection": 58.32962647264581,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/778",
+      "trajectory_id": "Mbpp/778:0:4",
+      "score_projection": 39.08432277026802,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/778",
+      "trajectory_id": "Mbpp/778:0:5",
+      "score_projection": 6.496523523090166,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/778",
+      "trajectory_id": "Mbpp/778:0:6",
+      "score_projection": 123.13243667352607,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/778",
+      "trajectory_id": "Mbpp/778:0:7",
+      "score_projection": 41.30115173471865,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/474",
+      "trajectory_id": "Mbpp/474:0:0",
+      "score_projection": 48.44280996064204,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/474",
+      "trajectory_id": "Mbpp/474:0:1",
+      "score_projection": -465.4182937150014,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/474",
+      "trajectory_id": "Mbpp/474:0:2",
+      "score_projection": 48.44280996064204,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/474",
+      "trajectory_id": "Mbpp/474:0:3",
+      "score_projection": 48.44280996064204,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/474",
+      "trajectory_id": "Mbpp/474:0:4",
+      "score_projection": 48.44280996064204,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/474",
+      "trajectory_id": "Mbpp/474:0:5",
+      "score_projection": 48.44280996064204,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/474",
+      "trajectory_id": "Mbpp/474:0:6",
+      "score_projection": 48.44280996064204,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/474",
+      "trajectory_id": "Mbpp/474:0:7",
+      "score_projection": 0.0,
+      "score_projection_computed": false,
+      "zero_reward_placeholder": true,
+      "average": 0.0,
+      "suite": 0.0
+    },
+    {
+      "prompt_id": "Mbpp/591",
+      "trajectory_id": "Mbpp/591:0:0",
+      "score_projection": -31.611038789825283,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/591",
+      "trajectory_id": "Mbpp/591:0:1",
+      "score_projection": -92.6386995064424,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/591",
+      "trajectory_id": "Mbpp/591:0:2",
+      "score_projection": 91.05898465385022,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/591",
+      "trajectory_id": "Mbpp/591:0:3",
+      "score_projection": -31.611038789825283,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/591",
+      "trajectory_id": "Mbpp/591:0:4",
+      "score_projection": -7.28283105915383,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/591",
+      "trajectory_id": "Mbpp/591:0:5",
+      "score_projection": -9.554631599879311,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/591",
+      "trajectory_id": "Mbpp/591:0:6",
+      "score_projection": 90.87411228450686,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/591",
+      "trajectory_id": "Mbpp/591:0:7",
+      "score_projection": 49.75327348315684,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/409",
+      "trajectory_id": "Mbpp/409:0:0",
+      "score_projection": 2723.5524603578497,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/409",
+      "trajectory_id": "Mbpp/409:0:1",
+      "score_projection": -170.1979198538353,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/409",
+      "trajectory_id": "Mbpp/409:0:2",
+      "score_projection": -8.293202031786377,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/409",
+      "trajectory_id": "Mbpp/409:0:3",
+      "score_projection": -77.6483482576759,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/409",
+      "trajectory_id": "Mbpp/409:0:4",
+      "score_projection": -8.293202031786377,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/409",
+      "trajectory_id": "Mbpp/409:0:5",
+      "score_projection": -8.293202031786377,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/409",
+      "trajectory_id": "Mbpp/409:0:6",
+      "score_projection": -8.293202031786377,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    },
+    {
+      "prompt_id": "Mbpp/409",
+      "trajectory_id": "Mbpp/409:0:7",
+      "score_projection": -79.02825439182959,
+      "score_projection_computed": true,
+      "zero_reward_placeholder": false,
+      "average": 1.0,
+      "suite": 1.0
+    }
+  ],
+  "partial_artifact": "D_target_rows.partial.jsonl",
+  "partial_artifact_status": "unsealed_diagnostic_not_completion_indicator"
+}

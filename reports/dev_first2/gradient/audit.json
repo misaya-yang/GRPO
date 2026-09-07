@@ -1,0 +1,8 @@
+{
+  "max_token_error": 0.00011976398031254831,
+  "elapsed_seconds": 609.9557659309357,
+  "gradient_l2": 11.98609163397219,
+  "prompts": 2,
+  "activation_storage": "CPU",
+  "aggregate_storage": "single_global_gradient"
+}

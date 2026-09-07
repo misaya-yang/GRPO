@@ -1,0 +1,7 @@
+{
+  "source_sha256": "5be77703a6d891ae476d7c082787ad361392aa02453b132516cdd5f4e7934e3e",
+  "seed": 20260907,
+  "original_rows": 1000,
+  "deduplicated_rows": 1000,
+  "rule": "seeded_permutation_after_normalized_text_deduplication"
+}

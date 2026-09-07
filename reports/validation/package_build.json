@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "wheel": "runs/packagecheck/dependent_rollouts-0.1.0-py3-none-any.whl",
+  "sha256": "30a8347311e705684e9feb7a40e9104dd2d1a40ca0f39c6943998ff1b4cb467b",
+  "both_cli_packages_present": true
+}

@@ -1,0 +1,24 @@
+{
+  "status": "DESCRIPTIVE_SENSITIVITY_NOT_REESTIMATED_PRIMARY_RESULT",
+  "primary_estimate": 81.9927326696509,
+  "per_prompt": {
+    "Mbpp/409": 295.43814121592044,
+    "Mbpp/474": -21.845179243893654,
+    "Mbpp/591": 7.373516334548473,
+    "Mbpp/778": 47.00445237202835
+  },
+  "largest_single_contribution": 85.1110143861828,
+  "largest_trajectory_id": "Mbpp/409:0:0",
+  "leave_one_trajectory_out_equal_prompt_mean": -4.725635871132289,
+  "leave_one_prompt_out_means": {
+    "Mbpp/409": 10.844263154227724,
+    "Mbpp/474": 116.60536997416575,
+    "Mbpp/591": 106.86580478135171,
+    "Mbpp/778": 93.65549276885842
+  },
+  "all_256_D_empirical_bootstrap_mean_range": [
+    -21.845179243893654,
+    295.43814121592044
+  ],
+  "scope": "Only4 D prompts conditional on fixed C; no full C/D CI. No rows removed from primary estimate."
+}

@@ -1,0 +1,31 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "prepared_utc": "2026-09-07T05:33:52.256437+00:00",
+  "selection_basis": "Dev calibration only: eta1e-4 and5e-5 had relative residual1.02998/.69919. No C/D outcome used to choose smaller step.",
+  "basis_receipt_sha256": "e0cdaad660344d6b61708873ee6bdf1b7ea6c635c13896c3b3b0e8f3d7f65c38",
+  "bank": "runs/dev_first2_scored_20260907",
+  "functions": "runs/dev_step_calibration_2h_20260907/functions.json",
+  "functions_sha256": "3b97ca1f52b9a4f7a72bc2fe2e1e9e8015e577bdc085c0bb0038081115a7fa13",
+  "common_eta": 5e-06,
+  "half_eta": 2.5e-06,
+  "minimum_acceptance_rule": {
+    "max_relative_residual_each_step": 0.1,
+    "require_smaller_absolute_residual_at_half": true,
+    "require_exact_checkpoint_restoration": true,
+    "scope": "engineering local-linearity diagnostic, not Hessian bound or statistical confidence"
+  },
+  "gradient_cache": "Dev delta cache was removed; recompute same bank once before calibration",
+  "no_automatic_training": true,
+  "commands": [
+    "python -m reward_coupling.cli audit --bank runs/dev_first2_scored_20260907 --arm difference --output runs/dev_difference_next",
+    "python scripts/dev_step_calibration.py --bank runs/dev_first2_scored_20260907 --difference runs/dev_difference_next --tasks data/feedback/mbpp_pilot.jsonl --functions runs/dev_step_calibration_2h_20260907/functions.json --step 5e-6 --output runs/dev_calibration_next"
+  ],
+  "runtime_selection": "Use the observed host Python and PYTHONPATH=src; set a new bounded budget and absolute deadline before launch.",
+  "storage_plan": {
+    "dense_gradient_bytes": 30462505048,
+    "observed_free_space_at_cycle_end": "approximately18GiB",
+    "before_launch": "Provide a volume with at least31GB free, or release the completed recomputable C gradient cache after preserving its sealed receipt, source snapshot, original banks and finished C/D projections. Choose from actual host capacity; no model weights or original banks need deletion.",
+    "completed_C_cache": "runs/C8_difference_2h_20260907/gradient.safetensors",
+    "completed_C_cache_sha256": "145f6155fe616ff6251e9fadc04b2f30200a706692d4c98186678bb9f09bce76"
+  }
+}

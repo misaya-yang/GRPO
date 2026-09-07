@@ -1,0 +1,65 @@
+{
+  "status": "Dev_calibration_not_confirmation",
+  "functions_sha256": "3b97ca1f52b9a4f7a72bc2fe2e1e9e8015e577bdc085c0bb0038081115a7fa13",
+  "bank_sha256": "9a82c49920be3e2975d0416bf707a90cb80cebcbbefb702daf5e7601629bd0c6",
+  "difference_sha256": "300dd4f62eb6d13f80e500d5b4769e3ccde6a8a828a0f79444bec0f8933df74a",
+  "max_token_error": 0.00011976398031254831,
+  "readout_ids": [
+    "Mbpp/14",
+    "Mbpp/577"
+  ],
+  "slopes": [
+    -3470.964737065184,
+    -1226.121338824465
+  ],
+  "independent_slopes": [
+    -39713.63212926152,
+    10858.585942747843
+  ],
+  "functional_positive_scale": {
+    "status": "descriptive_not_a_significance_test",
+    "signed_scale": 1.0734658925229812,
+    "positive_scale": 1.0734658925229812,
+    "residual": 2098.1450669848523
+  },
+  "steps": [
+    {
+      "step": 0.0001,
+      "predicted_shared_minus_independent": [
+        -0.3470964737065184,
+        -0.12261213388244652
+      ],
+      "actual_shared_minus_independent": [
+        -0.7096393126458693,
+        -0.2336030626224641
+      ],
+      "residual": [
+        -0.3625428389393509,
+        -0.11099092874001759
+      ],
+      "relative_residual": 1.0299787148787611
+    },
+    {
+      "step": 5e-05,
+      "predicted_shared_minus_independent": [
+        -0.1735482368532592,
+        -0.06130606694122326
+      ],
+      "actual_shared_minus_independent": [
+        -0.2990812710015547,
+        -0.08964059704921112
+      ],
+      "residual": [
+        -0.12553303414829547,
+        -0.028334530107987865
+      ],
+      "relative_residual": 0.6991867301358323
+    }
+  ],
+  "elapsed_seconds": 1128.8669510213658,
+  "shared_reconstruction": "same_bank_gradient_linearity",
+  "independent_reward_consequence": "NOT_MEASURED",
+  "independent_target_slopes": null,
+  "pilot_decision": "INCONCLUSIVE",
+  "definition_hash": "c14d2199ed45b306fbec2eed6f84280c93197afeb6f0bb865aafe85345002451"
+}

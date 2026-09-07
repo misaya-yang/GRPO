@@ -1,0 +1,21 @@
+{
+  "observed_utc": "2026-09-07T03:46:12.364130+00:00",
+  "python": "3.12.3 | packaged by Anaconda, Inc. | (main, May  6 2024, 19:46:43) [GCC 11.2.0]",
+  "executable": "/root/miniconda3/bin/python",
+  "architecture": "x86_64",
+  "packages": {
+    "torch": "2.8.0+cu128",
+    "transformers": "5.15.1",
+    "numpy": "2.3.2",
+    "accelerate": "1.14.0",
+    "safetensors": "0.8.0",
+    "peft": "0.20.0",
+    "datasets": null
+  },
+  "gpu": "NVIDIA GeForce RTX 4080 SUPER, 32760 MiB, 595.71.05",
+  "cgroup_memory": {
+    "/sys/fs/cgroup/memory.max": "66571993088",
+    "/sys/fs/cgroup/memory.high": "62277025792",
+    "/sys/fs/cgroup/memory.current": "38097186816"
+  }
+}

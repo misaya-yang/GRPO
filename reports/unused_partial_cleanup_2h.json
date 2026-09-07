@@ -1,0 +1,6 @@
+{
+  "utc": "2026-09-07T05:11:57.466442+00:00",
+  "path": "/root/autodl-tmp/models/Qwen2.5-Coder-1.5B-Instruct/model.safetensors.partial",
+  "bytes": 2055208960,
+  "reason": "Unused incomplete download; no experiment used it; existing complete Qwen7B and OLMo7B weights preserved"
+}

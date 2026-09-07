@@ -1,0 +1,4 @@
+{
+  "actual_file_mtime_utc": "2026-09-07T04:53:41.566315+00:00",
+  "note": "frozen_utc label was manually entered ahead of actual wall clock; immutable file mtime and preflight hash are the timing evidence. No C/D outcomes existed at freeze."
+}

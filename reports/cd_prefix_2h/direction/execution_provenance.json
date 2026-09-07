@@ -1,0 +1,21 @@
+{
+  "status": "COMPLETE",
+  "captured_utc": "2026-09-07T05:24:37.474717+00:00",
+  "executed_script_sha256": "fd141adbc0823b2aa70d47515ed1a1e85c897c269325d4cbbe128e64e5f77034",
+  "executed_source_snapshot_sha256": "7293a1522c70a8fd938f00fd26ec7024bf419c2e0101394faa404cfe68a630c9",
+  "functions_sha256": "3b97ca1f52b9a4f7a72bc2fe2e1e9e8015e577bdc085c0bb0038081115a7fa13",
+  "difference_sha256": "145f6155fe616ff6251e9fadc04b2f30200a706692d4c98186678bb9f09bce76",
+  "scope": "actual running pre-provenance-field script; future local script has additional metadata only",
+  "C": {
+    "rows_sha256": "a30dab4e1bd69ddf00d9fd4682880c7149d5cdfc400f3700485f509f41ce6450",
+    "manifest_sha256": "f72ca522f90f4bdb0449a0f9a7c0a94785426e4ae3c293690dd3cf7d4a7f34f8",
+    "receipt_sha256": "f07c7d45b6aafd432989dbb0006b19595925944d1e352dcdfb0e0b31edaf5dc6"
+  },
+  "D": {
+    "rows_sha256": "28575d893f9da02f733cc3d55e177501472e9b7dae239a75bad303a300ecd832",
+    "manifest_sha256": "bac1c3fd743142c137c9d65feb8f9908143b7b8486eda5ee03010445b0fded2f",
+    "receipt_sha256": "b797743c9492a61cdbf712e6f6a5c4d7972ae0c45cbeba3ca5dd46522cadebf3"
+  },
+  "final_receipt_sha256": "8d0c9496e07085f0e5b677f8d65bb1b62d020c589785a876c8b88dab01254045",
+  "D_target_prediction_sha256": "406977feb5658a395035bbf55a3ee7055d7167d43493d54e7dda116fa2f0be39"
+}

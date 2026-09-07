@@ -1,0 +1,16 @@
+{
+  "utc": "2026-09-07T04:55:55.283175+00:00",
+  "removed_path": "/root/autodl-tmp/feedback-grpo/runs/dev_first2_difference_v3_20260907/gradient.safetensors",
+  "bytes": 30462505048,
+  "previously_verified_sha256": "300dd4f62eb6d13f80e500d5b4769e3ccde6a8a828a0f79444bec0f8933df74a",
+  "reason": "Completed Dev projection and eta calibration; release recomputable dense gradient cache for C gradient on75GiB disk",
+  "retained": [
+    "original scored banks",
+    "checkpoint weights and manifest",
+    "source snapshot",
+    "gradient hash/manifest/weights/receipt",
+    "Dev frozen functions",
+    "Dev slopes and eta/half measured results"
+  ],
+  "status": "CACHE_REMOVED_RAW_EVIDENCE_RETAINED"
+}

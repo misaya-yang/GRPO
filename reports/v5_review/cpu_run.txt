@@ -1,0 +1,42 @@
+{
+  "status": "CPU_FINITE_EXAMPLE_ONLY",
+  "K": 2,
+  "B": 2,
+  "m": 2,
+  "epsilon": 1e-06,
+  "target_mean": 0.249999500001,
+  "cases": [
+    {
+      "stratum_success_probabilities": [
+        0.2,
+        0.8
+      ],
+      "means": [
+        0.24999950000100005,
+        0.24999950000100005
+      ],
+      "variance_cross": 0.006399974400076799,
+      "variance_reblocked": 0.0047999808000576,
+      "variance_ratio": 0.7500000000000001,
+      "enumerated_banks": 16,
+      "reblocked_over_iid_all": 0.4608
+    },
+    {
+      "stratum_success_probabilities": [
+        0.5,
+        0.5
+      ],
+      "means": [
+        0.249999500001,
+        0.24999950000099996
+      ],
+      "variance_cross": 0.0156249375001875,
+      "variance_reblocked": 0.011718703125140624,
+      "variance_ratio": 0.75,
+      "enumerated_banks": 16,
+      "reblocked_over_iid_all": 1.125
+    }
+  ],
+  "iid_all_variance": 0.010416625000125,
+  "caveat": "K2 finite example, not verification of v5 K4 oracle or LLM benefit."
+}

@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE",
+  "phase": "cycle_closed",
+  "host": "connect.westc.seetacloud.com",
+  "port": 36203,
+  "remote_root": "/root/autodl-tmp/feedback-grpo",
+  "process_match": "scripts/dev_step_calibration.py",
+  "log": "runs_CD_direction_2h.log",
+  "receipt": "runs/CD_direction_2h_20260907/receipt.json",
+  "next_authorized": "本周期结束，不自动延长两小时窗口。下一阶段已有 reports/next_dev_calibration_plan.json，开始时按实际资源设定新的预算与截止时间。",
+  "monitor_automation": "grpo-dev",
+  "last_completed": "All32 D projections complete, receipt saved; GPU idle",
+  "parallel_cpu_log": null,
+  "closed_utc": "2026-09-07T05:50:53.942948+00:00"
+}

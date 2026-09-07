@@ -1,0 +1,66 @@
+{
+  "status": "LOCAL_COPY",
+  "backup_root": "/Users/misaya.yanghejazfs.com.au/paper_project/grpo/runs/remote_archive_2h",
+  "banks": [
+    {
+      "directory": "runs/remote_archive_2h/C8_candidates_2h_20260907",
+      "files": {
+        "collection.json": "d961fe33bcbadc92056772effa0ebdea26e7e1222d2efffa84581153a6886cf2",
+        "manifest.json": "7c3d0bcd49138825b63f5021a64faab69ef1cabc347bcdb84ca5a6c3c9bc1bea",
+        "receipt.json": "9bc96b4ff17e9e72093435467de80bc152b2de5b750983cc4062ca309502a5dc",
+        "rows.jsonl": "89678c8a2449764e8389ac4ddd77dc088b1307794003cf36f97e51253fa93e17"
+      }
+    },
+    {
+      "directory": "runs/remote_archive_2h/C8_scored_2h_20260907",
+      "files": {
+        "manifest.json": "f72ca522f90f4bdb0449a0f9a7c0a94785426e4ae3c293690dd3cf7d4a7f34f8",
+        "receipt.json": "f07c7d45b6aafd432989dbb0006b19595925944d1e352dcdfb0e0b31edaf5dc6",
+        "rows.jsonl": "a30dab4e1bd69ddf00d9fd4682880c7149d5cdfc400f3700485f509f41ce6450"
+      }
+    },
+    {
+      "directory": "runs/remote_archive_2h/D4_candidates_2h_20260907",
+      "files": {
+        "collection.json": "b681f0ed80df63d35ffb9ba023e498d464e0d702a1ba14a2381162512474fb32",
+        "manifest.json": "c0cf6b588072bff314496a4480ca096b8adaab0c47fc775870e1a8c8f1c3481f",
+        "receipt.json": "83cdad6c75ec8fba8aaad36c191bd7fbab16e07b8b78f036f778bf2de282b503",
+        "rows.jsonl": "f64055431281bd759685d91d10e4cb190aecaa1751c95e8695535d0eb0ec06a9"
+      }
+    },
+    {
+      "directory": "runs/remote_archive_2h/D4_scored_2h_20260907",
+      "files": {
+        "manifest.json": "bac1c3fd743142c137c9d65feb8f9908143b7b8486eda5ee03010445b0fded2f",
+        "receipt.json": "b797743c9492a61cdbf712e6f6a5c4d7972ae0c45cbeba3ca5dd46522cadebf3",
+        "rows.jsonl": "28575d893f9da02f733cc3d55e177501472e9b7dae239a75bad303a300ecd832"
+      }
+    },
+    {
+      "directory": "runs/remote_archive_2h/dev_all16_cached_2h_20260907",
+      "files": {
+        "collection.json": "29c174566ae7e1c4d28480ca966c7fe8635d0a4fecc05c1d2e7c1eb1c5aca87c",
+        "manifest.json": "2d0b7dc074fc5520dd0eb7221a9fc66209ae83bbd8664287b2766d776a682dab",
+        "receipt.json": "77a826da8b58fda76d0c98e488c9c59321c931f7edb2f014935981a56d7d494d",
+        "rows.jsonl": "c97908d6e09fce2d16277e1a8f33acf36b1164f64d5f59e76db88deb2535d829"
+      }
+    },
+    {
+      "directory": "runs/remote_archive_2h/dev_all16_scored_2h_20260907",
+      "files": {
+        "manifest.json": "668053c21bbdef63755dc99648a4dd532147a923f3d04fd32f381b28b906b305",
+        "receipt.json": "83be23a3fe84a5a1370ed59b4e11d77d10587e1a8b4ff9d58acc23808c86fa14",
+        "rows.jsonl": "65bdaaa5e55b0ad9a0021b7e7ec7f437efceb3d3724bffc22a8be7fda3de0d29"
+      }
+    },
+    {
+      "directory": "runs/remote_archive_2h/dev_first2_scored_20260907",
+      "files": {
+        "manifest.json": "a22974bb3860c02f67ea2d73c07b1cf6fd2bba42237f24edbe54b4dd04c13683",
+        "receipt.json": "76169a68b0dcbaa98ec8ffa393fa75c86da3e2394866bfd29ef8fecd0de9fc63",
+        "rows.jsonl": "9a82c49920be3e2975d0416bf707a90cb80cebcbbefb702daf5e7601629bd0c6"
+      }
+    }
+  ],
+  "scope": "raw and scored candidate banks; excludes large model and gradient weights"
+}

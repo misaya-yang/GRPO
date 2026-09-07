@@ -1,0 +1,23 @@
+{
+  "status": "FROZEN_DIRECTION_READOUT_ONLY",
+  "frozen_utc": "2026-09-07T04:56:00Z",
+  "functions": "runs/dev_step_calibration_2h_20260907/functions.json",
+  "functions_sha256": "3b97ca1f52b9a4f7a72bc2fe2e1e9e8015e577bdc085c0bb0038081115a7fa13",
+  "calibration_receipt_sha256": "e0cdaad660344d6b61708873ee6bdf1b7ea6c635c13896c3b3b0e8f3d7f65c38",
+  "tested_steps": [
+    0.0001,
+    5e-05
+  ],
+  "relative_residuals": [
+    1.0299787148787611,
+    0.6991867301358323
+  ],
+  "accepted_step": null,
+  "decision": "No C/D parameter updates this cycle; fixed functional and independent D target projections only",
+  "C_prefix": 8,
+  "D_prefix": 4,
+  "groups_per_prompt": 1,
+  "token_logp_tolerance": 0.001,
+  "sequence_logp_tolerance": 0.01,
+  "numeric_basis": "Full Dev max per-token discrepancy 0.0001935546685; frozen before C/D generation. Sequence discrepancy additionally capped at0.01. Actual errors retained."
+}

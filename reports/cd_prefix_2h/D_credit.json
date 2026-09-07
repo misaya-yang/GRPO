@@ -1,0 +1,81 @@
+{
+  "status": "FIXED_BANK_CREDIT_DIAGNOSTIC",
+  "bank_sha256": "28575d893f9da02f733cc3d55e177501472e9b7dae239a75bad303a300ecd832",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "prompts": 4,
+  "groups": 4,
+  "responses": 32,
+  "generated_tokens": 3657,
+  "truncated": 0,
+  "max_token_logp_error": 0.00022308606738263848,
+  "suite_passes": 31,
+  "parse_failures": 0,
+  "K2_K3_binary_negative_control_max_error": 0.0,
+  "group_diagnostics": [
+    {
+      "prompt_id": "Mbpp/778",
+      "group_id": 0,
+      "average_test_reward": 1.0,
+      "suite_rate": 1.0,
+      "shared_credit_norm": 0.0,
+      "independent_credit_norm": 0.0,
+      "difference_credit_norm": 0.0,
+      "candidate_credit_positive_scale": {
+        "status": "unresolved_reference",
+        "signed_scale": null,
+        "residual": null
+      },
+      "interpretation": "conditional_fixed_candidate_credit_not_functional_gradient"
+    },
+    {
+      "prompt_id": "Mbpp/474",
+      "group_id": 0,
+      "average_test_reward": 0.875,
+      "suite_rate": 0.875,
+      "shared_credit_norm": 2.828418572412309,
+      "independent_credit_norm": 2.828418572412309,
+      "difference_credit_norm": 0.0,
+      "candidate_credit_positive_scale": {
+        "status": "descriptive_not_a_significance_test",
+        "signed_scale": 1.0,
+        "positive_scale": 1.0,
+        "residual": 0.0
+      },
+      "interpretation": "conditional_fixed_candidate_credit_not_functional_gradient"
+    },
+    {
+      "prompt_id": "Mbpp/591",
+      "group_id": 0,
+      "average_test_reward": 1.0,
+      "suite_rate": 1.0,
+      "shared_credit_norm": 0.0,
+      "independent_credit_norm": 0.0,
+      "difference_credit_norm": 0.0,
+      "candidate_credit_positive_scale": {
+        "status": "unresolved_reference",
+        "signed_scale": null,
+        "residual": null
+      },
+      "interpretation": "conditional_fixed_candidate_credit_not_functional_gradient"
+    },
+    {
+      "prompt_id": "Mbpp/409",
+      "group_id": 0,
+      "average_test_reward": 1.0,
+      "suite_rate": 1.0,
+      "shared_credit_norm": 0.0,
+      "independent_credit_norm": 0.0,
+      "difference_credit_norm": 0.0,
+      "candidate_credit_positive_scale": {
+        "status": "unresolved_reference",
+        "signed_scale": null,
+        "residual": null
+      },
+      "interpretation": "conditional_fixed_candidate_credit_not_functional_gradient"
+    }
+  ],
+  "pretrained_gradient_difference": "NOT_MEASURED_HERE",
+  "pilot_decision": "INCONCLUSIVE",
+  "independent_confirmation": false
+}

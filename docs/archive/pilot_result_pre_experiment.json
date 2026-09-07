@@ -1,0 +1,23 @@
+{
+  "status": "NOT_RUN",
+  "decision": "INCONCLUSIVE",
+  "gates": {
+    "implementation": {
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    "credit": {
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    "non_scalar": {
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    "local_steps": {
+      "status": "NOT_RUN",
+      "evidence": []
+    }
+  },
+  "reason": "Preparation only; no pretrained measurement."
+}

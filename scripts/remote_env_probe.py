@@ -1,4 +1,4 @@
-"""Read-only: run with /root/miniconda3/bin/python, no package or GPU mutations."""
+"""Read-only runtime inventory; use the selected research Python."""
 
 import importlib.metadata
 import json
@@ -6,6 +6,7 @@ import platform
 import subprocess
 import sys
 from datetime import UTC, datetime
+from pathlib import Path
 
 packages = {}
 for name in ("torch", "transformers", "numpy", "accelerate", "safetensors", "peft", "datasets"):
@@ -27,6 +28,15 @@ print(
             "architecture": platform.machine(),
             "packages": packages,
             "gpu": gpu.stdout.strip(),
+            "cgroup_memory": {
+                str(path): path.read_text().strip()
+                for path in (
+                    Path("/sys/fs/cgroup/memory.max"),
+                    Path("/sys/fs/cgroup/memory.high"),
+                    Path("/sys/fs/cgroup/memory.current"),
+                )
+                if path.exists()
+            },
         },
         indent=2,
     )

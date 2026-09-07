@@ -1,75 +1,49 @@
-# What Dependent Rollouts Teach a Policy
+# 相同反馈边际与不同标准化信用
 
-ICLR 2027 实验仓库。理论依据是原样归档的
-[research dossier](docs/theory/dependent_rollout_research_dossier.md)。
-研究主线：采样依赖如何改变成功/失败轨迹间的学习对比；以保留成功计数的
-重排、IID-only 预测和小步干预区分计数效应与轨迹身份选择。
+本项目研究一个受控问题：actor 回答保持 IID，且每条回答的反馈边际完全相同，仅改变评分配置在组内共享（S）还是独立（I），组标准化是否会改变平均信用方向与局部学习后果。
 
-## 当前可运行内容
+当前主线是 [dependent feedback v4](docs/theory/dependent_feedback_v4.md)。固定候选银行保存每条回答在所有预定测试或 criterion 下的 verdict，再精确积分 shared、independent 与 RLOO 优势；同一组 token score 用不同权重累积全参数梯度。独立 C/D 数据、Dev 冻结读出以及同一初态的 `eta`/`eta/2` 更新用于区分代数机制、功能方向和实际后果。
 
-- CPU 精确反例、score-subspace/Fisher 分解、谱安全界验证。
-- IID / stratified / lattice 的序列 arithmetic decoder；随机组标签、延迟随机位、
-  有理数区间，记录 float64 token CDF 的数值误差。
-- RLOO 和二元 standardized score-point 估计器；同池 W/C/X，解析重排平均。
-- IID 分层虚拟组积分预测，包含 Poisson-binomial 标准化预测。
-- Transformers 完整轨迹采样、full-parameter 加权反传、梯度 safetensors。
-- 固定 SGD 方向、整步/半步干预、方向有限差分、独立 IID likelihood-ratio reward。
-- 原始组 bootstrap、函数空间 distortion、AST/Fraction verifier、固定数据拆分。
-- 两组等预算的六臂在线 RLOO runner 和三种子配置生成器。
-- [ICLR 官方模板论文初稿](paper/main.tex)：理论正文、证明与实验协议；LLM 结果尚未填写。
+模型只是实验载体，不锁定某个型号或参数规模。优先复用已有、能力和显存适配的权重；任何模型、精度或梯度存储变化都写入回执，并按实际配置限定结论。旧 dependent-rollouts 理论和实现保留为历史对照，不与 S/I 证据混写。
 
-这是一套可执行的**参考实验实现**，吞吐尚未在预训练模型上测量。
-CPU 检查和随机小模型 smoke 不构成预训练模型实验结果。最新证据见
-[状态记录](docs/STATUS.md) 和 `artifacts/validation/`。
+## 已实现内容
 
-## 本地验证
+- 二值 Poisson-binomial 与离散奖励 `(sum, sumsq)` 精确积分。
+- RLOO、standardized advantage、一般奖励不变性刻画与大组极限的 CPU 检查。
+- IID actor 采样、逐 token score 核验、完整组所有权和不可覆盖回执。
+- 原生 Python 逐测试执行；Docker 只是可选执行后端。
+- shared/independent/RLOO/full-rubric 权重、全参数梯度、Dev 读出和局部步长比较。
+- prompt 级统计、C/D 独立性检查、预算 ledger 与 GO/STOP/INCONCLUSIVE 门禁。
+
+代码可运行不等于真实模型实验通过。当前证据、未运行项和报告入口见 [index.md](index.md) 与 [docs/STATUS.md](docs/STATUS.md)。
+
+## 本地环境
+
+| 机器 | 已知环境 | 本轮角色 |
+|---|---|---|
+| 当前 Mac | M4 MAX；macOS 26.6.2；Conda `aidemo` | CPU 测试、精确验证和文档；不是固定或唯一开发机 |
+| Mac `aidemo` 快照 | Python 3.13.11、NumPy 2.4.2、PyTorch 2.10.0、Transformers 5.2.0、safetensors 0.7.0 | 2026-09-07 查询；后续以现场回执为准 |
+| 家用 PC | 已确认存在；OS、CPU/GPU、内存和 Python 环境未知 | 暂不分配固定角色，不猜测配置 |
+
+本轮 Mac 只运行 CPU 工作。算法不绑定机器或 Conda 路径。当前运行器已在 macOS/Linux 验证；原生测试 worker 与预算锁使用 POSIX 接口，家用 PC 的运行方式待环境确认。通过 `PYTHON`、配置中的 `device`、`model_path` 与 `test_python` 记录实际环境。
+
+## 本地检查
 
 ```bash
-uv sync --locked
+conda activate aidemo
 make test
 make lint
 make exact
-# 安装与服务器相同版本的可选 LLM 依赖，做无下载的小模型测试
-uv sync --locked --extra llm
-make smoke
+PYTHONPATH=src python -m reward_coupling.cli --help
 ```
 
-## 服务器直接运行（已有 Conda）
+也可以用 `make test PYTHON=/path/to/python` 选择其他已准备环境。完整阶段、输入输出与停止条件见 [RUNBOOK](docs/experiments/RUNBOOK.md)。
 
-已只读核对 `connect.westc.seetacloud.com:27741`：
-Python 3.12.3，PyTorch 2.8.0+cu128，Transformers 5.15.1，NumPy 2.3.2。
-详细记录：[server_environment.json](artifacts/validation/server_environment.json)。
+## 文档职责
 
-把仓库放到服务器后，不需要安装 uv 或覆盖原有 Conda 包：
+- `agent.md`：稳定的项目核心约束。
+- `index.md`：代码、理论、运行记录和证据索引。
+- `docs/experiments/PLAN.md`：当前实验优先级、预算边界和判据。
+- `docs/experiments/MANIFEST.md`：冻结值与待补回执。
 
-```bash
-bash scripts/conda_run.sh exact --output runs/cpu-exact.json
-/root/miniconda3/bin/python scripts/remote_env_probe.py
-```
-
-换 Conda 路径只需设置 `RESEARCH_PYTHON`。换 GPU 调整配置中的
-`device` / `dtype` / `attention`，随后重新做 score-point 和吞吐检查。
-机制审计默认 float32 + eager，避免把低精度扰动误差混入 mean-direction 结论。
-
-完整操作顺序见 [RUNBOOK](docs/experiments/RUNBOOK.md)。
-首个模型配置在 `configs/pilot_*.json`；如果 revision 尚未固定，用
-`scripts/pin_model.py` 解析一次精确 SHA（仅查元数据，不下载权重）。
-所有输出使用新目录，已有结果不会被覆盖。
-
-## 项目入口
-
-| 路径 | 内容 |
-|---|---|
-| `docs/theory/` | 原始 dossier 与校验和 |
-| `docs/experiments/PLAN.md` | 按 dossier 固定的实验矩阵、判据与证据归属 |
-| `docs/experiments/MANIFEST.md` | Pilot 冻结清单模板（dossier §18）；首次 GPU 采集前冻结 |
-| `docs/CLAIMS.md` | 声明与证据对应表；状态升级需新增验证回执 |
-| `configs/` | Pilot 和训练参数；训练默认 `NOT_RUN` |
-| `src/dependent_rollouts/` | 可复用实验实现 |
-| `tests/` | 独立枚举、采样边界、反传与干预恢复测试 |
-| `data/example/` | 固定结构拆分的算术样例 |
-| `paper/` | 正文、附录、参考文献与官方 2027 样式 |
-| `runs/` | 忽略的大型运行产物、轨迹、梯度、检查点 |
-
-`dependent-rollouts --help` 列出命令。Conda 等价入口是
-`PYTHONPATH=src /root/miniconda3/bin/python -m dependent_rollouts.cli`。
+原始方案、Pro 建议和历史 dossier 保存在 `docs/theory/` 与 `docs/archive/`。不要改写这些原始来源，也不要把 NOT_RUN、准备完成或单点 probe 写成 pilot GO。

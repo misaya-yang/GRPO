@@ -1,0 +1,45 @@
+{
+  "status": "C_D_preliminary_direction_only",
+  "functions_sha256": "3b97ca1f52b9a4f7a72bc2fe2e1e9e8015e577bdc085c0bb0038081115a7fa13",
+  "bank_sha256": "a30dab4e1bd69ddf00d9fd4682880c7149d5cdfc400f3700485f509f41ce6450",
+  "difference_sha256": "145f6155fe616ff6251e9fadc04b2f30200a706692d4c98186678bb9f09bce76",
+  "max_token_error": 0.00022308606738263848,
+  "readout_ids": [
+    "Mbpp/14",
+    "Mbpp/577"
+  ],
+  "slopes": [
+    -532.8636729157191,
+    -452.1487980186909
+  ],
+  "independent_slopes": null,
+  "steps": [],
+  "elapsed_seconds": 1524.4435848863795,
+  "shared_reconstruction": "NOT_RUN",
+  "independent_reward_consequence": "D_target_direction_projection_only",
+  "independent_target_slopes": {
+    "average": {
+      "estimate": 81.9927326696509,
+      "per_prompt": {
+        "Mbpp/409": 295.43814121592044,
+        "Mbpp/474": -21.845179243893654,
+        "Mbpp/591": 7.373516334548473,
+        "Mbpp/778": 47.00445237202835
+      },
+      "uncertainty": "C_fixed_D_prompt_values_not_full_two_bank_CI"
+    },
+    "suite": {
+      "estimate": 81.9927326696509,
+      "per_prompt": {
+        "Mbpp/409": 295.43814121592044,
+        "Mbpp/474": -21.845179243893654,
+        "Mbpp/591": 7.373516334548473,
+        "Mbpp/778": 47.00445237202835
+      },
+      "uncertainty": "C_fixed_D_prompt_values_not_full_two_bank_CI"
+    }
+  },
+  "pilot_decision": "INCONCLUSIVE",
+  "local_step_gate": "NOT_PASSED_ON_DEV",
+  "definition_hash": "c14d2199ed45b306fbec2eed6f84280c93197afeb6f0bb865aafe85345002451"
+}

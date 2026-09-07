@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "prompts": 16,
+  "execution": "native_subprocess_fresh_workdir",
+  "security_sandbox": false,
+  "python": "3.12.3 | packaged by Anaconda, Inc. | (main, May  6 2024, 19:46:43) [GCC 11.2.0]"
+}

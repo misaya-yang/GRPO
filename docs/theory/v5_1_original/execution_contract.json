@@ -1,0 +1,62 @@
+{
+  "purpose": "v4_diagnostic_repair_and_v5_main_estimator_correction",
+  "execution": "CPU first; GPU only after asset, probability, cost and remaining-budget checks",
+  "assets": {
+    "old_checkpoint_hash": null,
+    "old_direction_hash": null,
+    "old_parameter_space_hash": null,
+    "old_failed_response_id": "Mbpp/474:0:7",
+    "z_fail": null,
+    "z_fail_status": "not_measured"
+  },
+  "budget": {
+    "prior_gpu_hours_from_receipts": null,
+    "remaining_gpu_hours": null,
+    "original_total_cap_rtx5090_hours": 200,
+    "original_total_cap_pro6000_hours": 100,
+    "original_pilot_cap_rtx5090_hours": 10,
+    "original_pilot_cap_pro6000_hours": 5,
+    "reset_budget_for_new_version": false
+  },
+  "v5": {
+    "K": 4,
+    "B": 4,
+    "m": 2,
+    "primary_estimators": [
+      "iid_all",
+      "stratified_full"
+    ],
+    "limited_diagnostic_estimator": "stratified_cross",
+    "reward": "binary",
+    "epsilon_outside_sqrt": 1e-06,
+    "std_ddof": 0,
+    "all_equal_groups": "retain_with_zero_advantage",
+    "score": "original_policy_sequence_sum",
+    "parameter_space": "common_frozen_LoRA_definition",
+    "model_revision": null,
+    "tokenizer_revision": null,
+    "parameter_space_hash": null,
+    "requires_independent_samples_across_and_within_strata": true,
+    "no_current_bank_reward_selection": true,
+    "confirmatory_prompt_ids": null,
+    "macro_repeats_per_prompt": null,
+    "primary_variance_metric": null,
+    "independent_dev_frozen_practical_threshold": null,
+    "sampling_and_scoring_logp_check": "required",
+    "release_numerical_contract": "required"
+  },
+  "inference": {
+    "units": [
+      "prompt",
+      "independent_macro_bank"
+    ],
+    "virtual_groups_are_independent_units": false,
+    "old_D_with_new_baseline": "exploratory_diagnostic",
+    "population_target_requires_C_and_D_uncertainty": true,
+    "more_prompts_comparator_required_for_full_stage": true
+  },
+  "cpu_environment": {
+    "python": "3.13.5",
+    "numpy": "2.3.5"
+  }
+}

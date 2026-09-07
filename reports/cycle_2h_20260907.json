@@ -1,0 +1,100 @@
+{
+  "start_utc": "2026-09-07T03:50:25Z",
+  "deadline_utc": "2026-09-07T05:50:25Z",
+  "status": "COMPLETE",
+  "authority": "User authorized independent two-hour experiment cycle, routine decisions and anomaly fixes, based on v4.",
+  "plan": [
+    {
+      "stage": "Finish current Dev S-I full gradient",
+      "budget_minutes": 15
+    },
+    {
+      "stage": "Complete remaining Dev in frozen order; freeze function and step",
+      "budget_minutes": 40
+    },
+    {
+      "stage": "Collect a predeclared bounded prefix of C/D if time allows",
+      "budget_minutes": 25
+    },
+    {
+      "stage": "One fixed function / local-step diagnosis within remaining time",
+      "budget_minutes": 30
+    },
+    {
+      "stage": "Validate receipts, summarize results and stop new launches",
+      "budget_minutes": 10
+    }
+  ],
+  "constraints": [
+    "Model is interchangeable; reuse verified existing weights.",
+    "Native execution allowed; no Docker/chroot requirement.",
+    "Keep original v4 nominal32C/32D design; any bounded prefix is preliminary, not full confirmation or pilot GO.",
+    "No reward-based task/mask/seed search.",
+    "No online training unless v4 gates actually support it.",
+    "Do not launch a job that exceeds the absolute deadline."
+  ],
+  "current_run": "reports/active_run.json",
+  "bounded_confirmation_plan": {
+    "selected_before_C_D_rewards": true,
+    "selection": "first8 frozen C prompts and first4 frozen D prompts; one K8 group each",
+    "C_prompts": 8,
+    "D_prompts": 4,
+    "groups_per_prompt": 1,
+    "K": 8,
+    "nominal_v4_C_D_prompts": 32,
+    "scope": "preliminary two-hour prefix; not full pilot confirmation or GO",
+    "condition": "run after Dev functions and step frozen, only within deadline",
+    "responses_C": 64,
+    "responses_D": 32,
+    "reason_before_confirmation": "Full Dev:6/32 groups have nonzero credit difference;3/32 non-scalar in candidate credit. Increase fixed C prefix before inspecting any C/D rewards."
+  },
+  "dev_step_decision": {
+    "accepted_step": null,
+    "relative_residuals": [
+      1.0299787148787611,
+      0.6991867301358323
+    ],
+    "consequence": "No C/D parameter steps; direction-only followup."
+  },
+  "C_credit_result": {
+    "prompts": 8,
+    "groups": 8,
+    "responses": 64,
+    "suite_passes": 35,
+    "parse_failures": 4,
+    "nonzero_difference_groups": 2,
+    "non_scalar_candidate_credit_groups": 1,
+    "interpretation": "fixed candidate credit only; no rotation or downstream conclusion"
+  },
+  "completed_stages": {
+    "Dev_full": {
+      "responses": 256,
+      "tokens": 24515
+    },
+    "C": {
+      "responses": 64,
+      "tokens": 7124
+    },
+    "D": {
+      "responses": 32,
+      "tokens": 3657
+    },
+    "C_gradient": {
+      "gradient_l2": 3.9798321396317893,
+      "sha256": "145f6155fe616ff6251e9fadc04b2f30200a706692d4c98186678bb9f09bce76"
+    },
+    "C_frozen_function_slopes": [
+      -532.8636729157191,
+      -452.1487980186909
+    ]
+  },
+  "D_target_estimate": 81.9927326696509,
+  "D_target_sensitivity": "Largest response contribution85.1110143861828; leave-one-response-out equal-prompt mean-4.725635871132289. Primary estimate unchanged.",
+  "budget_ledger_process_wall_seconds": 5619.372317715548,
+  "budget_scope": "New ledger only; excludes initial overlapping Dev gradient launched before cycle and CPU-only scoring. Not GPU active-kernel time.",
+  "GPU_finished_utc": "2026-09-07T05:43:36.177190+00:00",
+  "decision": "INCONCLUSIVE",
+  "closed_utc": "2026-09-07T05:50:53.942948+00:00",
+  "monitor_status": "PAUSED",
+  "final_gpu_state": "0percent_utilization_1MiB_used_no_experiment_process"
+}

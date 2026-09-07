@@ -1,0 +1,58 @@
+{
+  "status": "PRELIMINARY_EXPERIMENT_COMPLETE",
+  "decision": "INCONCLUSIVE",
+  "gates": {
+    "implementation": {
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "reports/gpu0/qwen7b_fp32_cpuemb.json",
+          "sha256": "76126959a5428d4c580ee0482e25aa65ec0929eb15599772e44c364f10c2957e"
+        },
+        {
+          "path": "reports/cd_prefix_2h/bank_validation.json",
+          "sha256": "5198285bbd67b5d87823d1533126c3a495295ae952aa35e9f0337abba5f8a008"
+        }
+      ]
+    },
+    "credit": {
+      "status": "INCONCLUSIVE",
+      "evidence": [
+        {
+          "path": "reports/dev_all16_credit_2h.json",
+          "sha256": "0913ea6350da1276fe2a95e953f89280ba5c6cf8fe06161545544425fa087d9f"
+        },
+        {
+          "path": "reports/cd_prefix_2h/C_credit.json",
+          "sha256": "58b3c00000d50c3bb50f52fa33dee91b29fe8992d122a931ebbb639487112aab"
+        }
+      ],
+      "reason": "Nonzero conditional credit measured; prompt-population uncertainty unresolved"
+    },
+    "non_scalar": {
+      "status": "INCONCLUSIVE",
+      "evidence": [
+        {
+          "path": "reports/dev_first2/step_calibration/receipt.json",
+          "sha256": "e0cdaad660344d6b61708873ee6bdf1b7ea6c635c13896c3b3b0e8f3d7f65c38"
+        },
+        {
+          "path": "reports/cd_prefix_2h/direction/receipt.json",
+          "sha256": "8d0c9496e07085f0e5b677f8d65bb1b62d020c589785a876c8b88dab01254045"
+        }
+      ],
+      "reason": "Dev functional residual descriptive only; C positive-scaling control not measured"
+    },
+    "local_steps": {
+      "status": "INCONCLUSIVE",
+      "evidence": [
+        {
+          "path": "reports/dev_first2/step_calibration/receipt.json",
+          "sha256": "e0cdaad660344d6b61708873ee6bdf1b7ea6c635c13896c3b3b0e8f3d7f65c38"
+        }
+      ],
+      "reason": "Tested eta1e-4/5e-5 not accepted; C/D parameter updates not run"
+    }
+  },
+  "reason": "Real Dev/C8/D4 signal and positive but response-sensitive D target estimate; no accepted local step, complete C/D uncertainty or stable benefit."
+}

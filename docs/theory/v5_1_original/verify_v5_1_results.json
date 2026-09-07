@@ -1,0 +1,859 @@
+{
+  "status": "PASS_CPU_FINITE_MODEL_ONLY",
+  "models": [
+    {
+      "name": "K2_q(0.2, 0.8)",
+      "K": 2,
+      "B": 2,
+      "m": 2,
+      "enumerated_banks": 16,
+      "target": [
+        -0.249999500001,
+        0.249999500001
+      ],
+      "trace_full": 0.009599961600115198,
+      "trace_cross": 0.012799948800153598,
+      "trace_iid_all": 0.02083325000025,
+      "full_over_cross": 0.7499999999999999,
+      "full_over_iid_all": 0.46079999999999993,
+      "min_eigenvalue_cross_minus_full": 0.0,
+      "orthogonal_parts": [
+        {
+          "alpha": [
+            0,
+            1
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            1,
+            0
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            0,
+            2
+          ],
+          "trace": 0.0031999872000383987
+        },
+        {
+          "alpha": [
+            1,
+            1
+          ],
+          "trace": 0.0031999872000383995
+        },
+        {
+          "alpha": [
+            2,
+            0
+          ],
+          "trace": 0.003199987200038401
+        }
+      ]
+    },
+    {
+      "name": "K2_q(0.5, 0.5)",
+      "K": 2,
+      "B": 2,
+      "m": 2,
+      "enumerated_banks": 16,
+      "target": [
+        -0.249999500001,
+        0.249999500001
+      ],
+      "trace_full": 0.023437406250281248,
+      "trace_cross": 0.031249875000375,
+      "trace_iid_all": 0.02083325000025,
+      "full_over_cross": 0.75,
+      "full_over_iid_all": 1.125,
+      "min_eigenvalue_cross_minus_full": 0.0,
+      "orthogonal_parts": [
+        {
+          "alpha": [
+            0,
+            1
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            1,
+            0
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            0,
+            2
+          ],
+          "trace": 0.00781246875009375
+        },
+        {
+          "alpha": [
+            1,
+            1
+          ],
+          "trace": 0.00781246875009375
+        },
+        {
+          "alpha": [
+            2,
+            0
+          ],
+          "trace": 0.00781246875009375
+        }
+      ]
+    },
+    {
+      "name": "K4_q(0.2, 0.8)",
+      "K": 4,
+      "B": 4,
+      "m": 2,
+      "enumerated_banks": 256,
+      "target": [
+        -0.4040054759480144,
+        0.4040054759480144
+      ],
+      "trace_full": 0.004205497144441482,
+      "trace_cross": 0.004817625422109089,
+      "trace_iid_all": 0.010068641568510823,
+      "full_over_cross": 0.872939835700297,
+      "full_over_iid_all": 0.4176826750486347,
+      "min_eigenvalue_cross_minus_full": 4.336808689942018e-19,
+      "orthogonal_parts": [
+        {
+          "alpha": [
+            0,
+            1
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            1,
+            0
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            0,
+            2
+          ],
+          "trace": 0.0011999952000143997
+        },
+        {
+          "alpha": [
+            1,
+            1
+          ],
+          "trace": 0.0017999928000215998
+        },
+        {
+          "alpha": [
+            2,
+            0
+          ],
+          "trace": 0.0011999952000144004
+        },
+        {
+          "alpha": [
+            0,
+            3
+          ],
+          "trace": 2.407412430484044e-37
+        },
+        {
+          "alpha": [
+            1,
+            2
+          ],
+          "trace": 5.777789833161708e-37
+        },
+        {
+          "alpha": [
+            2,
+            1
+          ],
+          "trace": 6.355568816477879e-36
+        },
+        {
+          "alpha": [
+            3,
+            0
+          ],
+          "trace": 3.6592668943357494e-36
+        },
+        {
+          "alpha": [
+            0,
+            4
+          ],
+          "trace": 1.102788878218357e-06
+        },
+        {
+          "alpha": [
+            1,
+            3
+          ],
+          "trace": 1.102788878218357e-06
+        },
+        {
+          "alpha": [
+            2,
+            2
+          ],
+          "trace": 1.1027888782183574e-06
+        },
+        {
+          "alpha": [
+            3,
+            1
+          ],
+          "trace": 1.1027888782183576e-06
+        },
+        {
+          "alpha": [
+            4,
+            0
+          ],
+          "trace": 1.1027888782183578e-06
+        }
+      ]
+    },
+    {
+      "name": "K4_q(0.5, 0.5)",
+      "K": 4,
+      "B": 4,
+      "m": 2,
+      "enumerated_banks": 256,
+      "target": [
+        -0.4040054759480144,
+        0.4040054759480144
+      ],
+      "trace_full": 0.010286730904172257,
+      "trace_cross": 0.011823873268098176,
+      "trace_iid_all": 0.010068641568510823,
+      "full_over_cross": 0.8699967151987952,
+      "full_over_iid_all": 1.02166025418399,
+      "min_eigenvalue_cross_minus_full": 0.0,
+      "orthogonal_parts": [
+        {
+          "alpha": [
+            0,
+            1
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            1,
+            0
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            0,
+            2
+          ],
+          "trace": 0.002929675781285157
+        },
+        {
+          "alpha": [
+            1,
+            1
+          ],
+          "trace": 0.004394513671927735
+        },
+        {
+          "alpha": [
+            2,
+            0
+          ],
+          "trace": 0.002929675781285157
+        },
+        {
+          "alpha": [
+            0,
+            3
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            1,
+            2
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            2,
+            1
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            3,
+            0
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            0,
+            4
+          ],
+          "trace": 6.57313393484567e-06
+        },
+        {
+          "alpha": [
+            1,
+            3
+          ],
+          "trace": 6.57313393484567e-06
+        },
+        {
+          "alpha": [
+            2,
+            2
+          ],
+          "trace": 6.57313393484567e-06
+        },
+        {
+          "alpha": [
+            3,
+            1
+          ],
+          "trace": 6.57313393484567e-06
+        },
+        {
+          "alpha": [
+            4,
+            0
+          ],
+          "trace": 6.57313393484567e-06
+        }
+      ]
+    },
+    {
+      "name": "K4_q(0.1, 0.6)",
+      "K": 4,
+      "B": 4,
+      "m": 2,
+      "enumerated_banks": 256,
+      "target": [
+        -0.3700205930177126,
+        0.3700205930177126
+      ],
+      "trace_full": 0.01360205550190852,
+      "trace_cross": 0.014169044106156367,
+      "trace_iid_all": 0.020916484307688804,
+      "full_over_cross": 0.9599839904513041,
+      "full_over_iid_all": 0.6503031437701252,
+      "min_eigenvalue_cross_minus_full": -4.0657581468206416e-19,
+      "orthogonal_parts": [
+        {
+          "alpha": [
+            0,
+            1
+          ],
+          "trace": 0.006245317307830583
+        },
+        {
+          "alpha": [
+            1,
+            0
+          ],
+          "trace": 0.002341993990436469
+        },
+        {
+          "alpha": [
+            0,
+            2
+          ],
+          "trace": 0.002930251707350804
+        },
+        {
+          "alpha": [
+            1,
+            1
+          ],
+          "trace": 0.001648266585384827
+        },
+        {
+          "alpha": [
+            2,
+            0
+          ],
+          "trace": 0.0004120666463462068
+        },
+        {
+          "alpha": [
+            0,
+            3
+          ],
+          "trace": 8.374303043970714e-06
+        },
+        {
+          "alpha": [
+            1,
+            2
+          ],
+          "trace": 4.710545462233523e-06
+        },
+        {
+          "alpha": [
+            2,
+            1
+          ],
+          "trace": 1.7664545483375704e-06
+        },
+        {
+          "alpha": [
+            3,
+            0
+          ],
+          "trace": 4.416136370843926e-07
+        },
+        {
+          "alpha": [
+            0,
+            4
+          ],
+          "trace": 5.582868695980443e-06
+        },
+        {
+          "alpha": [
+            1,
+            3
+          ],
+          "trace": 2.093575760992666e-06
+        },
+        {
+          "alpha": [
+            2,
+            2
+          ],
+          "trace": 7.8509091037225e-07
+        },
+        {
+          "alpha": [
+            3,
+            1
+          ],
+          "trace": 2.9440909138959374e-07
+        },
+        {
+          "alpha": [
+            4,
+            0
+          ],
+          "trace": 1.1040340927109766e-07
+        }
+      ]
+    },
+    {
+      "name": "K4_identity_strata",
+      "K": 4,
+      "B": 4,
+      "m": 2,
+      "enumerated_banks": 65536,
+      "target": [
+        0.2020027379740072,
+        0.2020027379740072,
+        -0.20200273797400722,
+        -0.2020027379740072
+      ],
+      "trace_full": 0.028962229112676,
+      "trace_cross": 0.02973682566741255,
+      "trace_iid_all": 0.05168475373822466,
+      "full_over_cross": 0.9739516058842352,
+      "full_over_iid_all": 0.560363105517833,
+      "min_eigenvalue_cross_minus_full": -1.6623008665168573e-20,
+      "orthogonal_parts": [
+        {
+          "alpha": [
+            0,
+            1
+          ],
+          "trace": 0.010201276537248855
+        },
+        {
+          "alpha": [
+            1,
+            0
+          ],
+          "trace": 0.010201276537248855
+        },
+        {
+          "alpha": [
+            0,
+            2
+          ],
+          "trace": 0.003165050646850721
+        },
+        {
+          "alpha": [
+            1,
+            1
+          ],
+          "trace": 0.002197256835963869
+        },
+        {
+          "alpha": [
+            2,
+            0
+          ],
+          "trace": 0.0031650506468507214
+        },
+        {
+          "alpha": [
+            0,
+            3
+          ],
+          "trace": 3.286566967422836e-06
+        },
+        {
+          "alpha": [
+            1,
+            2
+          ],
+          "trace": 5.477611612371377e-07
+        },
+        {
+          "alpha": [
+            2,
+            1
+          ],
+          "trace": 5.477611612371424e-07
+        },
+        {
+          "alpha": [
+            3,
+            0
+          ],
+          "trace": 3.2865669674228356e-06
+        },
+        {
+          "alpha": [
+            0,
+            4
+          ],
+          "trace": 6.5731339348456695e-06
+        },
+        {
+          "alpha": [
+            1,
+            3
+          ],
+          "trace": 4.108208709278545e-06
+        },
+        {
+          "alpha": [
+            2,
+            2
+          ],
+          "trace": 3.2865669674228348e-06
+        },
+        {
+          "alpha": [
+            3,
+            1
+          ],
+          "trace": 4.1082087092785434e-06
+        },
+        {
+          "alpha": [
+            4,
+            0
+          ],
+          "trace": 6.5731339348456695e-06
+        }
+      ]
+    },
+    {
+      "name": "K4_reward_strata",
+      "K": 4,
+      "B": 4,
+      "m": 2,
+      "enumerated_banks": 65536,
+      "target": [
+        0.2020027379740072,
+        0.2020027379740072,
+        -0.20200273797400722,
+        -0.2020027379740072
+      ],
+      "trace_full": 0.0408051061489954,
+      "trace_cross": 0.0408051061489954,
+      "trace_iid_all": 0.05168475373822466,
+      "full_over_cross": 1.0,
+      "full_over_iid_all": 0.789499865969508,
+      "min_eigenvalue_cross_minus_full": 0.0,
+      "orthogonal_parts": [
+        {
+          "alpha": [
+            0,
+            1
+          ],
+          "trace": 0.02040255307449771
+        },
+        {
+          "alpha": [
+            1,
+            0
+          ],
+          "trace": 0.02040255307449771
+        },
+        {
+          "alpha": [
+            0,
+            2
+          ],
+          "trace": 1.0833355937178202e-34
+        },
+        {
+          "alpha": [
+            1,
+            1
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            2,
+            0
+          ],
+          "trace": 1.0833355937178202e-34
+        },
+        {
+          "alpha": [
+            0,
+            3
+          ],
+          "trace": 2.633107345841924e-36
+        },
+        {
+          "alpha": [
+            1,
+            2
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            2,
+            1
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            3,
+            0
+          ],
+          "trace": 2.633107345841924e-36
+        },
+        {
+          "alpha": [
+            0,
+            4
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            1,
+            3
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            2,
+            2
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            3,
+            1
+          ],
+          "trace": 0.0
+        },
+        {
+          "alpha": [
+            4,
+            0
+          ],
+          "trace": 0.0
+        }
+      ]
+    }
+  ],
+  "baseline": {
+    "target": -0.09299999999999997,
+    "rloo_variance": 0.0722775,
+    "fixed_one_variance": 0.10104524999999999
+  },
+  "dependence_counterexample": {
+    "target": 0.249999500001,
+    "cross_mean": 0.249999500001,
+    "invalid_full_mean": 0.18749962500075
+  },
+  "grid_and_clipping": {
+    "cases": 3,
+    "max_dp_error": 4.440892098500626e-16,
+    "continuous_rewards_quantized": false,
+    "clip_kinks_excluded_from_derivative_check": true
+  },
+  "diagnostic_identities": {
+    "bilinear_variance": 0.1844,
+    "polynomial_only": true
+  },
+  "equal_reward_influence": [
+    {
+      "name": "identity",
+      "stratum_influence_means": [
+        [
+          0.05050068449350181,
+          -0.0505006844935018,
+          -0.050500684493501785,
+          0.0505006844935018
+        ],
+        [
+          -0.0505006844935018,
+          0.05050068449350181,
+          0.05050068449350183,
+          -0.05050068449350181
+        ]
+      ]
+    },
+    {
+      "name": "uninformative",
+      "stratum_influence_means": [
+        [
+          6.938893903907228e-18,
+          6.938893903907228e-18,
+          2.0816681711721685e-17,
+          -6.938893903907228e-18
+        ],
+        [
+          6.938893903907228e-18,
+          6.938893903907228e-18,
+          2.0816681711721685e-17,
+          -6.938893903907228e-18
+        ]
+      ]
+    }
+  ],
+  "uninformative_chi_penalties": {
+    "1": 0.0,
+    "2": 0.020833333333333332,
+    "3": 0.09375000000000001,
+    "4": 0.3671875
+  },
+  "report_derived_missing_projection": {
+    "T_fixed1": "-z_fail/32",
+    "T_RLOO": "-0.7801849729962018 - z_fail/32",
+    "RLOO_positive_requires_z_fail_below": -24.96591913587846,
+    "z_fail_measured_here": false
+  },
+  "checks": {
+    "partner_pmf_last": 0.0,
+    "dp_bruteforce_B2_m2_K2": 0.0,
+    "zero_sum_B2_m2_K2": 0.0,
+    "dp_bruteforce_B4_m2_K4": 5.551115123125783e-16,
+    "zero_sum_B4_m2_K4": 1.1102230246251565e-16,
+    "dp_bruteforce_B4_m3_K4": 1.7763568394002505e-15,
+    "zero_sum_B4_m3_K4": 8.881784197001252e-16,
+    "dp_bruteforce_B5_m2_K3": 3.3306690738754696e-16,
+    "zero_sum_B5_m2_K3": 1.4432899320127035e-15,
+    "permutation_average_vs_full": 1.1102230246251565e-16,
+    "K2_q(0.2, 0.8)_mixture_normalized": 0.0,
+    "K2_q(0.2, 0.8)_full_mean": 5.551115123125783e-17,
+    "K2_q(0.2, 0.8)_cross_mean": 5.551115123125783e-17,
+    "K2_q(0.2, 0.8)_iid_mean": 0.0,
+    "K2_q(0.2, 0.8)_full_covariance_formula": 8.673617379884035e-19,
+    "K2_q(0.2, 0.8)_conditional_variance_identity": 4.336808689942018e-19,
+    "K2_q(0.5, 0.5)_mixture_normalized": 0.0,
+    "K2_q(0.5, 0.5)_full_mean": 2.7755575615628914e-17,
+    "K2_q(0.5, 0.5)_cross_mean": 0.0,
+    "K2_q(0.5, 0.5)_iid_mean": 0.0,
+    "K2_q(0.5, 0.5)_full_covariance_formula": 0.0,
+    "K2_q(0.5, 0.5)_conditional_variance_identity": 4.336808689942018e-19,
+    "K4_q(0.2, 0.8)_mixture_normalized": 0.0,
+    "K4_q(0.2, 0.8)_full_mean": 3.3306690738754696e-16,
+    "K4_q(0.2, 0.8)_cross_mean": 5.551115123125783e-17,
+    "K4_q(0.2, 0.8)_iid_mean": 1.1102230246251565e-16,
+    "K4_q(0.2, 0.8)_full_covariance_formula": 4.336808689942018e-18,
+    "K4_q(0.2, 0.8)_conditional_variance_identity": 3.0899761915836876e-18,
+    "K4_q(0.5, 0.5)_mixture_normalized": 0.0,
+    "K4_q(0.5, 0.5)_full_mean": 1.1102230246251565e-16,
+    "K4_q(0.5, 0.5)_cross_mean": 1.1102230246251565e-16,
+    "K4_q(0.5, 0.5)_iid_mean": 1.1102230246251565e-16,
+    "K4_q(0.5, 0.5)_full_covariance_formula": 8.673617379884035e-18,
+    "K4_q(0.5, 0.5)_conditional_variance_identity": 1.951563910473908e-17,
+    "K4_q(0.1, 0.6)_mixture_normalized": 0.0,
+    "K4_q(0.1, 0.6)_full_mean": 5.551115123125783e-16,
+    "K4_q(0.1, 0.6)_cross_mean": 1.6653345369377348e-16,
+    "K4_q(0.1, 0.6)_iid_mean": 6.106226635438361e-16,
+    "K4_q(0.1, 0.6)_full_covariance_formula": 3.469446951953614e-18,
+    "K4_q(0.1, 0.6)_conditional_variance_identity": 6.288372600415926e-18,
+    "K4_identity_strata_mixture_normalized": 0.0,
+    "K4_identity_strata_full_mean": 1.3877787807814457e-16,
+    "K4_identity_strata_cross_mean": 1.6653345369377348e-16,
+    "K4_identity_strata_iid_mean": 1.4682699500667695e-14,
+    "K4_identity_strata_full_covariance_formula": 4.336808689942018e-18,
+    "K4_identity_strata_conditional_variance_identity": 1.5178830414797062e-18,
+    "K4_reward_strata_mixture_normalized": 0.0,
+    "K4_reward_strata_full_mean": 3.608224830031759e-16,
+    "K4_reward_strata_cross_mean": 3.608224830031759e-16,
+    "K4_reward_strata_iid_mean": 1.4682699500667695e-14,
+    "K4_reward_strata_full_covariance_formula": 6.938893903907228e-18,
+    "K4_reward_strata_conditional_variance_identity": 0.0,
+    "uninformative_K2_chi_ratio": 0.0,
+    "rloo_mean": 2.7755575615628914e-17,
+    "rloo_exact_variance": 0.0,
+    "fixed_one_baseline_mean": 0.0,
+    "fixed_one_baseline_variance": 1.3877787807814457e-17,
+    "dependent_blocks_cross_valid": 0.0,
+    "grid_partner_pmf_last": 1.1102230246251565e-16,
+    "grid_dp_vs_brute_0": 0.0,
+    "grid_zero_sum_0": 0.0,
+    "grid_sign_sum_0": 0.0,
+    "grid_clipped_loss_0": 0.0,
+    "grid_clipped_derivative_0": 0.0,
+    "grid_dp_vs_brute_1": 4.440892098500626e-16,
+    "grid_zero_sum_1": 2.7755575615628914e-16,
+    "grid_sign_sum_1": 5.551115123125783e-17,
+    "grid_clipped_loss_1": 3.3306690738754696e-16,
+    "grid_clipped_derivative_1": 4.440892098500626e-16,
+    "grid_dp_vs_brute_2": 4.440892098500626e-16,
+    "grid_zero_sum_2": 0.0,
+    "grid_sign_sum_2": 0.0,
+    "grid_clipped_loss_2": 4.440892098500626e-16,
+    "grid_clipped_derivative_2": 2.220446049250313e-16,
+    "two_bank_bilinear_mean": 1.3877787807814457e-17,
+    "two_bank_bilinear_variance": 5.551115123125783e-17,
+    "common_curvature_even_part": 6.5052130349130266e-18,
+    "pure_central_difference_polynomial": 2.3869795029440866e-15,
+    "equal_reward_influence_identity": 2.7755575615628914e-17,
+    "equal_reward_influence_uninformative": 2.0816681711721685e-17
+  },
+  "max_identity_error": 1.4682699500667695e-14,
+  "limitations": [
+    "No real model loaded",
+    "No remote v4 receipts independently checked",
+    "No GPU experiments",
+    "Mathematical examples do not establish real-model effect size"
+  ]
+}
