@@ -69,9 +69,7 @@ def repair_command(args):
 
     manifest, groups = read_bank(args.bank)
     bank_sha256 = sha256(Path(args.bank) / "rows.jsonl")
-    direction_manifest, direction_path = _direction_contract(
-        args.direction, manifest, bank_sha256
-    )
+    direction_manifest, direction_path = _direction_contract(args.direction, manifest, bank_sha256)
     identity = direction_identity(direction_path, direction_manifest)
     legacy_rows = _jsonl(args.projection_rows)
     records = normalize_projection_rows(groups, legacy_rows, identity, args.reward_field)
