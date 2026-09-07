@@ -25,10 +25,38 @@ def _stage_d_decision(config, decision_path):
     evidence = decision.get("evidence")
     if not isinstance(evidence, list) or not evidence:
         raise ValueError("Stage-D continuation requires evidence artifacts")
+    by_role = {}
     for item in evidence:
         evidence_path = Path(item.get("path", ""))
         if not evidence_path.is_file() or sha256(evidence_path) != item.get("sha256"):
             raise ValueError("Stage-D evidence changed or is missing")
+        role = item.get("role")
+        if role in by_role:
+            raise ValueError("Duplicate Stage-D evidence role")
+        by_role[role] = json.loads(evidence_path.read_text())
+    if set(by_role) != {"analysis", "manifest", "receipt"}:
+        raise ValueError("Stage-D evidence requires analysis, manifest, and receipt roles")
+    analysis = by_role["analysis"]
+    manifest = by_role["manifest"]
+    receipt = by_role["receipt"]
+    stage_config = manifest.get("config", {})
+    parameter_hash = manifest.get("parameter_identity", {}).get("parameter_space_hash")
+    manifest_hash = next(item["sha256"] for item in evidence if item["role"] == "manifest")
+    if (
+        receipt.get("status") != "COMPLETE"
+        or receipt.get("manifest_sha256") != manifest_hash
+        or stage_config.get("stage") != "confirmation"
+        or analysis.get("stage") != "confirmation"
+        or analysis.get("decision") != "SUPPORT_CONTINUATION"
+        or analysis.get("metric") != stage_config.get("metric")
+        or analysis.get("K") != stage_config.get("K")
+        or analysis.get("N") != stage_config.get("B") * stage_config.get("m")
+        or decision.get("method_hash") != manifest.get("method_hash")
+        or decision.get("parameter_space_hash") != parameter_hash
+        or config.get("stage_d_method_hash") != manifest.get("method_hash")
+        or config.get("stage_d_parameter_space_hash") != parameter_hash
+    ):
+        raise ValueError("Stage-D evidence identities or continuation analysis disagree")
     return decision
 
 
@@ -53,6 +81,11 @@ def _validate(config, mode):
         _positive_integer(config, key)
     if config["B"] < config["K"]:
         raise ValueError("Stratified online runs require B >= K")
+    budget_mode = config.get("iid_budget_mode", "same_prompt")
+    if budget_mode not in ("same_prompt", "more_prompts"):
+        raise ValueError("iid_budget_mode must be same_prompt or more_prompts")
+    if budget_mode == "more_prompts" and (config["B"] * config["m"]) % config["K"]:
+        raise ValueError("more_prompts requires integer N/K prompt multiplier")
     if not np.isfinite(config.get("epsilon", np.nan)) or config["epsilon"] < 0:
         raise ValueError("Invalid advantage epsilon")
     if mode == "common_warmup":
@@ -117,7 +150,8 @@ def _task_sets(config, tasks_path):
         or not set(train_ids + evaluation_ids) <= lookup.keys()
     ):
         raise ValueError("Need disjoint frozen training and evaluation prompts")
-    if len(train_ids) < config["prompts_per_update"]:
+    arm = config.get("arm", "iid_all")
+    if len(train_ids) < _prompts_per_update(config, arm):
         raise ValueError("Insufficient training prompts per update")
     return [lookup[key] for key in train_ids], [lookup[key] for key in evaluation_ids]
 
@@ -127,6 +161,13 @@ def _binary_reward(row):
     if type(reward) not in (int, bool) or int(reward) not in (0, 1):
         raise ValueError("Online training requires complete binary rewards")
     return int(reward)
+
+
+def _prompts_per_update(config, arm):
+    count = config["prompts_per_update"]
+    if arm == "iid_all" and config.get("iid_budget_mode", "same_prompt") == "more_prompts":
+        count *= config["B"] * config["m"] // config["K"]
+    return count
 
 
 def _validate_audit_row(row):
@@ -145,9 +186,14 @@ def _validate_audit_row(row):
 
 def _macro_weights(rows, arm, config):
     if arm == "iid_all":
-        if len(rows) != config["K"]:
-            raise ValueError("IID-all split-budget macro must contain exactly fixed K responses")
-        rewards = np.array([_binary_reward(row) for row in rows]).reshape(config["K"], 1)
+        shape = (
+            (config["K"], 1)
+            if config.get("iid_budget_mode", "same_prompt") == "more_prompts"
+            else (config["B"], config["m"])
+        )
+        if len(rows) != np.prod(shape):
+            raise ValueError("IID-all macro response count differs from its frozen budget mode")
+        rewards = np.array([_binary_reward(row) for row in rows]).reshape(shape)
         return iid_weights(rewards, config["K"], config["epsilon"]).reshape(-1)
     expected = config["B"] * config["m"]
     if len(rows) != expected:
@@ -189,7 +235,11 @@ def _save_adapter(model, path):
 
 
 def _collect(collector, model, tokenizer, config, task, macro, arm, deadline):
-    collection_config = {**config, "B": config["K"], "m": 1} if arm == "iid_all" else config
+    collection_config = (
+        {**config, "B": config["K"], "m": 1}
+        if arm == "iid_all" and config.get("iid_budget_mode", "same_prompt") == "more_prompts"
+        else config
+    )
     rows, costs = collector(model, tokenizer, collection_config, task, macro, arm, deadline)
     if not isinstance(rows, list) or not rows or not isinstance(costs, dict):
         raise ValueError("collect_macro returned an invalid result")
